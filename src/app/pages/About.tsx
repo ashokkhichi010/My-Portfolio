@@ -34,7 +34,20 @@ export const About = () => {
             {data.title}
           </motion.h1>
 
-          <div className="grid gap-10 items-start md:grid-cols-[minmax(0,1fr)_320px] mb-16">
+          <div className="grid gap-10 items-start md:grid-cols-[minmax(0,1fr)_520px] mb-16">
+            {data.image && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <img
+                  src={data.image}
+                  alt="Ashok Kumar profile"
+                  className="w-full rounded-4xl object-cover shadow-2xl"
+                />
+              </motion.div>
+            )}
             <div className="space-y-8">
               {data.story.map((paragraph, index) => (
                 <motion.p
@@ -49,21 +62,6 @@ export const About = () => {
                 </motion.p>
               ))}
             </div>
-
-            {data.image && (
-              <motion.div
-                className="rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <img
-                  src={data.image}
-                  alt="Ashok Kumar profile"
-                  className="w-full rounded-2xl object-cover shadow-2xl"
-                />
-              </motion.div>
-            )}
           </div>
 
           <motion.div

@@ -1,130 +1,151 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { useTheme } from '../context/ThemeContext';
 import { SEO } from '../components/SEO';
 import { trackPageView } from '../utils/analytics';
 import achievementsData from '../data/achievements.json';
 import type { AchievementsData } from '../types';
-import { CalendarRange, Trophy } from 'lucide-react';
+import { CalendarRange } from 'lucide-react';
 
 const data = achievementsData as AchievementsData;
 
 export const Achievements = () => {
   const { setTheme } = useTheme();
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   useEffect(() => {
     setTheme('achievements');
     trackPageView('Achievements');
   }, [setTheme]);
 
-  const categories = ['All', ...new Set(data.achievements.map((a) => a.category))];
+  const categories = useMemo(
+    () => ['All', ...new Set(data.achievements.map((a) => a.category))],
+    []
+  );
 
-  const filteredAchievements =
-    selectedCategory === 'All'
-      ? data.achievements
-      : data.achievements.filter((a) => a.category === selectedCategory);
+  const filtered = useMemo(
+    () =>
+      selectedCategory === 'All'
+        ? data.achievements
+        : data.achievements.filter((a) => a.category === selectedCategory),
+    [selectedCategory]
+  );
 
   return (
     <>
       <SEO
-        title="Achievements & Highlights"
-        description="Selected outcomes, milestones, and technical highlights from my professional and project work"
+        title="Achievements"
+        description="Selected outcomes and milestones"
       />
-      <div className="min-h-screen py-24 px-4" style={{ background: 'var(--theme-background)' }}>
-        <div className="max-w-6xl mx-auto">
+
+      <section
+        className="min-h-screen px-4 py-24"
+        style={{ background: 'var(--theme-background)' }}
+      >
+        <div className="mx-auto max-w-6xl">
           <motion.h1
-            className="text-5xl md:text-6xl font-bold mb-8 text-center"
+            className="mb-14 text-center text-4xl font-bold md:text-6xl"
             style={{ color: 'var(--theme-text)' }}
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -18 }}
             animate={{ opacity: 1, y: 0 }}
           >
             {data.title}
           </motion.h1>
 
-          {/* Category Filter */}
-          <motion.div
-            className="flex flex-wrap justify-center gap-3 mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all ${
-                  selectedCategory === category
-                    ? 'text-white'
-                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
-                }`}
-                style={
-                  selectedCategory === category
-                    ? { background: 'var(--theme-gradient)' }
-                    : {}
-                }
-              >
-                {category}
-              </button>
-            ))}
-          </motion.div>
+          <div className="grid gap-12 md:grid-cols-[220px_1fr]">
+            <aside className="md:sticky md:top-24 md:self-start">
+              <div className="mb-5 text-xs uppercase tracking-[0.22em] text-gray-500">
+                Filter by category
+              </div>
 
-          {/* Achievements Grid */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {filteredAchievements.map((achievement, index) => (
-              <motion.div
-                key={index}
-                className="p-6 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="flex items-start gap-3 mb-4">
-                  <div className="p-2 rounded-lg" style={{ background: 'var(--theme-primary)' }}>
-                    <Trophy size={24} color="white" />
-                  </div>
-                  <div className="flex-1">
-                    <span
-                      className="text-xs font-semibold px-2 py-1 rounded-full"
-                      style={{
-                        background: 'var(--theme-accent)',
-                        color: 'var(--theme-background)',
-                      }}
+              <div className="flex flex-wrap gap-3 md:flex-col md:gap-2">
+                {categories.map((category) => {
+                  const count =
+                    category === 'All'
+                      ? data.achievements.length
+                      : data.achievements.filter((a) => a.category === category)
+                        .length;
+
+                  const active = selectedCategory === category;
+
+                  return (
+                    <button
+                      key={category}
+                      onClick={() => setSelectedCategory(category)}
+                      className={`flex items-center justify-between rounded-full border px-4 py-2 text-sm transition md:rounded-xl md:px-3 md:py-2 ${active
+                          ? 'border-white/30 bg-white/10 text-white'
+                          : 'border-white/10 text-gray-400 hover:border-white/20 hover:text-white'
+                        }`}
                     >
-                      {achievement.category}
-                    </span>
-                  </div>
-                </div>
+                      <span>{category}</span>
+                      <span className="ml-3 text-xs text-gray-500">{count}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </aside>
 
-                <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--theme-text)' }}>
-                  {achievement.title}
-                </h3>
-                {achievement.context && (
-                  <p className="text-sm mb-2" style={{ color: 'var(--theme-accent)' }}>
-                    {achievement.context}
+            <div className="space-y-0">
+              {filtered.map((item, index) => (
+                <motion.article
+                  key={`${item.title}-${index}`}
+                  className="border-t border-white/10 py-6 first:border-t-0 first:pt-0"
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: index * 0.03 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                    <div className="min-w-0">
+                      <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-gray-500">
+                        <span className="rounded-full border border-white/10 px-2 py-1 text-[10px] tracking-[0.2em] text-gray-400">
+                          {item.category}
+                        </span>
+                      </div>
+
+                      <h3
+                        className="text-xl font-semibold md:text-2xl"
+                        style={{ color: 'var(--theme-text)' }}
+                      >
+                        {item.title}
+                      </h3>
+
+                      {item.context && (
+                        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-400 md:text-base">
+                          {item.context}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-2 whitespace-nowrap text-sm text-gray-500">
+                      <CalendarRange size={14} />
+                      <span>{item.timeframe}</span>
+                    </div>
+                  </div>
+
+                  <p className="mt-4 max-w-4xl text-sm leading-relaxed text-gray-300 md:text-base">
+                    {item.description}
                   </p>
-                )}
-                <p className="text-gray-300 mb-4 text-sm leading-relaxed">{achievement.description}</p>
-                <div className="flex items-center gap-2 text-sm mb-4" style={{ color: 'var(--theme-primary)' }}>
-                  <CalendarRange size={16} />
-                  <span>{achievement.timeframe}</span>
-                </div>
-                {achievement.highlights && achievement.highlights.length > 0 && (
-                  <ul className="space-y-2">
-                    {achievement.highlights.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start gap-2 text-sm text-gray-300">
-                        <span style={{ color: 'var(--theme-primary)' }}>•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </motion.div>
-            ))}
+
+                  {item.highlights?.length > 0 && (
+                    <ul className="mt-4 space-y-2">
+                      {item.highlights.map((highlight, i) => (
+                        <li
+                          key={i}
+                          className="flex gap-2 text-sm leading-relaxed text-gray-300 md:text-[15px]"
+                        >
+                          <span style={{ color: 'var(--theme-primary)' }}>•</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </motion.article>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

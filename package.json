@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "typecheck": "tsc -b --pretty false",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve:hosting": "npm run build && firebase emulators:start --only hosting",
+    "deploy": "firebase deploy --only hosting",
+    "deploy:preview": "firebase hosting:channel:deploy preview"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",

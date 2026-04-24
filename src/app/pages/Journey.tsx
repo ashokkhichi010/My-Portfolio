@@ -5,22 +5,8 @@ import { SEO } from '../components/SEO';
 import { trackPageView } from '../utils/analytics';
 import journeyData from '../data/journey.json';
 import type { JourneyData } from '../types';
-import { Calendar, Award, TrendingUp } from 'lucide-react';
 
 const data = journeyData as JourneyData;
-
-const getIcon = (type: string) => {
-  switch (type) {
-    case 'milestone':
-      return <TrendingUp size={20} />;
-    case 'achievement':
-      return <Award size={20} />;
-    case 'transition':
-      return <Calendar size={20} />;
-    default:
-      return <Calendar size={20} />;
-  }
-};
 
 export const Journey = () => {
   const { setTheme } = useTheme();
@@ -34,12 +20,18 @@ export const Journey = () => {
     <>
       <SEO
         title="My Journey"
-        description="Explore my professional journey and key milestones in my development career"
+        description="Explore my journey as a developer"
       />
-      <div className="min-h-screen py-24 px-4" style={{ background: 'var(--theme-background)' }}>
-        <div className="max-w-4xl mx-auto">
+
+      <section
+        className="min-h-screen py-24 px-4"
+        style={{ background: 'var(--theme-background)' }}
+      >
+        <div className="max-w-3xl mx-auto">
+
+          {/* Title */}
           <motion.h1
-            className="text-5xl md:text-6xl font-bold mb-16 text-center"
+            className="text-4xl md:text-6xl font-bold mb-20"
             style={{ color: 'var(--theme-text)' }}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -47,50 +39,57 @@ export const Journey = () => {
             {data.title}
           </motion.h1>
 
+          {/* Timeline */}
           <div className="relative">
-            {/* Timeline line */}
+
+            {/* Vertical Line */}
             <div
-              className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5"
+              className="absolute left-1 top-0 bottom-0 w-[2px]"
               style={{ background: 'var(--theme-primary)' }}
             />
 
             {data.timeline.map((item, index) => (
               <motion.div
                 key={index}
-                className={`relative mb-12 ${
-                  index % 2 === 0 ? 'md:pr-1/2 md:text-right' : 'md:pl-1/2 md:ml-auto'
-                } pl-20 md:pl-0`}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.2 }}
+                className="relative pl-8 mb-12"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
               >
-                {/* Timeline dot */}
+
+                {/* Dot */}
                 <div
-                  className={`absolute w-4 h-4 rounded-full ${
-                    index % 2 === 0 ? 'md:right-[-8px]' : 'md:left-[-8px]'
-                  } left-[28px] top-2`}
+                  className="absolute left-0 top-2 w-3 h-3 rounded-full"
                   style={{ background: 'var(--theme-accent)' }}
                 />
 
-                <div
-                  className={`inline-block p-6 rounded-lg bg-white/5 backdrop-blur-sm ${
-                    index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
-                  }`}
-                >
-                  <div className="flex items-center gap-2 mb-2" style={{ color: 'var(--theme-primary)' }}>
-                    {getIcon(item.type)}
-                    <span className="font-bold text-xl">{item.year}</span>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--theme-text)' }}>
+                {/* Content */}
+                <div>
+                  <span
+                    className="text-sm font-semibold"
+                    style={{ color: 'var(--theme-primary)' }}
+                  >
+                    {item.year}
+                  </span>
+
+                  <h3
+                    className="text-xl md:text-2xl font-bold mt-1"
+                    style={{ color: 'var(--theme-text)' }}
+                  >
                     {item.title}
                   </h3>
-                  <p className="text-gray-300">{item.description}</p>
+
+                  <p className="text-gray-400 mt-2 leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
+
               </motion.div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

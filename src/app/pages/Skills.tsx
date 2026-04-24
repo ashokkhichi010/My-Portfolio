@@ -8,6 +8,17 @@ import type { SkillsData } from '../types';
 
 const data: SkillsData = skillsData;
 
+// Level → subtle style
+const getChipStyle = (level: number) => {
+  if (level >= 80)
+    return 'bg-white/10 text-white border border-white/20';
+  if (level >= 60)
+    return 'bg-white/5 text-gray-200 border border-white/10';
+  if (level >= 40)
+    return 'bg-white/5 text-gray-400 border border-white/5';
+  return 'bg-white/5 text-gray-500 border border-white/5 opacity-70';
+};
+
 export const Skills = () => {
   const { setTheme } = useTheme();
 
@@ -20,12 +31,18 @@ export const Skills = () => {
     <>
       <SEO
         title="Skills"
-        description="Explore my technical skills and expertise across various technologies"
+        description="Technologies I work with and currently learning"
       />
-      <div className="min-h-screen py-24 px-4" style={{ background: 'var(--theme-background)' }}>
-        <div className="max-w-6xl mx-auto">
+
+      <section
+        className="min-h-screen py-24 px-4"
+        style={{ background: 'var(--theme-background)' }}
+      >
+        <div className="max-w-5xl mx-auto">
+
+          {/* Title */}
           <motion.h1
-            className="text-5xl md:text-6xl font-bold mb-16 text-center"
+            className="text-4xl md:text-6xl font-bold mb-20 text-center"
             style={{ color: 'var(--theme-text)' }}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -33,49 +50,47 @@ export const Skills = () => {
             {data.title}
           </motion.h1>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* Categories */}
+          <div className="space-y-14">
             {Object.entries(data.categories).map(([category, skills], catIndex) => (
               <motion.div
                 key={category}
-                className="p-6 rounded-xl bg-white/5 backdrop-blur-sm"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: catIndex * 0.1 }}
+                viewport={{ once: true }}
               >
+                {/* Category Title */}
                 <h2
-                  className="text-2xl font-bold mb-6"
+                  className="text-xl md:text-2xl font-semibold mb-6"
                   style={{ color: 'var(--theme-accent)' }}
                 >
                   {category}
                 </h2>
-                <div className="space-y-4">
+
+                {/* Chips */}
+                <div className="flex flex-wrap gap-3">
                   {skills.map((skill, index) => (
-                    <div key={index}>
-                      <div className="flex justify-between mb-2">
-                        <span className="font-medium" style={{ color: 'var(--theme-text)' }}>
-                          {skill.name}
-                        </span>
-                        <span style={{ color: 'var(--theme-primary)' }}>
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                        <motion.div
-                          className="h-full rounded-full"
-                          style={{ background: 'var(--theme-gradient)' }}
-                          initial={{ width: 0 }}
-                          animate={{ width: `${skill.level}%` }}
-                          transition={{ delay: catIndex * 0.1 + index * 0.05, duration: 1 }}
-                        />
-                      </div>
-                    </div>
+                    <motion.span
+                      key={index}
+                      className={`px-4 py-1.5 text-sm rounded-full transition-all duration-200 hover:scale-105 ${getChipStyle(
+                        skill.level
+                      )}`}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.03 }}
+                      viewport={{ once: true }}
+                    >
+                      {skill.name}
+                    </motion.span>
                   ))}
                 </div>
               </motion.div>
             ))}
           </div>
+
         </div>
-      </div>
+      </section>
     </>
   );
 };

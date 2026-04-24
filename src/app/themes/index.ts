@@ -10,116 +10,126 @@ export const themes: Record<string, Theme> = {
       background: '#0f172a',
       text: '#f8fafc',
     },
-    gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    gradient: 'linear-gradient(135deg, #6366f1, #ec4899)',
   },
+
   about: {
     name: 'Ocean',
     colors: {
       primary: '#06b6d4',
       secondary: '#0ea5e9',
       accent: '#22d3ee',
-      background: '#0c4a6e',
-      text: '#f0f9ff',
+      background: '#082f49',
+      text: '#e0f2fe',
     },
-    gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    gradient: 'linear-gradient(135deg, #06b6d4, #0ea5e9)',
   },
+
   journey: {
     name: 'Sunset',
     colors: {
       primary: '#f97316',
       secondary: '#fb923c',
       accent: '#fbbf24',
-      background: '#7c2d12',
+      background: '#431407',
       text: '#fff7ed',
     },
-    gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    gradient: 'linear-gradient(135deg, #f97316, #fbbf24)',
   },
+
   skills: {
     name: 'Forest',
     colors: {
       primary: '#10b981',
       secondary: '#34d399',
       accent: '#6ee7b7',
-      background: '#064e3b',
-      text: '#f0fdf4',
+      background: '#022c22',
+      text: '#ecfdf5',
     },
-    gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+    gradient: 'linear-gradient(135deg, #10b981, #6ee7b7)',
   },
+
   projects: {
     name: 'Violet',
     colors: {
       primary: '#8b5cf6',
       secondary: '#a78bfa',
       accent: '#c084fc',
-      background: '#4c1d95',
+      background: '#2e1065',
       text: '#faf5ff',
     },
-    gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    gradient: 'linear-gradient(135deg, #8b5cf6, #c084fc)',
   },
+
   experience: {
     name: 'Slate',
     colors: {
       primary: '#64748b',
       secondary: '#94a3b8',
       accent: '#cbd5e1',
-      background: '#1e293b',
-      text: '#f8fafc',
+      background: '#020617',
+      text: '#e2e8f0',
     },
-    gradient: 'linear-gradient(135deg, #485563 0%, #29323c 100%)',
+    gradient: 'linear-gradient(135deg, #64748b, #cbd5e1)',
   },
+
   education: {
     name: 'Amber',
     colors: {
       primary: '#f59e0b',
       secondary: '#fbbf24',
-      accent: '#fcd34d',
-      background: '#78350f',
+      accent: '#fde68a',
+      background: '#451a03',
       text: '#fffbeb',
     },
-    gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    gradient: 'linear-gradient(135deg, #f59e0b, #fde68a)',
   },
+
   achievements: {
     name: 'Rose',
     colors: {
       primary: '#f43f5e',
       secondary: '#fb7185',
       accent: '#fda4af',
-      background: '#881337',
+      background: '#4c0519',
       text: '#fff1f2',
     },
-    gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+    gradient: 'linear-gradient(135deg, #f43f5e, #fda4af)',
   },
+
   tools: {
     name: 'Teal',
     colors: {
       primary: '#14b8a6',
       secondary: '#2dd4bf',
       accent: '#5eead4',
-      background: '#134e4a',
-      text: '#f0fdfa',
+      background: '#042f2e',
+      text: '#ccfbf1',
     },
-    gradient: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
+    gradient: 'linear-gradient(135deg, #14b8a6, #5eead4)',
   },
+
   vision: {
     name: 'Indigo',
     colors: {
       primary: '#6366f1',
       secondary: '#818cf8',
       accent: '#a5b4fc',
-      background: '#312e81',
+      background: '#1e1b4b',
       text: '#eef2ff',
     },
-    gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    gradient: 'linear-gradient(135deg, #6366f1, #a5b4fc)',
   },
+
   contact: {
     name: 'Emerald',
     colors: {
       primary: '#10b981',
       secondary: '#34d399',
       accent: '#6ee7b7',
-      background: '#065f46',
-      text: '#f0fdf4',
+      background: '#022c22',
+      text: '#ecfdf5',
     },
-    gradient: 'linear-gradient(135deg, #0ba360 0%, #3cba92 100%)',
+    gradient: 'linear-gradient(135deg, #10b981, #6ee7b7)',
   },
 };

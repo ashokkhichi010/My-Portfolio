@@ -1,0 +1,82 @@
+{
+  "title": "Work Experience",
+  "experiences": [
+    {
+      "company": "ROBOAI HUB",
+      "role": "IoT and Embedded Systems Trainee",
+      "duration": "Mar 2026 - Present",
+      "location": "Jodhpur, Rajasthan, India",
+      "description": [
+        "Building practical understanding of microcontrollers, embedded C/C++, sensors, and hardware debugging through hands-on training and experiments.",
+        "Working with Arduino and ESP8266-based setups to strengthen core concepts in device control and hardware-software interaction.",
+        "Exploring communication workflows and low-level troubleshooting with a focus on reliable system behavior."
+      ],
+      "technologies": [
+        "Arduino",
+        "ESP8266",
+        "C/C++",
+        "Sensors",
+        "Embedded Systems",
+        "IoT"
+      ]
+    },
+    {
+      "company": "Independent Product Work",
+      "role": "Founder and Full Stack Developer, S3 Library Platform",
+      "duration": "Nov 2024 - Jan 2026",
+      "location": "Remote",
+      "description": [
+        "Designed and built a library management SaaS platform focused on subscriptions, seat allocation, admin workflows, and multi-location operations.",
+        "Handled backend architecture, frontend flows, deployment, and product iteration as an end-to-end independent build.",
+        "Used direct exposure to library operations to refine features based on practical workflows rather than assumptions.",
+        "Paused the product after active validation, carrying forward lessons in product scope, adoption, and execution discipline."
+      ],
+      "technologies": [
+        "Node.js",
+        "NestJS",
+        "MongoDB",
+        "React",
+        "Firebase",
+        "Cloud Run"
+      ]
+    },
+    {
+      "company": "Square Bits Pvt. Ltd.",
+      "role": "Backend Engineer",
+      "duration": "Apr 2023 - Oct 2024",
+      "location": "India",
+      "description": [
+        "Built and maintained backend services for SaaS applications using Node.js and Express.",
+        "Designed REST APIs for inventory, subscription, billing, and operational workflows.",
+        "Integrated payment systems including Stripe and Razorpay with secure webhook handling.",
+        "Contributed to backend improvements around performance, schema structure, and workflow automation while working with cross-functional teams."
+      ],
+      "technologies": [
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "MySQL",
+        "Stripe",
+        "Razorpay",
+        "AWS S3"
+      ]
+    },
+    {
+      "company": "Square Bits Pvt. Ltd.",
+      "role": "Backend Developer Trainee",
+      "duration": "Jan 2023 - Mar 2023",
+      "location": "India",
+      "description": [
+        "Started my professional backend journey by supporting API development, testing, debugging, and data operations.",
+        "Worked with MongoDB, Postman, and Node.js-based services while learning team workflows and production expectations.",
+        "Built the discipline of translating requirements into structured backend tasks with guidance from senior developers."
+      ],
+      "technologies": [
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Postman"
+      ]
+    }
+  ]
+}

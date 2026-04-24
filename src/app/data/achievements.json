@@ -1,0 +1,65 @@
+{
+  "title": "Achievements & Highlights",
+  "achievements": [
+    {
+      "title": "Built the S3 Library Platform from Problem Discovery to Deployment",
+      "timeframe": "2024 - 2026",
+      "category": "Product Development",
+      "context": "Independent product build",
+      "description": "Conceived, designed, and shipped a library-focused SaaS platform after observing operational inefficiencies in real study spaces.",
+      "highlights": [
+        "Worked across product thinking, backend architecture, frontend flows, and deployment.",
+        "Focused on practical workflows such as subscriptions, seat allocation, and branch operations.",
+        "Used the experience to understand product-market fit, validation limits, and execution trade-offs."
+      ]
+    },
+    {
+      "title": "Moved from Backend Engineering into IoT and Embedded Systems",
+      "timeframe": "2026 - Present",
+      "category": "Career Growth",
+      "context": "Technical transition",
+      "description": "Expanded from software-only work into hardware-oriented engineering through structured learning and hands-on embedded projects.",
+      "highlights": [
+        "Started building with Arduino, ESP8266/ESP32, sensors, and device communication workflows.",
+        "Focused on creating a stronger bridge between software engineering and real-world systems.",
+        "Used small experiments and RC car projects to reinforce practical fundamentals."
+      ]
+    },
+    {
+      "title": "Built a Multi-Mode RC Car System with Real-Time Control Logic",
+      "timeframe": "2026",
+      "category": "Embedded Systems",
+      "context": "Hands-on project work",
+      "description": "Developed an RC car system with manual control, obstacle avoidance, and line-following behavior to practice embedded design and debugging.",
+      "highlights": [
+        "Worked with motor control, sensors, Bluetooth communication, and modular firmware logic.",
+        "Used the project to connect theory with practical hardware troubleshooting.",
+        "Later extended the concept toward WiFi-based control using ESP8266."
+      ]
+    },
+    {
+      "title": "Contributed to Production SaaS Backends and Payment Workflows",
+      "timeframe": "2023 - 2024",
+      "category": "Backend Engineering",
+      "context": "Square Bits Pvt. Ltd.",
+      "description": "Delivered backend features for SaaS systems and contributed to operational workflows involving APIs, payments, and automation.",
+      "highlights": [
+        "Built and maintained REST APIs for business-critical modules.",
+        "Worked with Stripe and Razorpay integrations, including secure webhook handling.",
+        "Strengthened production thinking around maintainability, structure, and reliability."
+      ]
+    },
+    {
+      "title": "Built Real-Time Communication Projects Beyond Standard CRUD Applications",
+      "timeframe": "2024",
+      "category": "Real-Time Systems",
+      "context": "Self-driven learning",
+      "description": "Explored event-driven design and multi-user interaction patterns through a real-time chat application.",
+      "highlights": [
+        "Practiced WebSocket-based communication and state handling.",
+        "Improved understanding of responsiveness, concurrency, and event flow.",
+        "Used the project to strengthen architectural thinking beyond conventional request-response apps."
+      ]
+    }
+  ]
+}

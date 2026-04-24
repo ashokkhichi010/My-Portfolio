@@ -1,0 +1,140 @@
+{
+  "title": "Technical Skills",
+  "categories": {
+    "Full Stack Development": [
+      {
+        "name": "Node.js",
+        "level": 88,
+        "category": "Development"
+      },
+      {
+        "name": "Express.js",
+        "level": 82,
+        "category": "Development"
+      },
+      {
+        "name": "NestJS",
+        "level": 78,
+        "category": "Development"
+      },
+      {
+        "name": "React.js",
+        "level": 82,
+        "category": "Development"
+      },
+      {
+        "name": "REST API Design",
+        "level": 88,
+        "category": "Development"
+      }
+    ],
+    "Programming & Problem Solving": [
+      {
+        "name": "JavaScript",
+        "level": 85,
+        "category": "Programming"
+      },
+      {
+        "name": "C/C++",
+        "level": 65,
+        "category": "Programming"
+      },
+      {
+        "name": "Python",
+        "level": 60,
+        "category": "Programming"
+      },
+      {
+        "name": "Dart",
+        "level": 55,
+        "category": "Programming"
+      },
+      {
+        "name": "Data Structures & Algorithms",
+        "level": 70,
+        "category": "Programming"
+      }
+    ],
+    "Databases & Architecture": [
+      {
+        "name": "MongoDB",
+        "level": 82,
+        "category": "Architecture"
+      },
+      {
+        "name": "MySQL",
+        "level": 72,
+        "category": "Architecture"
+      },
+      {
+        "name": "Firestore",
+        "level": 70,
+        "category": "Architecture"
+      },
+      {
+        "name": "Schema Design",
+        "level": 78,
+        "category": "Architecture"
+      },
+      {
+        "name": "Authentication and Access Control",
+        "level": 85,
+        "category": "Architecture"
+      }
+    ],
+    "IoT & Embedded Systems": [
+      {
+        "name": "Arduino",
+        "level": 75,
+        "category": "Embedded"
+      },
+      {
+        "name": "ESP8266 / ESP32",
+        "level": 70,
+        "category": "Embedded"
+      },
+      {
+        "name": "Sensor Interfacing",
+        "level": 72,
+        "category": "Embedded"
+      },
+      {
+        "name": "GPIO and Signal Handling",
+        "level": 70,
+        "category": "Embedded"
+      },
+      {
+        "name": "Breadboard Prototyping and Debugging",
+        "level": 74,
+        "category": "Embedded"
+      }
+    ],
+    "Communication & Deployment": [
+      {
+        "name": "HTTP / REST Communication",
+        "level": 80,
+        "category": "Systems"
+      },
+      {
+        "name": "Bluetooth and Serial Communication",
+        "level": 70,
+        "category": "Systems"
+      },
+      {
+        "name": "Firebase Hosting",
+        "level": 78,
+        "category": "Systems"
+      },
+      {
+        "name": "Google Cloud Run",
+        "level": 75,
+        "category": "Systems"
+      },
+      {
+        "name": "Docker Fundamentals",
+        "level": 68,
+        "category": "Systems"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "title": "Tools & Technologies",
+  "tools": [
+    {
+      "name": "Git and GitHub",
+      "category": "Version Control",
+      "proficiency": 85
+    },
+    {
+      "name": "Postman",
+      "category": "API Testing",
+      "proficiency": 82
+    },
+    {
+      "name": "Firebase Hosting",
+      "category": "Deployment",
+      "proficiency": 78
+    },
+    {
+      "name": "Google Cloud Run",
+      "category": "Cloud",
+      "proficiency": 75
+    },
+    {
+      "name": "AWS S3",
+      "category": "Cloud",
+      "proficiency": 70
+    },
+    {
+      "name": "Docker",
+      "category": "Containerization",
+      "proficiency": 68
+    },
+    {
+      "name": "Arduino IDE",
+      "category": "Embedded Development",
+      "proficiency": 80
+    },
+    {
+      "name": "PlatformIO",
+      "category": "Embedded Development",
+      "proficiency": 65
+    },
+    {
+      "name": "Serial Monitor and Device Debugging",
+      "category": "Embedded Debugging",
+      "proficiency": 75
+    },
+    {
+      "name": "Google Play Console",
+      "category": "App Publishing",
+      "proficiency": 72
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Ashok Kumar",
+  "subtitle": "Full Stack Developer | Exploring IoT & Embedded Systems",
+  "description": "I build modern web applications with clean architecture and user-focused design, while expanding into IoT and embedded systems to create intelligent, real-world solutions that bridge software and hardware.",
+  "cta": {
+    "text": "View My Projects",
+    "link": "/projects"
+  }
+}

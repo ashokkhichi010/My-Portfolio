@@ -1,0 +1,27 @@
+{
+  "title": "Let's Connect",
+  "description": "I am open to meaningful conversations around full stack development, backend systems, IoT, embedded learning, and product ideas with practical value. If you would like to collaborate, discuss an opportunity, or connect professionally, feel free to reach out.",
+  "email": "ashokkhichi010@gmail.com",
+  "social": [
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/ashokkhichi010",
+      "icon": "Github"
+    },
+    {
+      "platform": "Project Archive",
+      "url": "https://github.com/akprojects2310",
+      "icon": "Github"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/in/ashok-kumar-7743b6249/",
+      "icon": "Linkedin"
+    },
+    {
+      "platform": "WhatsApp",
+      "url": "https://wa.me/919461281812",
+      "icon": "Whatsapp"
+    }
+  ]
+}

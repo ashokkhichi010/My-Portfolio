@@ -1,0 +1,16 @@
+{
+  "title": "About Me",
+  "story": [
+    "I am a Full Stack Developer focused on building practical software that solves operational problems clearly and reliably. My work spans responsive interfaces, backend APIs, database design, and deployment workflows.",
+    "Over the past few years, I have worked across backend engineering, product development, and self-driven experimentation. That path helped me move beyond isolated coding tasks and think more carefully about system design, user needs, and long-term maintainability.",
+    "More recently, I have been expanding into IoT and embedded systems through hands-on work with Arduino, ESP8266/ESP32, sensors, and device communication. My long-term direction is to build connected products where software and hardware work together in a useful, affordable, and dependable way."
+  ],
+  "image": "/profile-image.png",
+  "highlights": [
+    "Full stack developer with production experience in backend systems and SaaS workflows",
+    "Comfortable designing APIs, data models, and maintainable application structure",
+    "Hands-on builder with growing focus on IoT, embedded systems, and hardware integration",
+    "Strong problem-solving mindset shaped by real operational use cases, not only tutorials",
+    "Interested in practical products that improve everyday workflows through simple, reliable technology"
+  ]
+}

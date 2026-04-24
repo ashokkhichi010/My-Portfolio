@@ -1,0 +1,27 @@
+{
+  "title": "Education",
+  "education": [
+    {
+      "institution": "Aishwarya College of Education",
+      "degree": "Master of Computer Applications (MCA)",
+      "field": "Computer Applications",
+      "duration": "2023 - 2024",
+      "achievements": [
+        "Deepened my understanding of software development, backend systems, and application design.",
+        "Continued building practical products alongside formal study, including work on the S3 Library platform.",
+        "Strengthened the transition from academic learning to real system thinking and product execution."
+      ]
+    },
+    {
+      "institution": "Lachoo Memorial College of Science and Technology",
+      "degree": "Bachelor of Computer Applications (BCA)",
+      "field": "Computer Applications",
+      "duration": "2019 - 2022",
+      "achievements": [
+        "Built my core foundation in programming, databases, web development, and data structures.",
+        "Completed multiple academic and personal projects that improved practical coding discipline.",
+        "Developed early interest in problem solving through algorithms and implementation-focused assignments."
+      ]
+    }
+  ]
+}

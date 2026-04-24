@@ -1,0 +1,239 @@
+{
+  "title": "Selected Projects",
+  "projects": [
+    {
+      "id": "rc-car-wifi",
+      "title": "WiFi-Controlled RC Car Upgrade",
+      "timeframe": "Mar 2026 - Present",
+      "status": "in progress",
+      "description": "Upgrading RC car to WiFi-based IoT control system",
+      "summary": "Extending Bluetooth RC car to WiFi using ESP8266 and PlatformIO. Focused on network communication, structured firmware design, and scalable control logic for real-time IoT-based remote operation.",
+      "tags": [
+        "ESP8266",
+        "PlatformIO",
+        "C/C++",
+        "WiFi",
+        "IoT",
+        "Embedded Systems"
+      ],
+      "github": ""
+    },
+    {
+      "id": "activity-logger",
+      "title": "Flutter Activity Logger",
+      "timeframe": "Mar 2026",
+      "status": "completed",
+      "description": "Local-first mobile app for tracking daily work",
+      "summary": "Designed a lightweight mobile app for logging daily activities, issues, and solutions. Focused on local-first architecture for reliability and fast access without dependency on internet connectivity.",
+      "tags": [
+        "Flutter",
+        "Dart",
+        "Local Storage",
+        "Mobile App"
+      ],
+      "preview": "",
+      "previewUrl": ""
+    },
+    {
+      "id": "rc-car-controller-app",
+      "title": "Bluetooth RC Car Controller (Flutter App)",
+      "timeframe": "2026",
+      "status": "completed",
+      "description": "Flutter app for Bluetooth-based RC car control",
+      "summary": "Built a mobile application using Flutter to control the RC car via Bluetooth. Implemented real-time command transmission, UI controls for movement, and seamless communication with Arduino using UART over HC-05 module.",
+      "tags": [
+        "Flutter",
+        "Dart",
+        "Bluetooth",
+        "Mobile App",
+        "IoT"
+      ],
+      "github": "https://github.com/ashokkhichi010/Bluetooth-RC-Car-Controller"
+    },
+    {
+      "id": "rc-car-bluetooth",
+      "title": "Mode-Switching Bluetooth RC Car",
+      "timeframe": "Mar 2026",
+      "status": "completed",
+      "description": "Multi-mode RC car with Bluetooth and sensors",
+      "summary": "Developed a modular embedded system with manual, obstacle avoidance, and line-following modes. Integrated sensors, motor drivers, and real-time control using Arduino and Flutter-based mobile interface.",
+      "tags": [
+        "Arduino",
+        "C/C++",
+        "Bluetooth",
+        "Flutter",
+        "Embedded Systems",
+        "IoT"
+      ],
+      "github": "https://github.com/ashokkhichi010/Bluetooth-RC-Car"
+    },
+    {
+      "id": "iot-experiments",
+      "title": "Small IoT and Embedded Experiments",
+      "timeframe": "Apr 2026",
+      "status": "in progress",
+      "description": "Mini projects exploring sensors and embedded systems",
+      "summary": "Built small experiments around sensor interfacing, GPIO control, and LED automation. Focused on debugging, circuit design, and strengthening embedded fundamentals through isolated, practical builds.",
+      "tags": [
+        "Arduino",
+        "Sensors",
+        "GPIO",
+        "Embedded Systems",
+        "IoT"
+      ],
+      "github": "https://github.com/ashokkhichi010/Small-IoT-Projects"
+    },
+    {
+      "id": "chat-app",
+      "title": "Real-Time Chat Application",
+      "timeframe": "2024",
+      "status": "completed",
+      "description": "Real-time chat system using WebSockets",
+      "summary": "Built a real-time chat system to explore event-driven architecture and multi-user communication. Focused on synchronization, responsiveness, and efficient handling of real-time data.",
+      "tags": [
+        "Node.js",
+        "Socket.IO",
+        "MongoDB",
+        "Real-Time Systems"
+      ],
+      "github": "https://github.com/ashokkhichi010/real-time-chatting-and-games"
+    },
+    {
+      "id": "type-from-image",
+      "title": "TypeFromImage",
+      "timeframe": "Mar 2026",
+      "status": "completed",
+      "description": "Typing app using image-based text with audio",
+      "summary": "Built a typing practice app using image text input and added audio feedback for engagement. Focused on improving UX and interaction through browser-based real-time input handling.",
+      "tags": [
+        "React",
+        "JavaScript",
+        "Web Audio",
+        "Frontend"
+      ],
+      "preview": "website",
+      "previewUrl": "https://image-typing-test.web.app/",
+      "github": "https://github.com/ashokkhichi010/Type-From-Image"
+    },
+    {
+      "id": "habiqua-room-rental",
+      "title": "Habiqua Room Rental Ecosystem",
+      "timeframe": "Feb 2026",
+      "status": "completed",
+      "description": "Designed SaaS system for room rental operations",
+      "summary": "Designed a SaaS platform covering property listing, booking, and pricing logic. Focused on user roles, workflows, and scalable architecture for handling multi-property rental operations.",
+      "tags": [
+        "SaaS",
+        "Product Design",
+        "System Design",
+        "Dashboard",
+        "Booking System"
+      ],
+      "preview": "website",
+      "previewUrl": "https://habiqua-student-hub.web.app/",
+      "github": "https://github.com/akprojects2310/Habiqua-Student-Hub"
+    },
+    {
+      "id": "s3-library",
+      "title": "S3 Library Platform",
+      "timeframe": "Nov 2024 - Jan 2026",
+      "status": "on hold",
+      "description": "Built SaaS system for library operations management",
+      "summary": "Developed a multi-tenant SaaS platform for subscriptions, seat allocation, and admin workflows. Project was put on hold due to adoption challenges, providing insights into product-market fit.",
+      "tags": [
+        "Node.js",
+        "NestJS",
+        "MongoDB",
+        "React",
+        "Firebase",
+        "SaaS"
+      ],
+      "preview": "website",
+      "previewUrl": "https://s3library.com/",
+      "github": "https://github.com/akprojects2310/S3-Website"
+    },
+    {
+      "id": "flask-auth",
+      "title": "Flask Authentication System",
+      "timeframe": "2022",
+      "status": "completed",
+      "description": "Basic authentication system using Flask",
+      "summary": "Implemented login and logout functionality using Flask with session handling and database integration. Strengthened understanding of backend request handling and authentication flows.",
+      "tags": [
+        "Python",
+        "Flask",
+        "Authentication"
+      ],
+      "github": "https://github.com/ashokkhichi010/Login-Logout-page-flask"
+    },
+    {
+      "id": "expense-tracker",
+      "title": "Expense Tracker Web App",
+      "timeframe": "2022",
+      "status": "completed",
+      "description": "Web app for tracking expenses and reports",
+      "summary": "Built an expense tracking system with CRUD operations and MySQL database. Implemented reporting features to help users manage budgets and analyze spending patterns.",
+      "tags": [
+        "PHP",
+        "MySQL",
+        "Web Development"
+      ],
+      "github": "https://github.com/ashokkhichi010/Daily-Expense-tracker"
+    },
+    {
+      "id": "sudoku-solver",
+      "title": "Sudoku Solver",
+      "timeframe": "2022",
+      "status": "completed",
+      "description": "Backtracking algorithm to solve Sudoku puzzles",
+      "summary": "Implemented a recursive backtracking algorithm to solve Sudoku efficiently. Focused on constraint validation and optimizing search paths for better performance.",
+      "tags": [
+        "PHP",
+        "DSA",
+        "Backtracking"
+      ],
+      "github": "https://github.com/ashokkhichi010/Sudoku-Solver"
+    },
+    {
+      "id": "n-queens",
+      "title": "N-Queens Solver",
+      "timeframe": "2022",
+      "status": "completed",
+      "description": "Solved N-Queens using recursive backtracking",
+      "summary": "Developed a recursive solution enforcing row, column, and diagonal constraints. Strengthened understanding of recursion, optimization, and algorithm design techniques.",
+      "tags": [
+        "PHP",
+        "DSA",
+        "Backtracking"
+      ],
+      "github": "https://github.com/ashokkhichi010/N-Queens-Puzzle-Solver"
+    },
+    {
+      "id": "rat-maze",
+      "title": "Rat in a Maze Solver",
+      "timeframe": "2022",
+      "status": "completed",
+      "description": "Pathfinding using recursion and constraints",
+      "summary": "Built a pathfinding algorithm using recursion and constraint checking. Improved logical thinking, boundary validation, and optimization techniques in algorithm design.",
+      "tags": [
+        "PHP",
+        "Backtracking",
+        "Algorithms"
+      ],
+      "github": "https://github.com/ashokkhichi010/Rat-in-a-Maze"
+    },
+    {
+      "id": "mars-graphics",
+      "title": "Mars Mission Graphics Program",
+      "timeframe": "2020",
+      "status": "completed",
+      "description": "C-based graphics simulation for trajectory",
+      "summary": "Created a graphical simulation using C to visualize motion and trajectory. Helped understand animation basics, rendering logic, and fundamentals of computer graphics.",
+      "tags": [
+        "C",
+        "Computer Graphics"
+      ],
+      "github": "https://github.com/ashokkhichi010/Mars-Mission"
+    }
+  ]
+}

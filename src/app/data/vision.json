@@ -1,0 +1,25 @@
+{
+  "title": "Vision & Goals",
+  "vision": "To build practical technology products that combine strong software foundations with real-world hardware capability. I want to create systems that are useful, reliable, and grounded in actual user needs rather than unnecessary complexity.",
+  "goals": {
+    "shortTerm": [
+      "Strengthen full stack engineering through better system design, architecture, and execution discipline.",
+      "Build stronger embedded fundamentals with ESP8266/ESP32, sensors, and communication protocols.",
+      "Improve confidence in Embedded C/C++ and debugging at the device level.",
+      "Create more focused projects that connect software interfaces with physical systems."
+    ],
+    "longTerm": [
+      "Become an engineer capable of building complete software plus hardware solutions.",
+      "Develop products that solve practical problems in education, operations, or everyday life.",
+      "Build depth in architecture, product thinking, and long-term system maintainability.",
+      "Create technology that remains accessible, affordable, and useful in real environments."
+    ]
+  },
+  "values": [
+    "Practicality over unnecessary complexity",
+    "Continuous learning through hands-on work",
+    "Clean, maintainable implementation",
+    "Understanding real problems before building solutions",
+    "Consistency, patience, and long-term growth"
+  ]
+}

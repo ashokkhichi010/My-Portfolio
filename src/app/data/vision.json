@@ -1,25 +1,29 @@
 {
   "title": "Vision & Goals",
-  "vision": "To build practical technology products that combine strong software foundations with real-world hardware capability. I want to create systems that are useful, reliable, and grounded in actual user needs rather than unnecessary complexity.",
+  "vision": "To build real-world systems that solve practical problems by combining strong software engineering with affordable and accessible hardware solutions. My focus is to create products that are simple to use, cost-effective, and directly useful in everyday environments like education spaces and small-scale operations.",
   "goals": {
     "shortTerm": [
-      "Strengthen full stack engineering through better system design, architecture, and execution discipline.",
-      "Build stronger embedded fundamentals with ESP8266/ESP32, sensors, and communication protocols.",
-      "Improve confidence in Embedded C/C++ and debugging at the device level.",
-      "Create more focused projects that connect software interfaces with physical systems."
+      "Strengthen full stack development by improving system design, scalability, and real-world reliability.",
+      "Build a strong foundation in IoT and Embedded Systems using ESP8266/ESP32 and real-time communication.",
+      "Gain deeper understanding of C/C++ for low-level programming and hardware interaction.",
+      "Work on projects that connect backend systems with physical devices (IoT + Web/App integration).",
+      "Improve debugging skills across both software systems and hardware-level issues."
     ],
+
     "longTerm": [
-      "Become an engineer capable of building complete software plus hardware solutions.",
-      "Develop products that solve practical problems in education, operations, or everyday life.",
-      "Build depth in architecture, product thinking, and long-term system maintainability.",
-      "Create technology that remains accessible, affordable, and useful in real environments."
+      "Become an engineer capable of building complete end-to-end systems (software + hardware).",
+      "Build and launch practical products similar to S3 Library that solve real operational problems.",
+      "Create affordable technology solutions for students, small businesses, and local ecosystems.",
+      "Develop strong product thinking based on real-world usage, not assumptions.",
+      "Build systems that are scalable, maintainable, and usable without technical complexity."
     ]
   },
+
   "values": [
-    "Practicality over unnecessary complexity",
-    "Continuous learning through hands-on work",
-    "Clean, maintainable implementation",
-    "Understanding real problems before building solutions",
-    "Consistency, patience, and long-term growth"
+    "Solve real problems, not just build features",
+    "Keep systems simple, practical, and usable",
+    "Learn by building and testing in real environments",
+    "Focus on affordability and accessibility",
+    "Consistency and long-term discipline over quick results"
   ]
 }

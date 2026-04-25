@@ -15,7 +15,7 @@ export const SEO = ({
   ogImage = '/logo.svg',
   canonical
 }: SEOProps) => {
-  const siteTitle = 'John Doe - Developer Portfolio';
+  const siteTitle = 'Ashok Kumar - Developer Portfolio';
   const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
   const url = canonical || window.location.href;
 

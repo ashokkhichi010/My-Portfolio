@@ -24,7 +24,7 @@ export const Vision = () => {
         description="My vision for the future and long-term goals"
       />
       <div className="min-h-screen py-24 px-4" style={{ background: 'var(--theme-background)' }}>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <motion.h1
             className="text-5xl md:text-6xl font-bold mb-16 text-center"
             style={{ color: 'var(--theme-text)' }}

@@ -1,565 +1,697 @@
 {
   "title": "Technical Skills",
   "categories": {
-"Frontend Development": [
-  {
-    "name": "React.js",
-    "level": 82
-  },
-  {
-    "name": "TypeScript",
-    "level": 78
-  },
-  {
-    "name": "Tailwind CSS",
-    "level": 85
-  },
-  {
-    "name": "Responsive Design",
-    "level": 80
-  },
-  {
-    "name": "Component Architecture",
-    "level": 78
-  },
-  {
-    "name": "State Management (Redux Toolkit)",
-    "level": 75
-  },
-  {
-    "name": "Custom Hooks",
-    "level": 76
-  },
-  {
-    "name": "Form Handling & Validation",
-    "level": 78
-  },
-  {
-    "name": "API Integration",
-    "level": 82
-  },
-  {
-    "name": "Next.js Basics",
-    "level": 70
-  },
-  {
-    "name": "UI/UX Thinking",
-    "level": 75
-  },
-  {
-    "name": "Animation (Framer Motion)",
-    "level": 72
-  },
-  {
-    "name": "Accessibility Basics",
-    "level": 68
-  },
-  {
-    "name": "Performance Optimization",
-    "level": 72
-  },
-  {
-    "name": "SEO Fundamentals",
-    "level": 70
-  }
-],
-"Backend Development": [
-  {
-    "name": "Node.js",
-    "level": 88
-  },
-  {
-    "name": "Express.js",
-    "level": 82
-  },
-  {
-    "name": "NestJS",
-    "level": 78
-  },
-  {
-    "name": "REST API Design",
-    "level": 88
-  },
-  {
-    "name": "Authentication & Authorization",
-    "level": 85
-  },
-  {
-    "name": "JWT & Session Handling",
-    "level": 82
-  },
-  {
-    "name": "Role-Based Access Control",
-    "level": 80
-  },
-  {
-    "name": "Middleware Architecture",
-    "level": 78
-  },
-  {
-    "name": "API Security Best Practices",
-    "level": 76
-  },
-  {
-    "name": "Error Handling & Logging",
-    "level": 80
-  },
-  {
-    "name": "File Upload Systems",
-    "level": 75
-  },
-  {
-    "name": "Email & Notification Systems",
-    "level": 72
-  },
-  {
-    "name": "Microservice Basics",
-    "level": 70
-  },
-  {
-    "name": "Backend Performance Optimization",
-    "level": 75
-  },
-  {
-    "name": "Scalable API Design",
-    "level": 80
-  }
-],
+    "Frontend Development": [
+      {
+        "name": "React.js",
+        "level": 82,
+        "category": "Frontend"
+      },
+      {
+        "name": "TypeScript",
+        "level": 78,
+        "category": "Frontend"
+      },
+      {
+        "name": "Tailwind CSS",
+        "level": 85,
+        "category": "Frontend"
+      },
+      {
+        "name": "Responsive Design",
+        "level": 80,
+        "category": "Frontend"
+      },
+      {
+        "name": "Component Architecture",
+        "level": 78,
+        "category": "Frontend"
+      },
+      {
+        "name": "State Management (Redux Toolkit)",
+        "level": 75,
+        "category": "Frontend"
+      },
+      {
+        "name": "Custom Hooks",
+        "level": 76,
+        "category": "Frontend"
+      },
+      {
+        "name": "Form Handling & Validation",
+        "level": 78,
+        "category": "Frontend"
+      },
+      {
+        "name": "API Integration",
+        "level": 82,
+        "category": "Frontend"
+      },
+      {
+        "name": "Next.js Basics",
+        "level": 70,
+        "category": "Frontend"
+      },
+      {
+        "name": "UI/UX Thinking",
+        "level": 75,
+        "category": "Frontend"
+      },
+      {
+        "name": "Animation (Framer Motion)",
+        "level": 72,
+        "category": "Frontend"
+      },
+      {
+        "name": "Accessibility Basics",
+        "level": 68,
+        "category": "Frontend"
+      },
+      {
+        "name": "Performance Optimization",
+        "level": 72,
+        "category": "Frontend"
+      },
+      {
+        "name": "SEO Fundamentals",
+        "level": 70,
+        "category": "Frontend"
+      }
+    ],
+    "Backend Development": [
+      {
+        "name": "Node.js",
+        "level": 88,
+        "category": "Backend"
+      },
+      {
+        "name": "Express.js",
+        "level": 82,
+        "category": "Backend"
+      },
+      {
+        "name": "NestJS",
+        "level": 78,
+        "category": "Backend"
+      },
+      {
+        "name": "REST API Design",
+        "level": 88,
+        "category": "Backend"
+      },
+      {
+        "name": "Authentication & Authorization",
+        "level": 85,
+        "category": "Backend"
+      },
+      {
+        "name": "JWT & Session Handling",
+        "level": 82,
+        "category": "Backend"
+      },
+      {
+        "name": "Role-Based Access Control",
+        "level": 80,
+        "category": "Backend"
+      },
+      {
+        "name": "Middleware Architecture",
+        "level": 78,
+        "category": "Backend"
+      },
+      {
+        "name": "API Security Best Practices",
+        "level": 76,
+        "category": "Backend"
+      },
+      {
+        "name": "Error Handling & Logging",
+        "level": 80,
+        "category": "Backend"
+      },
+      {
+        "name": "File Upload Systems",
+        "level": 75,
+        "category": "Backend"
+      },
+      {
+        "name": "Email & Notification Systems",
+        "level": 72,
+        "category": "Backend"
+      },
+      {
+        "name": "Microservice Basics",
+        "level": 70,
+        "category": "Backend"
+      },
+      {
+        "name": "Backend Performance Optimization",
+        "level": 75,
+        "category": "Backend"
+      },
+      {
+        "name": "Scalable API Design",
+        "level": 80,
+        "category": "Backend"
+      }
+    ],
     "Programming & Problem Solving": [
       {
         "name": "JavaScript",
-        "level": 85
+        "level": 85,
+        "category": "Programming"
       },
       {
         "name": "C/C++",
-        "level": 65
+        "level": 65,
+        "category": "Programming"
       },
       {
         "name": "Python",
-        "level": 60
+        "level": 60,
+        "category": "Programming"
       },
       {
         "name": "Dart",
-        "level": 55
+        "level": 55,
+        "category": "Programming"
       },
       {
         "name": "Data Structures & Algorithms",
-        "level": 70
+        "level": 70,
+        "category": "Programming"
       },
       {
         "name": "Problem Decomposition",
-        "level": 80
+        "level": 80,
+        "category": "Programming"
       },
       {
         "name": "Debugging Skills",
-        "level": 82
+        "level": 82,
+        "category": "Programming"
       },
       {
         "name": "Code Optimization",
-        "level": 75
+        "level": 75,
+        "category": "Programming"
       },
       {
         "name": "Bitwise Operations (Basics)",
-        "level": 68
+        "level": 68,
+        "category": "Programming"
       },
       {
         "name": "Memory Management Basics",
-        "level": 65
+        "level": 65,
+        "category": "Programming"
       },
       {
         "name": "Async Programming",
-        "level": 82
+        "level": 82,
+        "category": "Programming"
       },
       {
         "name": "Event-Driven Thinking",
-        "level": 78
+        "level": 78,
+        "category": "Programming"
       },
       {
         "name": "Algorithmic Thinking",
-        "level": 75
+        "level": 75,
+        "category": "Programming"
       },
       {
         "name": "Clean Code Practices",
-        "level": 80
+        "level": 80,
+        "category": "Programming"
       },
       {
         "name": "Logical Reasoning",
-        "level": 85
+        "level": 85,
+        "category": "Programming"
       }
     ],
-
     "Databases & Architecture": [
       {
         "name": "MongoDB",
-        "level": 82
+        "level": 82,
+        "category": "Database"
       },
       {
         "name": "MySQL",
-        "level": 72
+        "level": 72,
+        "category": "Database"
       },
       {
         "name": "Firestore",
-        "level": 70
+        "level": 70,
+        "category": "Database"
       },
       {
         "name": "Schema Design",
-        "level": 78
+        "level": 78,
+        "category": "Architecture"
       },
       {
         "name": "Indexing Strategies",
-        "level": 72
+        "level": 72,
+        "category": "Architecture"
       },
       {
         "name": "Query Optimization",
-        "level": 74
+        "level": 74,
+        "category": "Architecture"
       },
       {
         "name": "Data Modeling",
-        "level": 78
+        "level": 78,
+        "category": "Architecture"
       },
       {
         "name": "Aggregation Pipelines",
-        "level": 70
+        "level": 70,
+        "category": "Architecture"
       },
       {
         "name": "Transactions Basics",
-        "level": 68
+        "level": 68,
+        "category": "Architecture"
       },
       {
         "name": "Multi-Tenant Architecture",
-        "level": 75
+        "level": 75,
+        "category": "Architecture"
       },
       {
         "name": "API-DB Integration",
-        "level": 80
+        "level": 80,
+        "category": "Architecture"
       },
       {
         "name": "Caching Basics",
-        "level": 65
+        "level": 65,
+        "category": "Architecture"
       },
       {
         "name": "Scalable DB Design",
-        "level": 72
+        "level": 72,
+        "category": "Architecture"
       },
       {
         "name": "Authentication Data Modeling",
-        "level": 78
+        "level": 78,
+        "category": "Architecture"
       },
       {
         "name": "System Design Fundamentals",
-        "level": 72
+        "level": 72,
+        "category": "Architecture"
       }
     ],
-
     "IoT & Embedded Systems": [
       {
         "name": "Arduino",
-        "level": 75
+        "level": 75,
+        "category": "Embedded"
       },
       {
         "name": "ESP8266 / ESP32",
-        "level": 70
+        "level": 70,
+        "category": "Embedded"
       },
       {
         "name": "Sensor Interfacing",
-        "level": 72
+        "level": 72,
+        "category": "Embedded"
       },
       {
         "name": "GPIO & Signal Handling",
-        "level": 70
+        "level": 70,
+        "category": "Embedded"
       },
       {
         "name": "Prototyping & Debugging",
-        "level": 74
+        "level": 74,
+        "category": "Embedded"
       },
       {
         "name": "Serial Communication",
-        "level": 70
+        "level": 70,
+        "category": "Embedded"
       },
       {
         "name": "Bluetooth Communication",
-        "level": 70
+        "level": 70,
+        "category": "Embedded"
       },
       {
         "name": "WiFi-based Control Systems",
-        "level": 72
+        "level": 72,
+        "category": "Embedded"
       },
       {
         "name": "PWM & Motor Control",
-        "level": 68
+        "level": 68,
+        "category": "Embedded"
       },
       {
         "name": "Embedded C Basics",
-        "level": 65
+        "level": 65,
+        "category": "Embedded"
       },
       {
         "name": "Real-Time Input Handling",
-        "level": 70
+        "level": 70,
+        "category": "Embedded"
       },
       {
         "name": "Hardware-Software Integration",
-        "level": 72
+        "level": 72,
+        "category": "Embedded"
       },
       {
         "name": "Power Management Basics",
-        "level": 65
+        "level": 65,
+        "category": "Embedded"
       },
       {
         "name": "Circuit Debugging",
-        "level": 70
+        "level": 70,
+        "category": "Embedded"
       },
       {
         "name": "IoT Project Architecture",
-        "level": 72
+        "level": 72,
+        "category": "Embedded"
       }
     ],
     "Real-Time & Communication Systems": [
       {
         "name": "WebSockets",
-        "level": 75
+        "level": 75,
+        "category": "Systems"
       },
       {
         "name": "UDP Communication",
-        "level": 70
+        "level": 70,
+        "category": "Systems"
       },
       {
         "name": "MQTT Basics",
-        "level": 68
+        "level": 68,
+        "category": "Systems"
       },
       {
         "name": "Socket Programming Concepts",
-        "level": 70
+        "level": 70,
+        "category": "Systems"
       },
       {
         "name": "Live Data Streaming",
-        "level": 72
+        "level": 72,
+        "category": "Systems"
       },
       {
         "name": "Event-Based Systems",
-        "level": 75
+        "level": 75,
+        "category": "Systems"
       },
       {
         "name": "Real-Time Chat Systems",
-        "level": 78
+        "level": 78,
+        "category": "Systems"
       },
       {
         "name": "Low Latency Handling",
-        "level": 70
+        "level": 70,
+        "category": "Systems"
       },
       {
         "name": "Client-Server Sync",
-        "level": 75
+        "level": 75,
+        "category": "Systems"
       },
       {
         "name": "Polling vs Push Systems",
-        "level": 72
+        "level": 72,
+        "category": "Systems"
       },
       {
         "name": "Connection Handling",
-        "level": 70
+        "level": 70,
+        "category": "Systems"
       },
       {
         "name": "State Synchronization",
-        "level": 72
+        "level": 72,
+        "category": "Systems"
       },
       {
         "name": "IoT Communication Flow",
-        "level": 70
+        "level": 70,
+        "category": "Systems"
       },
       {
         "name": "Network Debugging Basics",
-        "level": 68
+        "level": 68,
+        "category": "Systems"
       },
       {
         "name": "Message Queuing Basics",
-        "level": 65
+        "level": 65,
+        "category": "Systems"
       }
     ],
     "Mobile & App Development": [
       {
         "name": "Flutter",
-        "level": 72
+        "level": 72,
+        "category": "Mobile"
       },
       {
         "name": "Dart",
-        "level": 55
+        "level": 55,
+        "category": "Mobile"
       },
       {
         "name": "Cross-platform UI",
-        "level": 70
+        "level": 70,
+        "category": "Mobile"
       },
       {
         "name": "Bluetooth App Integration",
-        "level": 72
+        "level": 72,
+        "category": "Mobile"
       },
       {
         "name": "State Management (Flutter)",
-        "level": 65
+        "level": 65,
+        "category": "Mobile"
       },
       {
         "name": "API Integration (Mobile)",
-        "level": 75
+        "level": 75,
+        "category": "Mobile"
       },
       {
         "name": "UI Layout Design",
-        "level": 72
+        "level": 72,
+        "category": "Mobile"
       },
       {
         "name": "App Navigation Systems",
-        "level": 70
+        "level": 70,
+        "category": "Mobile"
       },
       {
         "name": "Firebase Integration",
-        "level": 75
+        "level": 75,
+        "category": "Mobile"
       },
       {
         "name": "App Deployment (Play Store)",
-        "level": 70
+        "level": 70,
+        "category": "Mobile"
       },
       {
         "name": "Device Communication Handling",
-        "level": 72
+        "level": 72,
+        "category": "Mobile"
       },
       {
         "name": "Offline-first Thinking",
-        "level": 68
+        "level": 68,
+        "category": "Mobile"
       },
       {
         "name": "App Performance Basics",
-        "level": 65
+        "level": 65,
+        "category": "Mobile"
       },
       {
         "name": "User Experience Flow",
-        "level": 72
+        "level": 72,
+        "category": "Mobile"
       },
       {
         "name": "Debugging Mobile Apps",
-        "level": 70
+        "level": 70,
+        "category": "Mobile"
       }
     ],
-
     "Communication & Deployment": [
       {
         "name": "HTTP / REST Communication",
-        "level": 80
+        "level": 80,
+        "category": "Systems"
       },
       {
         "name": "Firebase Hosting",
-        "level": 78
+        "level": 78,
+        "category": "Systems"
       },
       {
         "name": "Google Cloud Run",
-        "level": 75
+        "level": 75,
+        "category": "Systems"
       },
       {
         "name": "Docker Fundamentals",
-        "level": 68
+        "level": 68,
+        "category": "Systems"
       },
       {
         "name": "CI/CD Basics",
-        "level": 65
+        "level": 65,
+        "category": "Systems"
       },
       {
         "name": "Environment Management",
-        "level": 75
+        "level": 75,
+        "category": "Systems"
       },
       {
         "name": "API Deployment",
-        "level": 78
+        "level": 78,
+        "category": "Systems"
       },
       {
         "name": "Domain & DNS Setup",
-        "level": 72
+        "level": 72,
+        "category": "Systems"
       },
       {
         "name": "SSL & Security Basics",
-        "level": 70
+        "level": 70,
+        "category": "Systems"
       },
       {
         "name": "Server Monitoring Basics",
-        "level": 65
+        "level": 65,
+        "category": "Systems"
       },
       {
         "name": "Logging & Debugging in Production",
-        "level": 72
+        "level": 72,
+        "category": "Systems"
       },
       {
         "name": "Version Control (Git)",
-        "level": 85
+        "level": 85,
+        "category": "Systems"
       },
       {
         "name": "Branching Strategies",
-        "level": 75
+        "level": 75,
+        "category": "Systems"
       },
       {
         "name": "Code Reviews",
-        "level": 70
+        "level": 70,
+        "category": "Systems"
       },
       {
         "name": "Deployment Pipelines Basics",
-        "level": 65
+        "level": 65,
+        "category": "Systems"
       }
     ],
     "Development Practices": [
       {
         "name": "Clean Code Principles",
-        "level": 80
+        "level": 80,
+        "category": "Practices"
       },
       {
         "name": "Modular Architecture",
-        "level": 78
+        "level": 78,
+        "category": "Practices"
       },
       {
         "name": "Code Reusability",
-        "level": 75
+        "level": 75,
+        "category": "Practices"
       },
       {
         "name": "Separation of Concerns",
-        "level": 80
+        "level": 80,
+        "category": "Practices"
       },
       {
         "name": "Scalable Thinking",
-        "level": 78
+        "level": 78,
+        "category": "Practices"
       },
       {
         "name": "Documentation Writing",
-        "level": 75
+        "level": 75,
+        "category": "Practices"
       },
       {
         "name": "Debugging Strategy",
-        "level": 82
+        "level": 82,
+        "category": "Practices"
       },
       {
         "name": "Error Handling Design",
-        "level": 78
+        "level": 78,
+        "category": "Practices"
       },
       {
         "name": "Testing Basics",
-        "level": 65
+        "level": 65,
+        "category": "Practices"
       },
       {
         "name": "API Contract Design",
-        "level": 78
+        "level": 78,
+        "category": "Practices"
       },
       {
         "name": "System Thinking",
-        "level": 80
+        "level": 80,
+        "category": "Practices"
       },
       {
         "name": "Problem Solving Approach",
-        "level": 85
+        "level": 85,
+        "category": "Practices"
       },
       {
         "name": "Time Management",
-        "level": 75
+        "level": 75,
+        "category": "Practices"
       },
       {
         "name": "Learning Agility",
-        "level": 88
+        "level": 88,
+        "category": "Practices"
       },
       {
         "name": "Adaptability to New Tech",
-        "level": 85
+        "level": 85,
+        "category": "Practices"
       }
     ]
   }

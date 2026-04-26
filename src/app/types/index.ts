@@ -2,6 +2,7 @@ export interface HomeData {
   title: string;
   subtitle: string;
   description: string;
+  roles: string[];
   cta: {
     text: string;
     link: string;

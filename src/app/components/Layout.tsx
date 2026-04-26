@@ -1,27 +1,27 @@
-import { Outlet } from 'react-router';
-import { motion, AnimatePresence } from 'motion/react';
+import { Outlet, useLocation } from 'react-router';
+import { motion } from 'motion/react';
+import { useEffect } from 'react';
 import { Navbar } from './Navbar';
 import { ScrollToTop } from './ScrollToTop';
-import { useScrollToTop } from '../hooks/useScrollToTop';
 
 export const Layout = () => {
-  useScrollToTop();
+  const location = useLocation();
+
+  useEffect(() => {
+    const routeKey = location.pathname === '/' ? 'mission-control' : location.pathname.replace(/\//g, '-');
+    document.documentElement.dataset.routeTheme = routeKey;
+  }, [location.pathname]);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen text-[var(--theme-text)] transition-colors duration-700">
       <Navbar />
-      <AnimatePresence mode="wait">
-        <motion.main
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-        >
-          <Outlet />
-        </motion.main>
-      </AnimatePresence>
-
-      {/* Scroll to Top Button */}
+      <motion.main
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, ease: 'easeOut' }}
+      >
+        <Outlet />
+      </motion.main>
       <ScrollToTop />
     </div>
   );

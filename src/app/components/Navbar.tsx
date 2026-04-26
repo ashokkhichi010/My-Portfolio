@@ -1,113 +1,85 @@
-import { Link, useLocation } from 'react-router';
 import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
 const navLinks = [
-  { path: '/', label: 'Home' },
-  { path: '/about', label: 'About' },
-  { path: '/journey', label: 'Journey' },
-  { path: '/skills', label: 'Skills' },
-  { path: '/projects', label: 'Projects' },
-  { path: '/experience', label: 'Experience' },
-  { path: '/education', label: 'Education' },
-  { path: '/achievements', label: 'Achievements' },
-  { path: '/tools', label: 'Tools' },
-  { path: '/vision', label: 'Vision' },
-  { path: '/contact', label: 'Contact' },
+  { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#education', label: 'Education' },
+  { href: '#journey', label: 'Journey' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#vision', label: 'Vision' },
+  { href: '#contact', label: 'Contact' },
 ];
 
 export const Navbar = () => {
-  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10"
+      initial={{ y: -72, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link
-            to="/"
-            className="flex items-center gap-3 text-white hover:text-[var(--theme-primary)] transition-colors"
+      <div className="system-shell mx-auto max-w-7xl rounded-[28px] px-4 py-3">
+        <div className="flex items-center justify-between gap-4">
+          <a
+            href="#mission"
+            className="flex items-center gap-3 text-white transition-colors hover:text-[var(--theme-primary)]"
           >
             <img
               src="/logo.svg"
               alt="Ashok Kumar logo"
-              className="h-10 w-10 rounded-lg border border-white/10 bg-white/5 object-cover"
+              className="h-11 w-11 rounded-2xl border border-white/10 bg-white/5 object-cover"
             />
-            <span className="font-bold text-xl">Ashok Kumar</span>
-          </Link>
+            <div>
+              <div className="font-system-mono text-xs uppercase tracking-[0.28em] text-white/45">Mission Control</div>
+              <div className="text-lg font-semibold">Ashok Kumar</div>
+            </div>
+          </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => {
-              const isActive = location.pathname === link.path;
-              return (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${
-                    isActive
-                      ? 'text-white'
-                      : 'text-gray-300 hover:text-white'
-                  }`}
-                >
-                  {link.label}
-                  {isActive && (
-                    <motion.div
-                      layoutId="navbar-indicator"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--theme-primary)]"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              );
-            })}
+          <div className="hidden items-center gap-2 lg:flex">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="rounded-full border border-transparent px-4 py-2 font-system-mono text-sm font-medium text-white/72 transition-all hover:border-white/10 hover:bg-white/[0.06] hover:text-white"
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-md text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
+            onClick={() => setIsOpen((value) => !value)}
+            className="rounded-2xl border border-white/10 bg-white/[0.06] p-2 text-white lg:hidden"
+            aria-label="Toggle mission navigation"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
-      </div>
 
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="lg:hidden border-t border-white/10"
-        >
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navLinks.map((link) => {
-              const isActive = location.pathname === link.path;
-              return (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium ${
-                    isActive
-                      ? 'bg-[var(--theme-primary)] text-white'
-                      : 'text-gray-300 hover:bg-white/10 hover:text-white'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </div>
-        </motion.div>
-      )}
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="mt-3 grid gap-2 border-t border-white/10 pt-3 lg:hidden"
+          >
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="rounded-2xl border border-white/8 bg-white/5 px-4 py-3 text-sm font-medium text-white/78 transition-all hover:bg-white/10 hover:text-white"
+              >
+                {link.label}
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </div>
     </motion.nav>
   );
 };

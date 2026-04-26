@@ -58,3 +58,10 @@ export const trackContactClick = (platform: string) => {
     platform,
   });
 };
+
+export const trackSectionView = (sectionName: string) => {
+  trackEvent('section_view', {
+    section_name: sectionName,
+    page_path: window.location.pathname,
+  });
+};

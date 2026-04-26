@@ -1,7 +1,13 @@
 {
   "title": "Ashok Kumar",
-  "subtitle": "Full Stack Developer | Bridging Software & the Real World",
+  "subtitle": "Full Stack Developer • Bridging Software & the Real World",
   "description": "I build practical, battle-tested systems designed for the real world—not just local demos. From scaling Library Management Platforms to architecting IoT solutions, I create software that solves actual human problems with simplicity and precision.",
+  "roles": [
+    "Available for Freelance Projects",
+    "Full Stack Developer",
+    "Building Scalable Backend Systems",
+    "Exploring IoT & Embedded Systems"
+  ],
   "cta": {
     "text": "See What I've Built",
     "link": "/projects"

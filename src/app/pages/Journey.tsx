@@ -1,95 +1,57 @@
-import { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { useTheme } from '../context/ThemeContext';
-import { SEO } from '../components/SEO';
-import { trackPageView } from '../utils/analytics';
 import journeyData from '../data/journey.json';
 import type { JourneyData } from '../types';
+import { useSectionAnalytics } from '../hooks/useSectionAnalytics';
+import { SectionHeader } from '../components/SectionHeader';
 
 const data = journeyData as JourneyData;
 
 export const Journey = () => {
-  const { setTheme } = useTheme();
-
-  useEffect(() => {
-    setTheme('journey');
-    trackPageView('Journey');
-  }, [setTheme]);
+  const sectionRef = useSectionAnalytics('Journey', 'journey');
 
   return (
-    <>
-      <SEO
-        title="My Journey"
-        description="Explore my journey as a developer"
-      />
+    <section
+      id="journey"
+      ref={sectionRef}
+      className="control-section section-journey saturn-rings min-h-screen px-4 py-24"
+    >
+      <div className="mx-auto max-w-6xl">
+        <SectionHeader
+          code="06_SATURN_JOURNEY"
+          title={data.title}
+          description="A timeline of the decisions, transitions, and turning points that moved me from learning software to building real systems."
+          align="left"
+        />
 
-      <section
-        className="min-h-screen py-24 px-4"
-        style={{ background: 'var(--theme-background)' }}
-      >
-        <div className="max-w-3xl mx-auto">
+        <div className="journey-axis relative">
+          {data.timeline.map((item, index) => (
+            <motion.div
+              key={index}
+              className="relative mb-12 pl-10"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <div className="absolute left-0 top-2 h-3 w-3 rounded-full bg-[var(--theme-accent)] shadow-[0_0_14px_var(--theme-accent)]" />
 
-          {/* Title */}
-          <motion.h1
-            className="text-4xl md:text-6xl font-bold mb-20"
-            style={{ color: 'var(--theme-text)' }}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            {data.title}
-          </motion.h1>
+              <div className="section-shell rounded-[24px] p-5">
+                <span className="font-system-mono text-sm font-semibold text-theme-primary">
+                  {item.year}
+                </span>
 
-          {/* Timeline */}
-          <div className="relative">
+                <h3 className="mt-1 text-xl font-bold text-[var(--theme-text)] md:text-2xl">
+                  {item.title}
+                </h3>
 
-            {/* Vertical Line */}
-            <div
-              className="absolute left-1 top-0 bottom-0 w-[2px]"
-              style={{ background: 'var(--theme-primary)' }}
-            />
-
-            {data.timeline.map((item, index) => (
-              <motion.div
-                key={index}
-                className="relative pl-8 mb-12"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-
-                {/* Dot */}
-                <div
-                  className="absolute left-0 top-2 w-3 h-3 rounded-full"
-                  style={{ background: 'var(--theme-accent)' }}
-                />
-
-                {/* Content */}
-                <div>
-                  <span
-                    className="text-sm font-semibold"
-                    style={{ color: 'var(--theme-primary)' }}
-                  >
-                    {item.year}
-                  </span>
-
-                  <h3
-                    className="text-xl md:text-2xl font-bold mt-1"
-                    style={{ color: 'var(--theme-text)' }}
-                  >
-                    {item.title}
-                  </h3>
-
-                  <p className="text-gray-400 mt-2 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-
-              </motion.div>
-            ))}
-          </div>
+                <p className="mt-2 leading-relaxed text-gray-400">
+                  {item.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };

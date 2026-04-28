@@ -89,8 +89,8 @@ export const HeroSection = () => {
             </a>
 
             <a
-              href="/Ashok-Kumar-Resume.pdf"
-              download
+              href="https://docs.google.com/document/d/16U44fpcjtl9r2uFpRA6lmNLk0TXCogF3rBorhT9eqNw"
+              target='_blank'
               className="section-secondary-btn group inline-flex items-center gap-2 rounded-full px-6 py-3 text-white transition-all hover:scale-[1.04]"
             >
               Resume

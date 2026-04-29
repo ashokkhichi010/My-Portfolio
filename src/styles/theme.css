@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Orbitron:wght@500;700;800&display=swap');
-@custom-variant dark (&:is(.dark *));
+/* @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Orbitron:wght@500;700;800&display=swap'); */
+/* @custom-variant dark (&:is(.dark *)); */
 
 :root {
   --font-size: 16px;

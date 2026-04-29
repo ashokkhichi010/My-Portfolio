@@ -1,5 +1,7 @@
 import { createBrowserRouter } from 'react-router';
+import { AdminRoute } from './components/AdminRoute';
 import { Layout } from './components/Layout';
+import { AdminLogin } from './pages/AdminLogin';
 import { MissionControl } from './pages/MissionControl';
 import { VisitorChat } from './pages/VisitorChat';
 import { AdminChat } from './pages/AdminChat';
@@ -18,8 +20,16 @@ export const router = createBrowserRouter([
         Component: VisitorChat,
       },
       {
+        path: 'admin-login',
+        Component: AdminLogin,
+      },
+      {
         path: 'admin-dashboard',
-        Component: AdminChat,
+        element: (
+          <AdminRoute>
+            <AdminChat />
+          </AdminRoute>
+        ),
       },
       {
         path: '*',

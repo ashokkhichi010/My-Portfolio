@@ -8,6 +8,7 @@ const config = {
   firebaseMessagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID ?? '',
   firebaseAppId: import.meta.env.VITE_FIREBASE_APP_ID ?? '',
   firebaseMeasurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID ?? '',
+  firebaseVapidKey: import.meta.env.VITE_FIREBASE_VAPID_KEY ?? '',
 };
 
 export const hasFirebaseConfig = Boolean(

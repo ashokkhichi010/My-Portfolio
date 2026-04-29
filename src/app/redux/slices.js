@@ -73,7 +73,7 @@ const chatSlice = createSlice({
 
       state.messages = state.messages.slice(-100);
       state.isAwaitingAi = message.role === 'visitor';
-      if (message.role === 'assistant') {
+      if (message.role === 'assistant' || message.role === 'admin') {
         state.isAwaitingAi = false;
       }
     },
@@ -114,6 +114,57 @@ const chatSlice = createSlice({
   },
 });
 
+const authInitialState = {
+  adminUser: null,
+  adminAccessToken: null,
+  adminRefreshToken: null,
+  loginStep: 'credentials',
+  otpToken: null,
+  otpExpiresAt: null,
+  isLoading: false,
+  error: null,
+};
+
+const authSlice = createSlice({
+  name: 'auth',
+  initialState: authInitialState,
+  reducers: {
+    setAuthLoading(state, action) {
+      state.isLoading = action.payload;
+    },
+    setAuthError(state, action) {
+      state.error = action.payload;
+    },
+    setOtpChallenge(state, action) {
+      state.loginStep = 'otp';
+      state.otpToken = action.payload.otpToken;
+      state.otpExpiresAt = action.payload.expiresAt;
+      state.error = null;
+      state.isLoading = false;
+    },
+    setAdminSession(state, action) {
+      state.adminUser = action.payload.user;
+      state.adminAccessToken = action.payload.accessToken;
+      state.adminRefreshToken = action.payload.refreshToken;
+      state.loginStep = 'authenticated';
+      state.otpToken = null;
+      state.otpExpiresAt = null;
+      state.error = null;
+      state.isLoading = false;
+    },
+    resetAdminLoginFlow(state) {
+      state.loginStep = 'credentials';
+      state.otpToken = null;
+      state.otpExpiresAt = null;
+      state.isLoading = false;
+      state.error = null;
+    },
+    logoutAdmin(state) {
+      Object.assign(state, authInitialState);
+    },
+  },
+});
+
 export const {
   rehydrationComplete,
   setConnectionStatus,
@@ -132,3 +183,14 @@ export const {
 } = chatSlice.actions;
 
 export const chatReducer = chatSlice.reducer;
+
+export const {
+  setAuthLoading,
+  setAuthError,
+  setOtpChallenge,
+  setAdminSession,
+  resetAdminLoginFlow,
+  logoutAdmin,
+} = authSlice.actions;
+
+export const authReducer = authSlice.reducer;

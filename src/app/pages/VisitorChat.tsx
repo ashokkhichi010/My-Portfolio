@@ -266,8 +266,9 @@ const formatCountdown = (value: number) => {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 };
 
-const MessageBubble = ({ role, content }: { role: 'visitor' | 'assistant'; content: string }) => {
+const MessageBubble = ({ role, content }: { role: 'visitor' | 'assistant' | 'admin'; content: string }) => {
   const isVisitor = role === 'visitor';
+  const isAdmin = role === 'admin';
 
   return (
     <div className={`flex ${isVisitor ? 'justify-end' : 'justify-start'}`}>
@@ -275,6 +276,8 @@ const MessageBubble = ({ role, content }: { role: 'visitor' | 'assistant'; conte
         className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm leading-6 ${
           isVisitor
             ? 'rounded-br-md bg-cyan-300 text-slate-950'
+            : isAdmin
+              ? 'rounded-bl-md border border-emerald-300/18 bg-emerald-300/10 text-emerald-50'
             : 'rounded-bl-md border border-white/10 bg-white/[0.05] text-white/88'
         }`}
       >

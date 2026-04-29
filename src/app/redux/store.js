@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { chatReducer } from './slices';
+import { authReducer, chatReducer } from './slices';
 
 const persistedChatReducer = persistReducer(
   {
@@ -15,6 +15,14 @@ const persistedChatReducer = persistReducer(
 export const store = configureStore({
   reducer: {
     chat: persistedChatReducer,
+    auth: persistReducer(
+      {
+        key: 'auth',
+        storage,
+        whitelist: ['adminUser', 'adminAccessToken', 'adminRefreshToken'],
+      },
+      authReducer,
+    ),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -12,7 +12,7 @@ const firebaseConfig = {
   measurementId: config.firebaseMeasurementId,
 };
 
-const getFirebaseApp = () => {
+export const getFirebaseApp = () => {
   if (!hasFirebaseConfig) {
     throw new Error('Firebase is not configured for this frontend environment.');
   }

@@ -41,7 +41,7 @@ class SocketService {
     this.socket?.emit('request_handover', { firebaseToken });
   }
 
-  connectAdmin(handler) {
+  connectAdmin({ handler, token }) {
     if (this.socket) {
       return this.socket;
     }
@@ -51,17 +51,24 @@ class SocketService {
       autoConnect: true,
       auth: {
         role: 'admin',
+        token,
       },
     });
 
     this.socket.on('admin:queue.snapshot', handler.handleQueueSnapshot);
     this.socket.on('admin:lead.updated', handler.handleLeadUpdated);
+    this.socket.on('admin:handover.accepted', handler.handleHandoverAccepted);
+    this.socket.on('chat:message.created', handler.handleMessageCreated);
 
     return this.socket;
   }
 
   acceptHandover(sessionId) {
     this.socket?.emit('admin:handover.accept', { sessionId });
+  }
+
+  sendAdminMessage(sessionId, content) {
+    this.socket?.emit('admin:message.send', { sessionId, content });
   }
 
   disconnect() {

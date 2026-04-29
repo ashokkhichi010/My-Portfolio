@@ -157,7 +157,7 @@ export interface ChatState {
   connectedAt: string | null;
   messages: {
     id: string;
-    role: 'visitor' | 'assistant';
+    role: 'visitor' | 'assistant' | 'admin';
     content: string;
     createdAt: string;
   }[];
@@ -168,4 +168,11 @@ export interface ChatState {
   handoverExpiresAt: string | null;
   adminBusy: boolean;
   isRequestingHandover: boolean;
+}
+
+export interface AdminUser {
+  id: string;
+  email: string;
+  role: 'ADMIN';
+  displayName?: string;
 }

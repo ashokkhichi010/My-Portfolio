@@ -26,12 +26,42 @@ class SocketService {
     this.socket.on('chat:session.ready', handler.handleSessionReady);
     this.socket.on('chat:message.created', handler.handleMessageCreated);
     this.socket.on('AI_OFFER_HANDOVER', handler.handleHandoverOffer);
+    this.socket.on('handover:requested', handler.handleHandoverRequested);
+    this.socket.on('ADMIN_BUSY', handler.handleAdminBusy);
+    this.socket.on('handover:accepted', handler.handleHandoverAccepted);
 
     return this.socket;
   }
 
   sendMessage(content) {
     this.socket?.emit('chat:message.send', { content });
+  }
+
+  requestHandover(firebaseToken) {
+    this.socket?.emit('request_handover', { firebaseToken });
+  }
+
+  connectAdmin(handler) {
+    if (this.socket) {
+      return this.socket;
+    }
+
+    this.socket = io(config.socketUrl, {
+      transports: ['websocket'],
+      autoConnect: true,
+      auth: {
+        role: 'admin',
+      },
+    });
+
+    this.socket.on('admin:queue.snapshot', handler.handleQueueSnapshot);
+    this.socket.on('admin:lead.updated', handler.handleLeadUpdated);
+
+    return this.socket;
+  }
+
+  acceptHandover(sessionId) {
+    this.socket?.emit('admin:handover.accept', { sessionId });
   }
 
   disconnect() {

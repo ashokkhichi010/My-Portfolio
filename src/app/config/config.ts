@@ -1,6 +1,6 @@
 const config = {
   apiBaseUrl: import.meta.env.VITE_API_BASE_URL ?? '',
-  socketUrl: import.meta.env.VITE_SOCKET_URL ?? 'http://localhost:3000/chat',
+  socketUrl: import.meta.env.VITE_SOCKET_URL ?? 'http://localhost:3000',
   firebaseApiKey: import.meta.env.VITE_FIREBASE_API_KEY ?? '',
   firebaseAuthDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN ?? '',
   firebaseProjectId: import.meta.env.VITE_FIREBASE_PROJECT_ID ?? '',

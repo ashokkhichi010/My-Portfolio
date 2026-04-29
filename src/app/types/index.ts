@@ -163,4 +163,9 @@ export interface ChatState {
   }[];
   isAwaitingAi: boolean;
   showHandoverButton: boolean;
+  handoverStatus: 'AI' | 'HANDOVER_REQUESTED' | 'LIVE' | 'ADMIN_BUSY';
+  handoverCountdownMs: number;
+  handoverExpiresAt: string | null;
+  adminBusy: boolean;
+  isRequestingHandover: boolean;
 }

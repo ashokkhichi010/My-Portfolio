@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { getApp, getApps, initializeApp } from 'firebase/app';
 import { getAnalytics, logEvent } from 'firebase/analytics';
 import type { Analytics } from 'firebase/analytics';
 import { config, hasFirebaseConfig } from '../config/config';
@@ -23,7 +23,7 @@ export const initializeAnalytics = () => {
   }
 
   try {
-    const app = initializeApp(firebaseConfig);
+    const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
     analytics = getAnalytics(app);
     console.log('Firebase Analytics initialized');
   } catch (error) {

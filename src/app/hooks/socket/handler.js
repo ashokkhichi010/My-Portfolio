@@ -32,4 +32,16 @@ export class Handler {
   handleHandoverOffer = () => {
     this.dispatch(this.actions.setHandoverOffer(true));
   };
+
+  handleHandoverRequested = (payload) => {
+    this.dispatch(this.actions.setHandoverRequested(payload));
+  };
+
+  handleAdminBusy = () => {
+    this.dispatch(this.actions.setAdminBusy());
+  };
+
+  handleHandoverAccepted = () => {
+    this.dispatch(this.actions.setHandoverAccepted());
+  };
 }

@@ -6,14 +6,20 @@ import { SolarBackground } from '../components/SolarBackground';
 import socketService from '../hooks/socket';
 import { Handler } from '../hooks/socket/handler';
 import { getDeviceInfo } from '../utils/getDeviceInfo';
+import { signInVisitorWithGoogle } from '../utils/firebaseClient';
 import {
   addMessage,
   resetConnection,
+  setAdminBusy,
   setConnectionStatus,
+  setHandoverAccepted,
   setHandoverOffer,
+  setHandoverRequested,
+  setRequestingHandover,
   setSessionReady,
   setSocketId,
   setAwaitingAi,
+  tickHandoverCountdown,
 } from '../redux/slices';
 
 const statusToneMap = {
@@ -42,6 +48,9 @@ export const VisitorChat = () => {
         resetConnection,
         addMessage,
         setHandoverOffer,
+        setHandoverRequested,
+        setAdminBusy,
+        setHandoverAccepted,
       },
     });
 
@@ -56,6 +65,21 @@ export const VisitorChat = () => {
     };
   }, [chat.isRehydrated, dispatch]);
 
+  useEffect(() => {
+    if (!chat.handoverExpiresAt || chat.handoverStatus !== 'HANDOVER_REQUESTED') {
+      return;
+    }
+
+    const updateCountdown = () => {
+      const msLeft = new Date(chat.handoverExpiresAt).getTime() - Date.now();
+      dispatch(tickHandoverCountdown(msLeft));
+    };
+
+    updateCountdown();
+    const intervalId = window.setInterval(updateCountdown, 1000);
+    return () => window.clearInterval(intervalId);
+  }, [chat.handoverExpiresAt, chat.handoverStatus, dispatch]);
+
   const submitMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -69,6 +93,17 @@ export const VisitorChat = () => {
     setDraft('');
   };
 
+  const requestHandover = async () => {
+    try {
+      dispatch(setRequestingHandover(true));
+      const firebaseToken = await signInVisitorWithGoogle();
+      socketService.requestHandover(firebaseToken);
+    } catch (error) {
+      dispatch(setRequestingHandover(false));
+      console.warn('Google sign-in failed:', error);
+    }
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(76,201,240,0.12),_transparent_35%),linear-gradient(180deg,_#07131d_0%,_#05080c_100%)] text-white">
       <SolarBackground />
@@ -78,15 +113,15 @@ export const VisitorChat = () => {
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs uppercase tracking-[0.28em] text-cyan-200">
                 <Radio size={14} />
-                Step 1 Foundation
+                Step 3 Handover
               </div>
               <div>
                 <h1 className="font-system-display text-4xl tracking-tight text-white md:text-5xl">
                   Visitor Chat Session
                 </h1>
                 <p className="mt-3 max-w-2xl text-sm text-white/68 md:text-base">
-                  Anonymous visitor identity is now restored through the socket handshake. Refresh the page and the
-                  backend should recognize the same session.
+                  Chat with the AI, trigger handover intent, sign in with Google, and watch the server-owned admin
+                  countdown begin.
                 </p>
               </div>
             </div>
@@ -167,25 +202,53 @@ export const VisitorChat = () => {
                 <div className="mt-4 grid gap-3 text-sm text-white/60">
                   <MetaRow label="Rehydration Gate" value={chat.isRehydrated ? 'Complete' : 'Waiting'} />
                   <MetaRow label="Connected At" value={chat.connectedAt ?? 'Pending'} />
+                  <MetaRow label="Handover Status" value={chat.handoverStatus} />
                 </div>
               </div>
 
               <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
                 <p className="text-xs uppercase tracking-[0.24em] text-white/45">Handover State</p>
                 <p className="mt-3 text-sm text-white/68">
-                  The admin CTA only appears after the AI detects clear hire/contact intent.
+                  The admin CTA appears only after the AI detects clear hire/contact intent. Clicking it forces Google
+                  sign-in before the server alerts the admin dashboard.
                 </p>
                 {chat.showHandoverButton ? (
-                  <button
-                    type="button"
-                    className="mt-5 w-full rounded-2xl border border-emerald-300/30 bg-emerald-300/15 px-4 py-3 text-sm font-medium text-emerald-100 transition hover:bg-emerald-300/20"
-                  >
-                    Speak to Admin
-                  </button>
+                  <>
+                    <button
+                      type="button"
+                      onClick={requestHandover}
+                      disabled={chat.isRequestingHandover || chat.handoverStatus === 'HANDOVER_REQUESTED'}
+                      className="mt-5 w-full rounded-2xl border border-emerald-300/30 bg-emerald-300/15 px-4 py-3 text-sm font-medium text-emerald-100 transition hover:bg-emerald-300/20 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      {chat.isRequestingHandover
+                        ? 'Signing in with Google...'
+                        : chat.handoverStatus === 'HANDOVER_REQUESTED'
+                          ? 'Admin Request Sent'
+                          : 'Speak to Admin'}
+                    </button>
+
+                    {chat.handoverStatus === 'HANDOVER_REQUESTED' ? (
+                      <div className="mt-4 rounded-2xl border border-amber-300/20 bg-amber-300/10 px-4 py-3 text-sm text-amber-50">
+                        Connecting to admin... {formatCountdown(chat.handoverCountdownMs)}
+                      </div>
+                    ) : null}
+
+                    {chat.handoverStatus === 'LIVE' ? (
+                      <div className="mt-4 rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-3 text-sm text-emerald-50">
+                        Admin accepted the handover. Human takeover is live.
+                      </div>
+                    ) : null}
+
+                    {chat.adminBusy ? (
+                      <div className="mt-4 rounded-2xl border border-rose-300/20 bg-rose-300/10 px-4 py-3 text-sm text-rose-50">
+                        Admin is currently busy. The server has ended the live wait window.
+                      </div>
+                    ) : null}
+                  </>
                 ) : (
                   <div className="mt-5 rounded-2xl border border-dashed border-white/10 px-4 py-3 text-sm text-white/40">
                     No handover offer yet.
-                    </div>
+                  </div>
                 )}
               </div>
             </div>
@@ -196,16 +259,24 @@ export const VisitorChat = () => {
   );
 };
 
+const formatCountdown = (value: number) => {
+  const totalSeconds = Math.max(0, Math.ceil(value / 1000));
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+};
+
 const MessageBubble = ({ role, content }: { role: 'visitor' | 'assistant'; content: string }) => {
   const isVisitor = role === 'visitor';
 
   return (
     <div className={`flex ${isVisitor ? 'justify-end' : 'justify-start'}`}>
       <div
-        className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm leading-6 ${isVisitor
+        className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm leading-6 ${
+          isVisitor
             ? 'rounded-br-md bg-cyan-300 text-slate-950'
             : 'rounded-bl-md border border-white/10 bg-white/[0.05] text-white/88'
-          }`}
+        }`}
       >
         {content}
       </div>

@@ -1,15 +1,19 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import type { FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { MessageSquare, Radio, RefreshCw } from 'lucide-react';
+import { MessageSquare, Radio, RefreshCw, Send, Sparkles } from 'lucide-react';
 import { SolarBackground } from '../components/SolarBackground';
 import socketService from '../hooks/socket';
 import { Handler } from '../hooks/socket/handler';
 import { getDeviceInfo } from '../utils/getDeviceInfo';
 import {
+  addMessage,
   resetConnection,
   setConnectionStatus,
+  setHandoverOffer,
   setSessionReady,
   setSocketId,
+  setAwaitingAi,
 } from '../redux/slices';
 
 const statusToneMap = {
@@ -22,6 +26,7 @@ const statusToneMap = {
 export const VisitorChat = () => {
   const dispatch = useDispatch();
   const chat = useSelector((state: any) => state.chat);
+  const [draft, setDraft] = useState('');
 
   useEffect(() => {
     if (!chat.isRehydrated) {
@@ -35,6 +40,8 @@ export const VisitorChat = () => {
         setSessionReady,
         setSocketId,
         resetConnection,
+        addMessage,
+        setHandoverOffer,
       },
     });
 
@@ -48,6 +55,19 @@ export const VisitorChat = () => {
       socketService.disconnect();
     };
   }, [chat.isRehydrated, dispatch]);
+
+  const submitMessage = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const content = draft.trim();
+    if (!content || chat.connectionStatus !== 'connected') {
+      return;
+    }
+
+    dispatch(setAwaitingAi(true));
+    socketService.sendMessage(content);
+    setDraft('');
+  };
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(76,201,240,0.12),_transparent_35%),linear-gradient(180deg,_#07131d_0%,_#05080c_100%)] text-white">
@@ -86,21 +106,108 @@ export const VisitorChat = () => {
             <StatusCard label="Socket ID" value={chat.socketId ?? 'Waiting for connection...'} />
           </div>
 
-          <div className="mt-6 rounded-3xl border border-white/10 bg-white/[0.03] p-5">
-            <div className="flex items-center gap-3 text-sm text-white/70">
-              <RefreshCw size={16} />
-              <span>
-                {chat.isRestored
-                  ? 'This browser session was restored from persisted storage.'
-                  : 'The first successful handshake will create a new anonymous visitor session.'}
-              </span>
+          <div className="mt-6 grid gap-6 lg:grid-cols-[1.4fr_0.9fr]">
+            <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+              <div className="flex items-center justify-between gap-4 border-b border-white/8 pb-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.24em] text-cyan-200/75">AI Conversation</p>
+                  <p className="mt-2 text-sm text-white/60">
+                    Ask about projects, stack, experience, or hiring availability.
+                  </p>
+                </div>
+                <Sparkles className="text-cyan-200" size={20} />
+              </div>
+
+              <div className="mt-4 flex max-h-[420px] min-h-[320px] flex-col gap-3 overflow-y-auto pr-1">
+                {chat.messages.length ? (
+                  chat.messages.map((message) => (
+                    <MessageBubble key={message.id} role={message.role} content={message.content} />
+                  ))
+                ) : (
+                  <div className="flex h-full items-center justify-center rounded-3xl border border-dashed border-white/10 bg-black/10 px-6 py-10 text-center text-sm text-white/45">
+                    Start the conversation and the AI assistant will respond here.
+                  </div>
+                )}
+
+                {chat.isAwaitingAi ? (
+                  <div className="max-w-[85%] rounded-3xl rounded-bl-md border border-cyan-400/15 bg-cyan-400/10 px-4 py-3 text-sm text-cyan-50">
+                    Assistant is thinking...
+                  </div>
+                ) : null}
+              </div>
+
+              <form className="mt-5 flex gap-3" onSubmit={submitMessage}>
+                <textarea
+                  value={draft}
+                  onChange={(event) => setDraft(event.target.value)}
+                  placeholder="Try: I want to hire you for a realtime product build."
+                  className="min-h-[92px] flex-1 rounded-3xl border border-white/10 bg-black/25 px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-cyan-300/40"
+                />
+                <button
+                  type="submit"
+                  disabled={chat.connectionStatus !== 'connected' || !draft.trim()}
+                  className="inline-flex min-w-[120px] items-center justify-center gap-2 rounded-3xl bg-cyan-300 px-5 py-4 text-sm font-medium text-slate-950 transition disabled:cursor-not-allowed disabled:bg-white/15 disabled:text-white/35"
+                >
+                  <Send size={16} />
+                  Send
+                </button>
+              </form>
             </div>
-            <div className="mt-4 grid gap-3 text-sm text-white/60 md:grid-cols-2">
-              <MetaRow label="Rehydration Gate" value={chat.isRehydrated ? 'Complete' : 'Waiting'} />
-              <MetaRow label="Connected At" value={chat.connectedAt ?? 'Pending'} />
+
+            <div className="space-y-6">
+              <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+                <div className="flex items-center gap-3 text-sm text-white/70">
+                  <RefreshCw size={16} />
+                  <span>
+                    {chat.isRestored
+                      ? 'This browser session was restored from persisted storage.'
+                      : 'The first successful handshake created a new anonymous visitor session.'}
+                  </span>
+                </div>
+                <div className="mt-4 grid gap-3 text-sm text-white/60">
+                  <MetaRow label="Rehydration Gate" value={chat.isRehydrated ? 'Complete' : 'Waiting'} />
+                  <MetaRow label="Connected At" value={chat.connectedAt ?? 'Pending'} />
+                </div>
+              </div>
+
+              <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+                <p className="text-xs uppercase tracking-[0.24em] text-white/45">Handover State</p>
+                <p className="mt-3 text-sm text-white/68">
+                  The admin CTA only appears after the AI detects clear hire/contact intent.
+                </p>
+                {chat.showHandoverButton ? (
+                  <button
+                    type="button"
+                    className="mt-5 w-full rounded-2xl border border-emerald-300/30 bg-emerald-300/15 px-4 py-3 text-sm font-medium text-emerald-100 transition hover:bg-emerald-300/20"
+                  >
+                    Speak to Admin
+                  </button>
+                ) : (
+                  <div className="mt-5 rounded-2xl border border-dashed border-white/10 px-4 py-3 text-sm text-white/40">
+                    No handover offer yet.
+                    </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  );
+};
+
+const MessageBubble = ({ role, content }: { role: 'visitor' | 'assistant'; content: string }) => {
+  const isVisitor = role === 'visitor';
+
+  return (
+    <div className={`flex ${isVisitor ? 'justify-end' : 'justify-start'}`}>
+      <div
+        className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm leading-6 ${isVisitor
+            ? 'rounded-br-md bg-cyan-300 text-slate-950'
+            : 'rounded-bl-md border border-white/10 bg-white/[0.05] text-white/88'
+          }`}
+      >
+        {content}
       </div>
     </div>
   );

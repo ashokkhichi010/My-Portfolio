@@ -155,4 +155,12 @@ export interface ChatState {
   isRehydrated: boolean;
   isRestored: boolean;
   connectedAt: string | null;
+  messages: {
+    id: string;
+    role: 'visitor' | 'assistant';
+    content: string;
+    createdAt: string;
+  }[];
+  isAwaitingAi: boolean;
+  showHandoverButton: boolean;
 }

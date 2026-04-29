@@ -24,8 +24,14 @@ class SocketService {
     this.socket.on('disconnect', handler.handleDisconnect);
     this.socket.on('connect_error', handler.handleConnectError);
     this.socket.on('chat:session.ready', handler.handleSessionReady);
+    this.socket.on('chat:message.created', handler.handleMessageCreated);
+    this.socket.on('AI_OFFER_HANDOVER', handler.handleHandoverOffer);
 
     return this.socket;
+  }
+
+  sendMessage(content) {
+    this.socket?.emit('chat:message.send', { content });
   }
 
   disconnect() {

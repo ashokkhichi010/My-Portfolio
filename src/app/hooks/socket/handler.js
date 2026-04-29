@@ -24,4 +24,12 @@ export class Handler {
   handleSessionReady = (payload) => {
     this.dispatch(this.actions.setSessionReady(payload));
   };
+
+  handleMessageCreated = (payload) => {
+    this.dispatch(this.actions.addMessage(payload));
+  };
+
+  handleHandoverOffer = () => {
+    this.dispatch(this.actions.setHandoverOffer(true));
+  };
 }

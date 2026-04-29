@@ -147,3 +147,12 @@ export interface Theme {
   };
   gradient?: string;
 }
+
+export interface ChatState {
+  sessionId: string | null;
+  socketId: string | null;
+  connectionStatus: 'idle' | 'connecting' | 'connected' | 'disconnected';
+  isRehydrated: boolean;
+  isRestored: boolean;
+  connectedAt: string | null;
+}

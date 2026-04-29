@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowUpRight, ArrowDown } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, ArrowBigDownDash } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import homeData from '../data/home.json';
 import type { HomeData } from '../types';
@@ -94,7 +94,19 @@ export const HeroSection = () => {
               className="section-secondary-btn group inline-flex items-center gap-2 rounded-full px-6 py-3 text-white transition-all hover:scale-[1.04]"
             >
               Resume
-              <ArrowDown
+              <ArrowBigDownDash
+                size={18}
+                className="transition-transform group-hover:translate-y-1"
+              />
+            </a>
+
+
+            <a
+              href="/chat"
+              className="section-secondary-btn group inline-flex items-center gap-2 rounded-full px-6 py-3 text-white transition-all hover:scale-[1.04]"
+            >
+              Let's Talk
+              <ArrowRight
                 size={18}
                 className="transition-transform group-hover:translate-y-1"
               />

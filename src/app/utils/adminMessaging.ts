@@ -6,6 +6,14 @@ import { getFirebaseApp } from './firebaseClient';
 let unsubscribeForeground: null | (() => void) = null;
 
 export const registerAdminPush = async () => {
+  return await registerBrowserPush('admin');
+};
+
+export const registerVisitorPush = async () => {
+  return await registerBrowserPush('visitor');
+};
+
+const registerBrowserPush = async (scope: 'admin' | 'visitor') => {
   if (!config.firebaseVapidKey || !(await isSupported())) {
     return null;
   }
@@ -30,7 +38,7 @@ export const registerAdminPush = async () => {
   }
 
   const deviceInfo = getDeviceInfo();
-  const deviceId = getStableAdminDeviceId(deviceInfo);
+  const deviceId = getStableDeviceId(scope, deviceInfo);
 
   return {
     deviceId,
@@ -40,8 +48,8 @@ export const registerAdminPush = async () => {
   };
 };
 
-const getStableAdminDeviceId = (deviceInfo: { platform: string; screen: string }) => {
-  const storageKey = 'portfolio_admin_device_id';
+const getStableDeviceId = (scope: 'admin' | 'visitor', deviceInfo: { platform: string; screen: string }) => {
+  const storageKey = `portfolio_${scope}_device_id`;
   const existing = window.localStorage.getItem(storageKey);
   if (existing) {
     return existing;

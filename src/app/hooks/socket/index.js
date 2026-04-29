@@ -4,7 +4,7 @@ import config from '../../config/config';
 class SocketService {
   socket = null;
 
-  connect({ sessionId, deviceInfo, handler }) {
+  connect({ sessionId, deviceInfo, handler, fcmToken }) {
     if (this.socket) {
       return this.socket;
     }
@@ -17,6 +17,7 @@ class SocketService {
       auth: {
         sessionId: sessionId ?? undefined,
         deviceInfo,
+        fcmToken,
       },
     });
 
@@ -41,7 +42,7 @@ class SocketService {
     this.socket?.emit('request_handover', { firebaseToken });
   }
 
-  connectAdmin({ handler, token }) {
+  connectAdmin({ handler, token, deviceInfo, fcmToken }) {
     if (this.socket) {
       return this.socket;
     }
@@ -52,6 +53,8 @@ class SocketService {
       auth: {
         role: 'admin',
         token,
+        deviceInfo,
+        fcmToken,
       },
     });
 
@@ -59,6 +62,7 @@ class SocketService {
     this.socket.on('admin:lead.updated', handler.handleLeadUpdated);
     this.socket.on('admin:handover.accepted', handler.handleHandoverAccepted);
     this.socket.on('chat:message.created', handler.handleMessageCreated);
+    this.socket.on('chat:error', handler.handleSocketError);
 
     return this.socket;
   }

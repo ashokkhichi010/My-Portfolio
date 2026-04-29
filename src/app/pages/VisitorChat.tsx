@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
-import type { FormEvent } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import type { FormEvent, ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { MessageSquare, Radio, RefreshCw, Send, Sparkles } from 'lucide-react';
 import { SolarBackground } from '../components/SolarBackground';
+import { ConversationPanel } from '../components/chat/ConversationPanel';
 import socketService from '../hooks/socket';
 import { Handler } from '../hooks/socket/handler';
 import { getDeviceInfo } from '../utils/getDeviceInfo';
-import { signInVisitorWithGoogle } from '../utils/firebaseClient';
+import { registerVisitorPush } from '../utils/adminMessaging';
+import { getExistingVisitorFirebaseToken, signInVisitorWithGoogle } from '../utils/firebaseClient';
 import {
   addMessage,
   resetConnection,
@@ -19,15 +20,9 @@ import {
   setSessionReady,
   setSocketId,
   setAwaitingAi,
+  setVisitorIdentity,
   tickHandoverCountdown,
 } from '../redux/slices';
-
-const statusToneMap = {
-  idle: 'text-white/60',
-  connecting: 'text-amber-300',
-  connected: 'text-emerald-300',
-  disconnected: 'text-rose-300',
-};
 
 export const VisitorChat = () => {
   const dispatch = useDispatch();
@@ -57,13 +52,56 @@ export const VisitorChat = () => {
     socketService.connect({
       sessionId: chat.sessionId,
       deviceInfo: getDeviceInfo(),
+      fcmToken: chat.visitorPushToken,
       handler,
     });
 
     return () => {
       socketService.disconnect();
     };
-  }, [chat.isRehydrated, dispatch]);
+  }, [chat.isRehydrated, chat.sessionId, chat.visitorPushToken, dispatch]);
+
+  useEffect(() => {
+    if (chat.visitorGoogleToken) {
+      return;
+    }
+
+    getExistingVisitorFirebaseToken()
+      .then((firebaseToken) => {
+        if (!firebaseToken) {
+          return;
+        }
+
+        dispatch(
+          setVisitorIdentity({
+            googleToken: firebaseToken,
+            identity: chat.visitorIdentity,
+          }),
+        );
+      })
+      .catch(() => undefined);
+  }, [chat.visitorGoogleToken, chat.visitorIdentity, dispatch]);
+
+  useEffect(() => {
+    if (!chat.visitorIdentity || chat.visitorPushToken) {
+      return;
+    }
+
+    registerVisitorPush()
+      .then((payload) => {
+        if (!payload?.fcmToken) {
+          return;
+        }
+
+        dispatch(
+          setVisitorIdentity({
+            pushToken: payload.fcmToken,
+            identity: chat.visitorIdentity,
+          }),
+        );
+      })
+      .catch(() => undefined);
+  }, [chat.visitorPushToken, chat.visitorIdentity, dispatch]);
 
   useEffect(() => {
     if (!chat.handoverExpiresAt || chat.handoverStatus !== 'HANDOVER_REQUESTED') {
@@ -82,7 +120,6 @@ export const VisitorChat = () => {
 
   const submitMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const content = draft.trim();
     if (!content || chat.connectionStatus !== 'connected') {
       return;
@@ -96,7 +133,15 @@ export const VisitorChat = () => {
   const requestHandover = async () => {
     try {
       dispatch(setRequestingHandover(true));
-      const firebaseToken = await signInVisitorWithGoogle();
+      const firebaseToken = chat.visitorGoogleToken || (await getExistingVisitorFirebaseToken()) || (await signInVisitorWithGoogle());
+      const pushPayload = await registerVisitorPush().catch(() => null);
+      dispatch(
+        setVisitorIdentity({
+          googleToken: firebaseToken,
+          pushToken: pushPayload?.fcmToken ?? chat.visitorPushToken,
+          identity: chat.visitorIdentity,
+        }),
+      );
       socketService.requestHandover(firebaseToken);
     } catch (error) {
       dispatch(setRequestingHandover(false));
@@ -104,156 +149,83 @@ export const VisitorChat = () => {
     }
   };
 
+  const footer = useMemo(() => {
+    if (chat.handoverStatus === 'LIVE') {
+      return (
+        <StatusBanner tone="success">
+          Human takeover is live. Your next messages will go directly to the admin.
+        </StatusBanner>
+      );
+    }
+
+    if (chat.handoverStatus === 'HANDOVER_REQUESTED') {
+      return (
+        <StatusBanner tone="warning">
+          Connecting to admin... {formatCountdown(chat.handoverCountdownMs)}
+        </StatusBanner>
+      );
+    }
+
+    if (chat.adminBusy) {
+      return (
+        <StatusBanner tone="danger">
+          Admin is busy right now. Please leave your email, contact number, or detailed message and we will follow up.
+        </StatusBanner>
+      );
+    }
+
+    return (
+      <div className="flex flex-wrap items-center gap-3">
+        {chat.showHandoverButton ? (
+          <button
+            type="button"
+            onClick={requestHandover}
+            disabled={chat.isRequestingHandover}
+            className="rounded-2xl border border-emerald-300/30 bg-emerald-300/15 px-4 py-3 text-sm font-medium text-emerald-100 transition hover:bg-emerald-300/20 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {chat.isRequestingHandover ? 'Connecting your Google identity...' : 'Speak to Admin'}
+          </button>
+        ) : (
+          <StatusChip value="AI assistant active" />
+        )}
+
+        <StatusChip value={chat.connectionStatus === 'connected' ? 'Connected' : 'Reconnecting'} />
+        {chat.visitorIdentity?.email ? <StatusChip value={chat.visitorIdentity.email} /> : null}
+      </div>
+    );
+  }, [
+    chat.adminBusy,
+    chat.connectionStatus,
+    chat.handoverCountdownMs,
+    chat.handoverStatus,
+    chat.isRequestingHandover,
+    chat.showHandoverButton,
+    chat.visitorGoogleToken,
+    chat.visitorIdentity,
+    chat.visitorPushToken,
+  ]);
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(76,201,240,0.12),_transparent_35%),linear-gradient(180deg,_#07131d_0%,_#05080c_100%)] text-white">
       <SolarBackground />
-      <div className="relative mx-auto flex min-h-screen max-w-5xl items-center px-6 py-24">
-        <div className="w-full rounded-[32px] border border-white/10 bg-black/35 p-8 shadow-[0_40px_140px_rgba(0,0,0,0.45)] backdrop-blur-xl md:p-12">
-          <div className="mb-10 flex items-start justify-between gap-6">
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs uppercase tracking-[0.28em] text-cyan-200">
-                <Radio size={14} />
-                Step 3 Handover
-              </div>
-              <div>
-                <h1 className="font-system-display text-4xl tracking-tight text-white md:text-5xl">
-                  Visitor Chat Session
-                </h1>
-                <p className="mt-3 max-w-2xl text-sm text-white/68 md:text-base">
-                  Chat with the AI, trigger handover intent, sign in with Google, and watch the server-owned admin
-                  countdown begin.
-                </p>
-              </div>
+      <div className="relative mx-auto flex min-h-screen max-w-6xl px-4 py-4 md:px-6 md:py-6">
+        <ConversationPanel
+          title={chat.visitorIdentity?.name ? `Chatting as ${chat.visitorIdentity.name}` : 'Portfolio Assistant'}
+          subtitle="Ask anything about work, availability, or projects. If needed, switch to a human without leaving the conversation."
+          messages={chat.messages}
+          draft={draft}
+          onDraftChange={setDraft}
+          onSubmit={submitMessage}
+          inputPlaceholder="Type your message..."
+          submitLabel={chat.handoverStatus === 'LIVE' ? 'Send' : 'Ask'}
+          disabled={chat.connectionStatus !== 'connected'}
+          footer={footer}
+          emptyState={
+            <div className="flex h-full items-center justify-center rounded-3xl border border-dashed border-white/10 bg-black/10 px-6 py-10 text-center text-sm text-white/45">
+              Start the conversation here. If the AI cannot help or you want to move faster, request a human handover.
             </div>
-
-            <div className="hidden rounded-3xl border border-white/10 bg-white/5 p-4 md:block">
-              <MessageSquare className="text-cyan-200" size={28} />
-            </div>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            <StatusCard
-              label="Connection"
-              value={chat.connectionStatus}
-              tone={statusToneMap[chat.connectionStatus] ?? statusToneMap.idle}
-            />
-            <StatusCard label="Session ID" value={chat.sessionId ?? 'Waiting for handshake...'} />
-            <StatusCard label="Socket ID" value={chat.socketId ?? 'Waiting for connection...'} />
-          </div>
-
-          <div className="mt-6 grid gap-6 lg:grid-cols-[1.4fr_0.9fr]">
-            <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
-              <div className="flex items-center justify-between gap-4 border-b border-white/8 pb-4">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.24em] text-cyan-200/75">AI Conversation</p>
-                  <p className="mt-2 text-sm text-white/60">
-                    Ask about projects, stack, experience, or hiring availability.
-                  </p>
-                </div>
-                <Sparkles className="text-cyan-200" size={20} />
-              </div>
-
-              <div className="mt-4 flex max-h-[420px] min-h-[320px] flex-col gap-3 overflow-y-auto pr-1">
-                {chat.messages.length ? (
-                  chat.messages.map((message) => (
-                    <MessageBubble key={message.id} role={message.role} content={message.content} />
-                  ))
-                ) : (
-                  <div className="flex h-full items-center justify-center rounded-3xl border border-dashed border-white/10 bg-black/10 px-6 py-10 text-center text-sm text-white/45">
-                    Start the conversation and the AI assistant will respond here.
-                  </div>
-                )}
-
-                {chat.isAwaitingAi ? (
-                  <div className="max-w-[85%] rounded-3xl rounded-bl-md border border-cyan-400/15 bg-cyan-400/10 px-4 py-3 text-sm text-cyan-50">
-                    Assistant is thinking...
-                  </div>
-                ) : null}
-              </div>
-
-              <form className="mt-5 flex gap-3" onSubmit={submitMessage}>
-                <textarea
-                  value={draft}
-                  onChange={(event) => setDraft(event.target.value)}
-                  placeholder="Try: I want to hire you for a realtime product build."
-                  className="min-h-[92px] flex-1 rounded-3xl border border-white/10 bg-black/25 px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-cyan-300/40"
-                />
-                <button
-                  type="submit"
-                  disabled={chat.connectionStatus !== 'connected' || !draft.trim()}
-                  className="inline-flex min-w-[120px] items-center justify-center gap-2 rounded-3xl bg-cyan-300 px-5 py-4 text-sm font-medium text-slate-950 transition disabled:cursor-not-allowed disabled:bg-white/15 disabled:text-white/35"
-                >
-                  <Send size={16} />
-                  Send
-                </button>
-              </form>
-            </div>
-
-            <div className="space-y-6">
-              <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
-                <div className="flex items-center gap-3 text-sm text-white/70">
-                  <RefreshCw size={16} />
-                  <span>
-                    {chat.isRestored
-                      ? 'This browser session was restored from persisted storage.'
-                      : 'The first successful handshake created a new anonymous visitor session.'}
-                  </span>
-                </div>
-                <div className="mt-4 grid gap-3 text-sm text-white/60">
-                  <MetaRow label="Rehydration Gate" value={chat.isRehydrated ? 'Complete' : 'Waiting'} />
-                  <MetaRow label="Connected At" value={chat.connectedAt ?? 'Pending'} />
-                  <MetaRow label="Handover Status" value={chat.handoverStatus} />
-                </div>
-              </div>
-
-              <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
-                <p className="text-xs uppercase tracking-[0.24em] text-white/45">Handover State</p>
-                <p className="mt-3 text-sm text-white/68">
-                  The admin CTA appears only after the AI detects clear hire/contact intent. Clicking it forces Google
-                  sign-in before the server alerts the admin dashboard.
-                </p>
-                {chat.showHandoverButton ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={requestHandover}
-                      disabled={chat.isRequestingHandover || chat.handoverStatus === 'HANDOVER_REQUESTED'}
-                      className="mt-5 w-full rounded-2xl border border-emerald-300/30 bg-emerald-300/15 px-4 py-3 text-sm font-medium text-emerald-100 transition hover:bg-emerald-300/20 disabled:cursor-not-allowed disabled:opacity-60"
-                    >
-                      {chat.isRequestingHandover
-                        ? 'Signing in with Google...'
-                        : chat.handoverStatus === 'HANDOVER_REQUESTED'
-                          ? 'Admin Request Sent'
-                          : 'Speak to Admin'}
-                    </button>
-
-                    {chat.handoverStatus === 'HANDOVER_REQUESTED' ? (
-                      <div className="mt-4 rounded-2xl border border-amber-300/20 bg-amber-300/10 px-4 py-3 text-sm text-amber-50">
-                        Connecting to admin... {formatCountdown(chat.handoverCountdownMs)}
-                      </div>
-                    ) : null}
-
-                    {chat.handoverStatus === 'LIVE' ? (
-                      <div className="mt-4 rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-3 text-sm text-emerald-50">
-                        Admin accepted the handover. Human takeover is live.
-                      </div>
-                    ) : null}
-
-                    {chat.adminBusy ? (
-                      <div className="mt-4 rounded-2xl border border-rose-300/20 bg-rose-300/10 px-4 py-3 text-sm text-rose-50">
-                        Admin is currently busy. The server has ended the live wait window.
-                      </div>
-                    ) : null}
-                  </>
-                ) : (
-                  <div className="mt-5 rounded-2xl border border-dashed border-white/10 px-4 py-3 text-sm text-white/40">
-                    No handover offer yet.
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
+          }
+        />
       </div>
     </div>
   );
@@ -266,37 +238,19 @@ const formatCountdown = (value: number) => {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 };
 
-const MessageBubble = ({ role, content }: { role: 'visitor' | 'assistant' | 'admin'; content: string }) => {
-  const isVisitor = role === 'visitor';
-  const isAdmin = role === 'admin';
+const StatusBanner = ({ children, tone }: { children: ReactNode; tone: 'success' | 'warning' | 'danger' }) => {
+  const styles =
+    tone === 'success'
+      ? 'border-emerald-300/20 bg-emerald-300/10 text-emerald-50'
+      : tone === 'warning'
+        ? 'border-amber-300/20 bg-amber-300/10 text-amber-50'
+        : 'border-rose-300/20 bg-rose-300/10 text-rose-50';
 
-  return (
-    <div className={`flex ${isVisitor ? 'justify-end' : 'justify-start'}`}>
-      <div
-        className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm leading-6 ${
-          isVisitor
-            ? 'rounded-br-md bg-cyan-300 text-slate-950'
-            : isAdmin
-              ? 'rounded-bl-md border border-emerald-300/18 bg-emerald-300/10 text-emerald-50'
-            : 'rounded-bl-md border border-white/10 bg-white/[0.05] text-white/88'
-        }`}
-      >
-        {content}
-      </div>
-    </div>
-  );
+  return <div className={`rounded-2xl border px-4 py-3 text-sm ${styles}`}>{children}</div>;
 };
 
-const StatusCard = ({ label, value, tone = 'text-white' }) => (
-  <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-5">
-    <p className="text-xs uppercase tracking-[0.24em] text-white/45">{label}</p>
-    <p className={`mt-3 break-all text-sm md:text-base ${tone}`}>{value}</p>
-  </div>
-);
-
-const MetaRow = ({ label, value }) => (
-  <div className="rounded-2xl border border-white/8 bg-black/20 px-4 py-3">
-    <p className="text-[11px] uppercase tracking-[0.2em] text-white/35">{label}</p>
-    <p className="mt-2 break-all text-sm text-white/75">{value}</p>
-  </div>
+const StatusChip = ({ value }: { value: string }) => (
+  <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs uppercase tracking-[0.2em] text-white/65">
+    {value}
+  </span>
 );

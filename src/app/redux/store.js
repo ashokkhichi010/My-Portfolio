@@ -7,7 +7,7 @@ const persistedChatReducer = persistReducer(
   {
     key: 'chat',
     storage,
-    whitelist: ['sessionId'],
+    whitelist: ['sessionId', 'visitorGoogleToken', 'visitorPushToken', 'visitorIdentity'],
   },
   chatReducer,
 );
@@ -19,7 +19,7 @@ export const store = configureStore({
       {
         key: 'auth',
         storage,
-        whitelist: ['adminUser', 'adminAccessToken', 'adminRefreshToken'],
+        whitelist: ['adminUser', 'adminAccessToken', 'adminRefreshToken', 'adminFcmToken'],
       },
       authReducer,
     ),

@@ -16,6 +16,9 @@ const initialState = {
   handoverExpiresAt: null,
   adminBusy: false,
   isRequestingHandover: false,
+  visitorGoogleToken: null,
+  visitorPushToken: null,
+  visitorIdentity: null,
 };
 
 const chatSlice = createSlice({
@@ -38,6 +41,9 @@ const chatSlice = createSlice({
         handoverOffered = false,
         handoverStatus = 'AI',
         handoverExpiresAt = null,
+        visitorEmail = null,
+        visitorName = null,
+        visitorVerified = false,
       } = action.payload;
       state.sessionId = sessionId;
       state.socketId = socketId;
@@ -52,6 +58,12 @@ const chatSlice = createSlice({
       state.handoverCountdownMs = handoverExpiresAt ? Math.max(0, new Date(handoverExpiresAt).getTime() - Date.now()) : 0;
       state.adminBusy = handoverStatus === 'ADMIN_BUSY';
       state.isRequestingHandover = false;
+      if (visitorVerified) {
+        state.visitorIdentity = {
+          email: visitorEmail,
+          name: visitorName,
+        };
+      }
     },
     setSocketId(state, action) {
       state.socketId = action.payload;
@@ -85,6 +97,11 @@ const chatSlice = createSlice({
     },
     setRequestingHandover(state, action) {
       state.isRequestingHandover = action.payload;
+    },
+    setVisitorIdentity(state, action) {
+      state.visitorIdentity = action.payload.identity;
+      state.visitorGoogleToken = action.payload.googleToken ?? state.visitorGoogleToken;
+      state.visitorPushToken = action.payload.pushToken ?? state.visitorPushToken;
     },
     setHandoverRequested(state, action) {
       state.handoverStatus = 'HANDOVER_REQUESTED';
@@ -123,6 +140,7 @@ const authInitialState = {
   otpExpiresAt: null,
   isLoading: false,
   error: null,
+  adminFcmToken: null,
 };
 
 const authSlice = createSlice({
@@ -152,6 +170,9 @@ const authSlice = createSlice({
       state.error = null;
       state.isLoading = false;
     },
+    setAdminFcmToken(state, action) {
+      state.adminFcmToken = action.payload;
+    },
     resetAdminLoginFlow(state) {
       state.loginStep = 'credentials';
       state.otpToken = null;
@@ -175,6 +196,7 @@ export const {
   setHandoverOffer,
   setAwaitingAi,
   setRequestingHandover,
+  setVisitorIdentity,
   setHandoverRequested,
   tickHandoverCountdown,
   setAdminBusy,
@@ -189,6 +211,7 @@ export const {
   setAuthError,
   setOtpChallenge,
   setAdminSession,
+  setAdminFcmToken,
   resetAdminLoginFlow,
   logoutAdmin,
 } = authSlice.actions;

@@ -16,25 +16,25 @@ export const router = createBrowserRouter([
         Component: MissionControl,
       },
       {
-        path: 'chat',
-        Component: VisitorChat,
-      },
-      {
-        path: 'admin-login',
-        Component: AdminLogin,
-      },
-      {
-        path: 'admin-dashboard',
-        element: (
-          <AdminRoute>
-            <AdminChat />
-          </AdminRoute>
-        ),
-      },
-      {
         path: '*',
         Component: MissionControl,
       },
     ],
+  },
+  {
+    path: '/chat',
+    Component: VisitorChat,
+  },
+  {
+    path: '/admin-login',
+    Component: AdminLogin,
+  },
+  {
+    path: '/admin-dashboard',
+    element: (
+      <AdminRoute>
+        <AdminChat />
+      </AdminRoute>
+    ),
   },
 ]);

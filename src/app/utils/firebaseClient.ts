@@ -1,5 +1,5 @@
 import { getApp, getApps, initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import config, { hasFirebaseConfig } from '../config/config';
 
 const firebaseConfig = {
@@ -25,4 +25,23 @@ export const signInVisitorWithGoogle = async (): Promise<string> => {
   const provider = new GoogleAuthProvider();
   const result = await signInWithPopup(auth, provider);
   return await result.user.getIdToken();
+};
+
+export const getExistingVisitorFirebaseToken = async (): Promise<string | null> => {
+  const auth = getAuth(getFirebaseApp());
+  if (auth.currentUser) {
+    return await auth.currentUser.getIdToken();
+  }
+
+  return await new Promise((resolve) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      unsubscribe();
+      if (!user) {
+        resolve(null);
+        return;
+      }
+
+      resolve(await user.getIdToken());
+    });
+  });
 };

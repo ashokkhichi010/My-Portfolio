@@ -162,10 +162,12 @@ export interface ChatState {
     createdAt: string;
   }[];
   isAwaitingAi: boolean;
+  isTyping: boolean;
   showHandoverButton: boolean;
   handoverStatus: 'AI' | 'HANDOVER_REQUESTED' | 'LIVE' | 'ADMIN_BUSY';
   handoverCountdownMs: number;
   handoverExpiresAt: string | null;
+  adminAvailable: boolean;
   adminBusy: boolean;
   isRequestingHandover: boolean;
 }

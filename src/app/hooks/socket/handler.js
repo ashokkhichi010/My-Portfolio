@@ -29,8 +29,9 @@ export class Handler {
     this.dispatch(this.actions.addMessage(payload));
   };
 
-  handleHandoverOffer = () => {
+  handleHandoverOffer = (payload) => {
     this.dispatch(this.actions.setHandoverOffer(true));
+    this.dispatch(this.actions.setAdminAvailability(payload?.adminAvailable ?? true));
   };
 
   handleHandoverRequested = (payload) => {
@@ -43,5 +44,13 @@ export class Handler {
 
   handleHandoverAccepted = () => {
     this.dispatch(this.actions.setHandoverAccepted());
+  };
+
+  handleHandoverFailed = (payload) => {
+    this.dispatch(this.actions.setHandoverFailed(payload));
+  };
+
+  handleReturnToAi = (payload) => {
+    this.dispatch(this.actions.setReturnedToAi(payload));
   };
 }

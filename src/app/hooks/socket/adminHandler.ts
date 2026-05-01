@@ -33,12 +33,44 @@ export class AdminHandler {
   };
 
   handleHandoverAccepted = (payload) => {
+    this.setLeads((previous) =>
+      previous.map((lead) =>
+        lead.sessionId === payload.sessionId
+          ? {
+              ...lead,
+              status: payload.status,
+              visitorName: payload.visitorName ?? lead.visitorName,
+              visitorEmail: payload.visitorEmail ?? lead.visitorEmail,
+              messages: payload.messages ?? lead.messages,
+            }
+          : lead,
+      ),
+    );
+
     this.setActiveChat({
       sessionId: payload.sessionId,
       status: payload.status,
       visitorName: payload.visitorName,
       visitorEmail: payload.visitorEmail,
       messages: payload.messages,
+    });
+  };
+
+  handleReturnToAi = (payload) => {
+    this.setLeads((previous) =>
+      previous.map((lead) =>
+        lead.sessionId === payload.sessionId
+          ? {
+              ...lead,
+              status: payload.status,
+            }
+          : lead,
+      ),
+    );
+
+    this.setActiveChat({
+      sessionId: payload.sessionId,
+      status: payload.status,
     });
   };
 

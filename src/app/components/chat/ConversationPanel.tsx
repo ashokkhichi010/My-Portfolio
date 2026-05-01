@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import type { FormEvent, ReactNode } from 'react';
 import { Send } from 'lucide-react';
 
@@ -22,7 +22,9 @@ interface ConversationPanelProps {
   disabled?: boolean;
   footer?: ReactNode;
   emptyState?: ReactNode;
-  isVisitorConversation?: boolean,
+  isVisitorConversation?: boolean;
+  isTyping?: boolean;
+  typingLabel?: string;
 }
 
 export const ConversationPanel = ({
@@ -34,10 +36,12 @@ export const ConversationPanel = ({
   onDraftChange,
   onSubmit,
   inputPlaceholder,
-  // submitLabel,
+  submitLabel,
   disabled = false,
   footer,
   isVisitorConversation = false,
+  isTyping = false,
+  typingLabel = 'AI is typing...',
 }: ConversationPanelProps) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -51,12 +55,43 @@ export const ConversationPanel = ({
     }
   }, [draft]); // Triggered every time the draft text changes
 
+  const displayItems = useMemo(() => {
+    const items: Array<
+      | { type: 'date'; key: string; label: string }
+      | { type: 'message'; key: string; message: ConversationMessage }
+    > = [];
+
+    const dates: string[] = [];
+
+    for (const message of messages) {
+      const dayKey = new Date(message.createdAt).toDateString();
+      const isDateExists = dates.includes(dayKey);
+
+      if (!isDateExists) {
+        dates.push(dayKey),
+          items.push({
+            type: 'date',
+            key: dayKey,
+            label: formatDateDivider(message.createdAt),
+          });
+      }
+
+      items.push({
+        type: 'message',
+        key: message.id,
+        message,
+      });
+    }
+
+    return items;
+  }, [messages]);
+
   useEffect(() => {
     scrollRef.current?.scrollTo({
       top: scrollRef.current.scrollHeight,
       behavior: 'smooth',
     });
-  }, [messages]);
+  }, [displayItems, isTyping]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     // Check if Enter is pressed without the Shift key
@@ -69,9 +104,7 @@ export const ConversationPanel = ({
   };
 
   return (
-    <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-black/30 backdrop-blur">
-
-      {/* Header */}
+    <div className="flex h-full flex-col">
       <div className="flex items-center justify-between px-4 sm:px-6 h-12 border-b border-white/10">
         <div className="min-w-0">
           <h2 className="text-sm truncate">{title}</h2>
@@ -83,90 +116,153 @@ export const ConversationPanel = ({
       {/* Messages */}
       <div
         ref={scrollRef}
-        className="flex-1 min-h-0 overflow-y-auto px-3 sm:px-6 py-4 space-y-4"
+        className="chat-scrollbar flex-1 min-h-0 overflow-y-auto px-3 py-4 sm:px-6"
       >
-        {messages.map((m) => (
-          <MessageBubble key={m.id} message={m} isVisitorConversation={isVisitorConversation} />
-        ))}
+        <div className="space-y-4">
+          {displayItems.map((item) =>
+            item.type === 'date' ? (
+              <DateDivider key={item.key} label={item.label} />
+            ) : (
+              <MessageBubble
+                key={item.key}
+                message={item.message}
+                isVisitorConversation={isVisitorConversation}
+              />
+            ),
+          )}
+          {isTyping ? <TypingIndicator isVisitorConversation={isVisitorConversation} label={typingLabel} /> : null}
+        </div>
       </div>
 
       {footer && <div className="px-4 pb-2">{footer}</div>}
 
-      <div className="relative flex items-end gap-2 sm:gap-3 bg-white/5 rounded-b-xl px-3 py-2">
+      <form onSubmit={onSubmit} className="relative flex items-end gap-2 rounded-b-xl bg-white/5 px-3 py-2 sm:gap-3">
         <textarea
           ref={textareaRef}
           value={draft}
           onChange={(e) => onDraftChange(e.target.value)}
-          onKeyDown={handleKeyDown} // Added the key listener
+          onKeyDown={handleKeyDown}
           placeholder={inputPlaceholder}
           disabled={disabled}
           rows={1}
-          className="flex-1 bg-transparent outline-none text-white text-[16px] resize-none min-h-[24px] max-h-72 py-1 placeholder-gray-500"
+          className="min-h-[24px] max-h-72 flex-1 resize-none bg-transparent py-1 text-[16px] text-white outline-none placeholder-gray-500"
         />
 
         <button
           type="submit"
+          aria-label={submitLabel}
+          title={submitLabel}
           disabled={disabled || !draft.trim()}
-          className="flex items-center justify-center bg-blue-600 text-white w-10 h-10 rounded-full hover:bg-blue-500 disabled:bg-[#2a2b2c] disabled:text-gray-600 transition-all flex-shrink-0"
+          className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-white transition-all hover:bg-blue-500 disabled:bg-[#2a2b2c] disabled:text-gray-600"
         >
           <Send size={20} />
         </button>
-      </div>
+      </form>
     </div>
   );
 };
 
-const MessageBubble = ({ message, isVisitorConversation }: { message: ConversationMessage, isVisitorConversation: boolean }) => {
-  let position = "justify-end";
-  let tag = "You";
-  let color = "bg-white/5 text-white";
+const DateDivider = ({ label }: { label: string }) => (
+  <div className="flex justify-center">
+    <div className="rounded-full border border-white/10 bg-white/8 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-white/45 backdrop-blur-sm">
+      {label}
+    </div>
+  </div>
+);
+
+const TypingIndicator = ({
+  isVisitorConversation,
+  label,
+}: {
+  isVisitorConversation: boolean;
+  label: string;
+}) => (
+  <div className={`flex ${isVisitorConversation ? 'justify-start' : 'justify-end'}`}>
+    <div className="max-w-[85%] sm:max-w-[70%]">
+      <div className="mb-1 text-[10px] text-white/40">{isVisitorConversation ? 'AI Assistant' : 'You'}</div>
+      <div className="inline-flex items-center gap-2 rounded-2xl bg-white/6 px-4 py-3 text-sm text-white/80 shadow-[0_12px_30px_rgba(15,23,42,0.24)]">
+        <span>{label}</span>
+        <span className="flex items-center gap-1">
+          <span className="h-2 w-2 animate-bounce rounded-full bg-sky-300 [animation-delay:-0.3s]" />
+          <span className="h-2 w-2 animate-bounce rounded-full bg-sky-300/90 [animation-delay:-0.15s]" />
+          <span className="h-2 w-2 animate-bounce rounded-full bg-sky-300/75" />
+        </span>
+      </div>
+    </div>
+  </div>
+);
+
+const MessageBubble = ({
+  message,
+  isVisitorConversation,
+}: {
+  message: ConversationMessage;
+  isVisitorConversation: boolean;
+}) => {
+  let position = 'justify-end';
+  let tag = 'You';
+  let color = 'bg-white/5 text-white';
 
   switch (message.role) {
-    case "admin":
+    case 'admin':
       if (isVisitorConversation) {
-        position = "justify-start";
-        tag = "Admin";
-        color = "bg-white/5 text-white";
+        position = 'justify-start';
+        tag = 'Admin';
+        color = 'bg-white/5 text-white';
       } else {
-        position = "justify-end";
-        tag = "You";
-        color = "bg-blue-600 text-white";
+        position = 'justify-end';
+        tag = 'You';
+        color = 'bg-blue-600 text-white';
       }
       break;
-    case "visitor":
+    case 'visitor':
       if (isVisitorConversation) {
-        position = "justify-end";
-        tag = "You";
-        color = "bg-blue-600 text-white";
+        position = 'justify-end';
+        tag = 'You';
+        color = 'bg-blue-600 text-white';
       } else {
-        position = "justify-start";
-        tag = "Visitor";
-        color = "bg-white/5 text-white";
+        position = 'justify-start';
+        tag = 'Visitor';
+        color = 'bg-white/5 text-white';
       }
       break;
-    case "assistant":
+    case 'assistant':
       if (isVisitorConversation) {
-        position = "justify-start";
-        tag = "AI Assistant";
-        color = "bg-white/5 text-white";
+        position = 'justify-start';
+        tag = 'AI Assistant';
+        color = 'bg-white/5 text-white';
       } else {
-        position = "justify-end";
-        tag = "AI Assistant";
-        color = "bg-blue-600 text-white";
+        position = 'justify-end';
+        tag = 'AI Assistant';
+        color = 'bg-blue-600 text-white';
       }
       break;
   }
 
-
-
   return (
     <div className={`flex ${position}`}>
       <div className="max-w-[85%] sm:max-w-[70%]">
-        <div className="text-[10px] text-white/40 mb-1"> {tag} </div>
-        <div className={`px-3 sm:px-4 py-2 sm:py-3 rounded-xl text-sm ${color}`}>
-          {message.content}
+        <div className="mb-1 text-[10px] text-white/40">{tag}</div>
+        <div className={`rounded-2xl px-3 py-2 text-sm shadow-[0_12px_30px_rgba(15,23,42,0.22)] sm:px-4 sm:py-3 ${color}`}>
+          <p className="whitespace-pre-wrap break-words">{message.content}</p>
+          <div className="mt-2 flex justify-end text-[11px] text-white/45">
+            {formatMessageTime(message.createdAt)}
+          </div>
         </div>
       </div>
     </div>
   );
 };
+
+const formatMessageTime = (value: string) =>
+  new Intl.DateTimeFormat(undefined, {
+    hour: 'numeric',
+    minute: '2-digit',
+  }).format(new Date(value));
+
+const formatDateDivider = (value: string) =>
+  new Intl.DateTimeFormat(undefined, {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+  }).format(new Date(value));

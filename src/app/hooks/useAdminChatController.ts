@@ -141,6 +141,14 @@ export const useAdminChatController = () => {
     socketService.acceptHandover(sessionId);
   };
 
+  const returnLeadToAi = (sessionId: string) => {
+    if (!sessionId) {
+      return;
+    }
+
+    socketService.returnToAi(sessionId);
+  };
+
   const closeIncomingLead = () => {
     ringtoneStopRef.current?.();
     setIncomingLead(null);
@@ -157,6 +165,7 @@ export const useAdminChatController = () => {
     submitLiveReply,
     handleLogout,
     acceptLead,
+    returnLeadToAi,
     closeIncomingLead,
   };
 };

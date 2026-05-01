@@ -12,9 +12,12 @@ import {
   setAdminBusy,
   setConnectionStatus,
   setHandoverAccepted,
+  setAdminAvailability,
+  setHandoverFailed,
   setHandoverOffer,
   setHandoverRequested,
   setRequestingHandover,
+  setReturnedToAi,
   setSessionReady,
   setSocketId,
   setAwaitingAi,
@@ -43,10 +46,13 @@ export const useVisitorChatController = () => {
         setSocketId,
         resetConnection,
         addMessage,
+        setAdminAvailability,
+        setHandoverFailed,
         setHandoverOffer,
         setHandoverRequested,
         setAdminBusy,
         setHandoverAccepted,
+        setReturnedToAi,
       },
     });
 
@@ -185,7 +191,11 @@ export const useVisitorChatController = () => {
             disabled={chat.isRequestingHandover}
             className="rounded-2xl border border-emerald-300/30 bg-emerald-300/15 px-4 py-3 text-sm font-medium text-emerald-100 transition hover:bg-emerald-300/20 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {chat.isRequestingHandover ? 'Connecting your Google identity...' : 'Speak to Admin'}
+            {chat.isRequestingHandover
+              ? 'Connecting your Google identity...'
+              : chat.adminAvailable
+                ? 'Speak to Admin'
+                : 'Leave a message for the developer'}
           </button>
         ) : (
           <ChatStatusChip value="AI assistant active" />
@@ -201,6 +211,7 @@ export const useVisitorChatController = () => {
     chat.handoverCountdownMs,
     chat.handoverStatus,
     chat.isRequestingHandover,
+    chat.adminAvailable,
     chat.showHandoverButton,
     chat.visitorIdentity,
     chat.visitorPushToken,
@@ -214,7 +225,7 @@ export const useVisitorChatController = () => {
     footer,
     title: chat.visitorIdentity?.name ? `Chatting as ${chat.visitorIdentity.name}` : 'Portfolio Assistant',
     subtitle:
-      'Ask anything about work, availability, or projects. If needed, switch to a human without leaving the conversation.',
+      'Ask anything about work, availability, or projects.',
     submitLabel: chat.handoverStatus === 'LIVE' ? 'Send' : 'Ask',
   };
 };

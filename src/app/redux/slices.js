@@ -10,10 +10,12 @@ const initialState = {
   connectedAt: null,
   messages: [],
   isAwaitingAi: false,
+  isTyping: false,
   showHandoverButton: false,
   handoverStatus: 'AI',
   handoverCountdownMs: 0,
   handoverExpiresAt: null,
+  adminAvailable: false,
   adminBusy: false,
   isRequestingHandover: false,
   visitorGoogleToken: null,
@@ -41,6 +43,7 @@ const chatSlice = createSlice({
         handoverOffered = false,
         handoverStatus = 'AI',
         handoverExpiresAt = null,
+        adminAvailable = false,
         visitorEmail = null,
         visitorName = null,
         visitorVerified = false,
@@ -53,9 +56,11 @@ const chatSlice = createSlice({
       state.messages = messages;
       state.showHandoverButton = handoverOffered;
       state.isAwaitingAi = false;
+      state.isTyping = false;
       state.handoverStatus = handoverStatus;
       state.handoverExpiresAt = handoverExpiresAt;
       state.handoverCountdownMs = handoverExpiresAt ? Math.max(0, new Date(handoverExpiresAt).getTime() - Date.now()) : 0;
+      state.adminAvailable = adminAvailable;
       state.adminBusy = handoverStatus === 'ADMIN_BUSY';
       state.isRequestingHandover = false;
       if (visitorVerified) {
@@ -72,6 +77,7 @@ const chatSlice = createSlice({
       state.socketId = null;
       state.connectionStatus = 'disconnected';
       state.isAwaitingAi = false;
+      state.isTyping = false;
     },
     addMessage(state, action) {
       const message = action.payload;
@@ -85,15 +91,25 @@ const chatSlice = createSlice({
 
       state.messages = state.messages.slice(-100);
       state.isAwaitingAi = message.role === 'visitor';
+      if (message.role === 'visitor' && state.handoverStatus === 'AI') {
+        state.isTyping = true;
+      }
       if (message.role === 'assistant' || message.role === 'admin') {
         state.isAwaitingAi = false;
+        state.isTyping = false;
       }
     },
     setHandoverOffer(state, action) {
       state.showHandoverButton = action.payload;
     },
+    setAdminAvailability(state, action) {
+      state.adminAvailable = action.payload;
+    },
     setAwaitingAi(state, action) {
       state.isAwaitingAi = action.payload;
+      if (!action.payload) {
+        state.isTyping = false;
+      }
     },
     setRequestingHandover(state, action) {
       state.isRequestingHandover = action.payload;
@@ -107,6 +123,7 @@ const chatSlice = createSlice({
       state.handoverStatus = 'HANDOVER_REQUESTED';
       state.handoverExpiresAt = action.payload.expiresAt;
       state.handoverCountdownMs = action.payload.timeoutMs;
+      state.isTyping = false;
       state.adminBusy = false;
       state.isRequestingHandover = false;
     },
@@ -117,6 +134,7 @@ const chatSlice = createSlice({
       state.handoverStatus = 'ADMIN_BUSY';
       state.handoverExpiresAt = null;
       state.handoverCountdownMs = 0;
+      state.isTyping = false;
       state.adminBusy = true;
       state.isRequestingHandover = false;
     },
@@ -124,8 +142,31 @@ const chatSlice = createSlice({
       state.handoverStatus = 'LIVE';
       state.handoverExpiresAt = null;
       state.handoverCountdownMs = 0;
+      state.isTyping = false;
       state.adminBusy = false;
       state.isRequestingHandover = false;
+    },
+    setHandoverFailed(state, action) {
+      state.handoverStatus = action.payload?.status ?? 'AI';
+      state.handoverExpiresAt = null;
+      state.handoverCountdownMs = 0;
+      state.isTyping = false;
+      state.adminBusy = false;
+      state.isRequestingHandover = false;
+      if (typeof action.payload?.adminAvailable === 'boolean') {
+        state.adminAvailable = action.payload.adminAvailable;
+      }
+    },
+    setReturnedToAi(state, action) {
+      state.handoverStatus = 'AI';
+      state.handoverExpiresAt = null;
+      state.handoverCountdownMs = 0;
+      state.isTyping = false;
+      state.adminBusy = false;
+      state.isRequestingHandover = false;
+      if (typeof action.payload?.adminAvailable === 'boolean') {
+        state.adminAvailable = action.payload.adminAvailable;
+      }
     },
     mergeChatState: mergeState,
   },
@@ -194,6 +235,7 @@ export const {
   resetConnection,
   addMessage,
   setHandoverOffer,
+  setAdminAvailability,
   setAwaitingAi,
   setRequestingHandover,
   setVisitorIdentity,
@@ -201,6 +243,8 @@ export const {
   tickHandoverCountdown,
   setAdminBusy,
   setHandoverAccepted,
+  setHandoverFailed,
+  setReturnedToAi,
   mergeChatState,
 } = chatSlice.actions;
 

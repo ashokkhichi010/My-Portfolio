@@ -30,6 +30,8 @@ class SocketService {
     this.socket.on('handover:requested', handler.handleHandoverRequested);
     this.socket.on('ADMIN_BUSY', handler.handleAdminBusy);
     this.socket.on('handover:accepted', handler.handleHandoverAccepted);
+    this.socket.on('HANDOVER_FAILED', handler.handleHandoverFailed);
+    this.socket.on('handover:return-to-ai', handler.handleReturnToAi);
 
     return this.socket;
   }
@@ -61,6 +63,7 @@ class SocketService {
     this.socket.on('admin:queue.snapshot', handler.handleQueueSnapshot);
     this.socket.on('admin:lead.updated', handler.handleLeadUpdated);
     this.socket.on('admin:handover.accepted', handler.handleHandoverAccepted);
+    this.socket.on('handover:return-to-ai', handler.handleReturnToAi);
     this.socket.on('chat:message.created', handler.handleMessageCreated);
     this.socket.on('chat:error', handler.handleSocketError);
 
@@ -73,6 +76,10 @@ class SocketService {
 
   sendAdminMessage(sessionId, content) {
     this.socket?.emit('admin:message.send', { sessionId, content });
+  }
+
+  returnToAi(sessionId) {
+    this.socket?.emit('return_to_ai', { sessionId });
   }
 
   disconnect() {

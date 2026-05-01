@@ -18,6 +18,7 @@ export const AdminChat = () => {
     submitLiveReply,
     handleLogout,
     acceptLead,
+    returnLeadToAi,
     closeIncomingLead,
   } = useAdminChatController();
 
@@ -27,6 +28,33 @@ export const AdminChat = () => {
   useEffect(() => {
     document.body.style.overflow = isSidebarOpen ? 'hidden' : '';
   }, [isSidebarOpen]);
+
+  const actionButton =
+    selectedLead?.status === 'HANDOVER_REQUESTED' ? (
+      <button
+        type="button"
+        onClick={() => acceptLead(selectedLead.sessionId)}
+        className="rounded-full border border-rose-300/20 bg-rose-300/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-rose-50 transition hover:bg-rose-300/25"
+      >
+        Accept Handover
+      </button>
+    ) : selectedLead?.status === 'AI' ? (
+      <button
+        type="button"
+        onClick={() => acceptLead(selectedLead.sessionId)}
+        className="rounded-full border border-sky-300/20 bg-sky-300/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-sky-50 transition hover:bg-sky-300/25"
+      >
+        Take Handover
+      </button>
+    ) : selectedLead?.status === 'LIVE' ? (
+      <button
+        type="button"
+        onClick={() => returnLeadToAi(selectedLead.sessionId)}
+        className="rounded-full border border-emerald-300/20 bg-emerald-300/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-50 transition hover:bg-emerald-300/25"
+      >
+        Return to AI
+      </button>
+    ) : null;
 
   return (
     <div className="h-[100dvh] flex flex-col bg-[#0b0f19] text-white">
@@ -67,6 +95,9 @@ export const AdminChat = () => {
             inputPlaceholder="Type your reply..."
             submitLabel="Reply"
             isVisitorConversation={false}
+            disabled={selectedLead?.status !== 'LIVE'}
+            // footer={actionButton ? <div className="flex justify-end">{actionButton}</div> : undefined}
+            statusBadge={actionButton}
           />
         </div>
       </div>

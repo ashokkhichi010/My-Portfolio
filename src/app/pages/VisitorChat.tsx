@@ -1,3 +1,4 @@
+import { ArrowLeft } from 'lucide-react';
 import { SolarBackground } from '../components/SolarBackground';
 import { ConversationPanel } from '../components/chat/ConversationPanel';
 import { useVisitorChatController } from '../hooks/useVisitorChatController';
@@ -6,13 +7,13 @@ export const VisitorChat = () => {
   const { chat, draft, setDraft, submitMessage, footer, title, subtitle, submitLabel } = useVisitorChatController();
 
   const actionButton = (
-    <button
-      type="button"
-      onClick={() => { }}
-      className="rounded-full border border-rose-300/20 bg-rose-300/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-rose-50 transition hover:bg-rose-300/25"
+    <a
+      href="/"
+      className="section-secondary-btn group inline-flex items-center gap-2 rounded-full px-6 py-1 text-white transition-all hover:scale-[1.04]"
     >
-      Go to Home
-    </button>
+      <ArrowLeft size={18} />
+      Go Back
+    </a>
   );
 
   return (

@@ -7,9 +7,10 @@
       "duration": "Mar 2026 - Present",
       "location": "Jodhpur, Rajasthan, India",
       "description": [
-        "Building practical understanding of microcontrollers, embedded C/C++, sensors, and hardware debugging through hands-on training and experiments.",
-        "Working with Arduino and ESP8266-based setups to strengthen core concepts in device control and hardware-software interaction.",
-        "Exploring communication workflows and low-level troubleshooting with a focus on reliable system behavior."
+        "Building hands-on experience with microcontrollers, embedded C/C++, and sensor-based systems through practical experimentation.",
+        "Developing device control workflows using Arduino and ESP8266, focusing on real-time input handling and hardware-software integration.",
+        "Working with serial and WiFi communication while debugging low-level system behavior for reliability.",
+        "Strengthening fundamentals required for building real-world IoT systems."
       ],
       "technologies": [
         "Arduino",
@@ -22,14 +23,16 @@
     },
     {
       "company": "Independent Product Work",
-      "role": "Full Stack Developer, S3 Library Platform",
+      "role": "Full Stack Developer (S3 Library Platform)",
       "duration": "Nov 2024 - Jan 2026",
       "location": "Remote",
       "description": [
-        "Designed and built a library management SaaS platform focused on subscriptions, seat allocation, admin workflows, and multi-location operations.",
-        "Handled backend architecture, frontend flows, deployment, and product iteration as an end-to-end independent build.",
-        "Used direct exposure to library operations to refine features based on practical workflows rather than assumptions.",
-        "Paused the product after active validation, carrying forward lessons in product scope, adoption, and execution discipline."
+        "Initiated and built a SaaS platform to solve inefficiencies in library operations such as rigid subscriptions and manual management.",
+        "Designed and developed the complete system (backend, frontend, database, deployment) independently.",
+        "Validated the product through direct interaction with multiple libraries and iterative feature improvements.",
+        "Identified adoption challenges including trust barriers and preference for manual workflows.",
+        "Paused the project after validation, applying learnings to improve product thinking and execution strategy.",
+        "Gained practical insights into product-market fit, requirement clarity, and real-world adoption challenges."
       ],
       "technologies": [
         "Node.js",
@@ -46,10 +49,12 @@
       "duration": "Apr 2023 - Oct 2024",
       "location": "India",
       "description": [
-        "Built and maintained backend services for SaaS applications using Node.js and Express.",
-        "Designed REST APIs for inventory, subscription, billing, and operational workflows.",
-        "Integrated payment systems including Stripe and Razorpay with secure webhook handling.",
-        "Contributed to backend improvements around performance, schema structure, and workflow automation while working with cross-functional teams."
+        "Developed backend services for SaaS applications using Node.js and Express.js.",
+        "Designed REST APIs for inventory, subscriptions, billing, and operational workflows.",
+        "Integrated payment gateways (Stripe, Razorpay) with secure webhook handling.",
+        "Worked on database design and query optimization using MongoDB and MySQL.",
+        "Collaborated with frontend and product teams for seamless feature integration.",
+        "Improved system performance, reliability, and maintainability through structured development practices."
       ],
       "technologies": [
         "Node.js",
@@ -67,9 +72,10 @@
       "duration": "Jan 2023 - Mar 2023",
       "location": "India",
       "description": [
-        "Started my professional backend journey by supporting API development, testing, debugging, and data operations.",
-        "Worked with MongoDB, Postman, and Node.js-based services while learning team workflows and production expectations.",
-        "Built the discipline of translating requirements into structured backend tasks with guidance from senior developers."
+        "Assisted in API development, testing, and debugging within backend workflows.",
+        "Worked with Node.js, Express.js, MongoDB, and Postman in a production-oriented environment.",
+        "Learned to translate requirements into structured backend logic under guidance.",
+        "Built foundational skills in backend architecture, debugging, and team collaboration."
       ],
       "technologies": [
         "Node.js",

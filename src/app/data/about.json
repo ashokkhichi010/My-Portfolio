@@ -1,18 +1,18 @@
 {
   "title": "About Me",
   "story": [
-    "I am a Full Stack Developer focused on building practical software that solves operational problems clearly and reliably. My work spans responsive interfaces, backend APIs, database design, and deployment workflows.",
-    "I have built and worked on backend-heavy systems where API design, authentication flows, and scalable architecture were critical to the product's success and maintainability.",
-    "Alongside software, I am actively learning IoT and embedded systems by working with Arduino, ESP8266/ESP32, and real device communication to understand hardware-software integration deeply.",
-    "My problem-solving approach is shaped by real-world constraints like performance, cost, usability, and reliability, rather than only theoretical or tutorial-based learning.",
-    "My long-term focus is to build simple, reliable, and affordable products that solve everyday operational problems using a combination of software and connected hardware."
+    "I build practical systems that solve real operational problems, with a strong focus on backend development, APIs, and system workflows.",
+    "My experience comes from working on backend-heavy applications where reliability, clean architecture, and maintainability were critical.",
+    "I approach problems based on real-world constraints like performance, cost, usability, and system behavior—not just theory.",
+    "Alongside software, I am developing skills in IoT and embedded systems using Arduino and ESP8266/ESP32 to understand hardware-software integration.",
+    "My goal is to build simple, reliable, and affordable products by combining software systems with connected devices."
   ],
   "image": "/profile-image.png",
   "highlights": [
-    "Full-stack dev with real backend & SaaS experience",
-    "Designs scalable APIs & clean data architectures",
-    "Building IoT + embedded systems with real hardware",
-    "Solves real-world problems, not just tutorial tasks",
-    "Focused on simple, reliable, practical products"
+    "Backend-focused full stack developer",
+    "Builds clean APIs and structured systems",
+    "Expanding into IoT and embedded systems",
+    "Solves real-world operational problems",
+    "Focused on simple and reliable solutions"
   ]
 }

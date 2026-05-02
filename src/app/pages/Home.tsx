@@ -150,7 +150,8 @@ export const HeroSection = () => {
             { label: 'APIs', x: 80, y: 45, size: 2 },
             { label: 'Scalable', x: 85, y: 0, size: 1.5 },
             { label: 'WebSockets', x: 48, y: 90, size: 1.5 },
-            { label: 'Flutter', x: 10, y: 70, size: 1 },
+            { label: 'Flutter', x: 10, y: 50, size: 1 },
+            { label: 'Deployment', x: 10, y: 70, size: 1 },
             { label: 'MongoDB', x: 40, y: 0, size: 1.5 },
           ].map((item, i) => (
             <motion.div

@@ -5,11 +5,11 @@
       "institution": "Aishwarya College of Education",
       "degree": "Master of Computer Applications (MCA)",
       "field": "Computer Applications",
-      "duration": "2023 - 2024",
+      "duration": "2023 - 2024 (Discontinued)",
       "achievements": [
-        "Deepened my understanding of software development, backend systems, and application design.",
-        "Continued building practical products alongside formal study, including work on the S3 Library platform.",
-        "Strengthened the transition from academic learning to real system thinking and product execution."
+        "Chose to leave the program to focus on building a real-world SaaS product (S3 Library) based on a practical problem.",
+        "Shifted from academic learning to hands-on system development and product thinking.",
+        "Learned the gap between theoretical concepts and real-world system behavior through direct experience."
       ]
     },
     {
@@ -18,9 +18,9 @@
       "field": "Computer Applications",
       "duration": "2019 - 2022",
       "achievements": [
-        "Built my core foundation in programming, databases, web development, and data structures.",
-        "Completed multiple academic and personal projects that improved practical coding discipline.",
-        "Developed early interest in problem solving through algorithms and implementation-focused assignments."
+        "Built core foundations in programming, databases, web development, and data structures.",
+        "Developed academic and personal projects that strengthened implementation and debugging skills.",
+        "Gained early exposure to problem-solving through algorithms and practical assignments."
       ]
     }
   ]

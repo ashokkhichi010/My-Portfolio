@@ -2,63 +2,63 @@
   "title": "Achievements & Highlights",
   "achievements": [
     {
-      "title": "Built the S3 Library Platform from Problem Discovery to Deployment",
+      "title": "Built S3 Library Platform from Problem to Validation",
       "timeframe": "2024 - 2026",
       "category": "Product Development",
-      "context": "Independent product build",
-      "description": "Conceived, designed, and shipped a library-focused SaaS platform after observing operational inefficiencies in real study spaces.",
+      "context": "Independent Product Build",
+      "description": "Designed and built a SaaS platform after identifying real operational inefficiencies in local libraries.",
       "highlights": [
-        "Worked across product thinking, backend architecture, frontend flows, and deployment.",
-        "Focused on practical workflows such as subscriptions, seat allocation, and branch operations.",
-        "Used the experience to understand product-market fit, validation limits, and execution trade-offs."
+        "Handled end-to-end development: backend, frontend, database, and deployment.",
+        "Focused on real workflows like subscriptions, seat allocation, and branch operations.",
+        "Gained insights into product-market fit, user behavior, and adoption challenges."
       ]
     },
     {
-      "title": "Moved from Backend Engineering into IoT and Embedded Systems",
+      "title": "Expanded into IoT and Embedded Systems",
       "timeframe": "2026 - Present",
       "category": "Career Growth",
-      "context": "Technical transition",
-      "description": "Expanded from software-only work into hardware-oriented engineering through structured learning and hands-on embedded projects.",
+      "context": "Technical Expansion",
+      "description": "Extended from software engineering into hardware systems through hands-on embedded development.",
       "highlights": [
-        "Started building with Arduino, ESP8266/ESP32, sensors, and device communication workflows.",
-        "Focused on creating a stronger bridge between software engineering and real-world systems.",
-        "Used small experiments and RC car projects to reinforce practical fundamentals."
+        "Working with Arduino, ESP8266/ESP32, sensors, and device communication.",
+        "Building understanding of hardware-software integration.",
+        "Applying learning through small experiments and practical projects."
       ]
     },
     {
-      "title": "Built a Multi-Mode RC Car System with Real-Time Control Logic",
+      "title": "Developed Multi-Mode RC Car System",
       "timeframe": "2026",
       "category": "Embedded Systems",
-      "context": "Hands-on project work",
-      "description": "Developed an RC car system with manual control, obstacle avoidance, and line-following behavior to practice embedded design and debugging.",
+      "context": "Hands-on Project",
+      "description": "Built an RC car system with manual, obstacle avoidance, and line-following modes.",
       "highlights": [
-        "Worked with motor control, sensors, Bluetooth communication, and modular firmware logic.",
-        "Used the project to connect theory with practical hardware troubleshooting.",
-        "Later extended the concept toward WiFi-based control using ESP8266."
+        "Implemented motor control, sensors, and Bluetooth communication.",
+        "Structured modular control logic for different operation modes.",
+        "Extended system toward WiFi-based control using ESP8266."
       ]
     },
     {
-      "title": "Contributed to Production SaaS Backends and Payment Workflows",
+      "title": "Worked on Production SaaS Backends",
       "timeframe": "2023 - 2024",
       "category": "Backend Engineering",
       "context": "Square Bits Pvt. Ltd.",
-      "description": "Delivered backend features for SaaS systems and contributed to operational workflows involving APIs, payments, and automation.",
+      "description": "Contributed to backend systems for SaaS applications including APIs, payments, and workflows.",
       "highlights": [
-        "Built and maintained REST APIs for business-critical modules.",
-        "Worked with Stripe and Razorpay integrations, including secure webhook handling.",
-        "Strengthened production thinking around maintainability, structure, and reliability."
+        "Built REST APIs for core business modules.",
+        "Integrated Stripe and Razorpay with secure webhook handling.",
+        "Improved system reliability, structure, and maintainability."
       ]
     },
     {
-      "title": "Built Real-Time Communication Projects Beyond Standard CRUD Applications",
+      "title": "Built Real-Time Systems Beyond CRUD",
       "timeframe": "2024",
       "category": "Real-Time Systems",
-      "context": "Self-driven learning",
-      "description": "Explored event-driven design and multi-user interaction patterns through a real-time chat application.",
+      "context": "Self-driven Learning",
+      "description": "Developed real-time applications to explore event-driven architecture and multi-user interaction.",
       "highlights": [
-        "Practiced WebSocket-based communication and state handling.",
-        "Improved understanding of responsiveness, concurrency, and event flow.",
-        "Used the project to strengthen architectural thinking beyond conventional request-response apps."
+        "Implemented WebSocket-based communication and state synchronization.",
+        "Handled multi-user interaction and responsiveness challenges.",
+        "Strengthened architectural thinking beyond standard request-response systems."
       ]
     }
   ]

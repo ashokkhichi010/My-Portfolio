@@ -2,199 +2,114 @@
   "title": "Tools & Technologies",
   "tools": [
     {
-      "name": "VS Code",
-      "category": "Editor",
-      "proficiency": 92
+      "category": "Core Development",
+      "items": [
+        {
+          "name": "VS Code",
+          "proficiency": 92
+        },
+        {
+          "name": "Terminal (CLI)",
+          "proficiency": 90
+        },
+        {
+          "name": "Git",
+          "proficiency": 85
+        },
+        {
+          "name": "GitHub",
+          "proficiency": 88
+        }
+      ]
     },
     {
-      "name": "Cursor",
-      "category": "Editor",
-      "proficiency": 85
+      "category": "Backend & API Workflow",
+      "items": [
+        {
+          "name": "Postman",
+          "proficiency": 85
+        },
+        {
+          "name": "Thunder Client",
+          "proficiency": 80
+        },
+        {
+          "name": "MongoDB Compass",
+          "proficiency": 82
+        }
+      ]
     },
     {
-      "name": "Terminal (CLI)",
-      "category": "Development",
-      "proficiency": 90
+      "category": "Cloud & Deployment",
+      "items": [
+        {
+          "name": "Firebase Console",
+          "proficiency": 85
+        },
+        {
+          "name": "Firebase Hosting",
+          "proficiency": 85
+        },
+        {
+          "name": "Google Cloud Run",
+          "proficiency": 78
+        }
+      ]
     },
     {
-      "name": "NPM",
-      "category": "Package Manager",
-      "proficiency": 88
+      "category": "Frontend & Debugging",
+      "items": [
+        {
+          "name": "Chrome DevTools",
+          "proficiency": 90
+        },
+        {
+          "name": "ESLint",
+          "proficiency": 80
+        },
+        {
+          "name": "Prettier",
+          "proficiency": 85
+        }
+      ]
     },
     {
-      "name": "Git",
-      "category": "Version Control",
-      "proficiency": 85
+      "category": "Mobile & Embedded",
+      "items": [
+        {
+          "name": "Flutter SDK",
+          "proficiency": 75
+        },
+        {
+          "name": "Android Studio",
+          "proficiency": 72
+        },
+        {
+          "name": "Arduino IDE",
+          "proficiency": 82
+        },
+        {
+          "name": "PlatformIO",
+          "proficiency": 65
+        }
+      ]
     },
     {
-      "name": "GitHub",
-      "category": "Version Control",
-      "proficiency": 88
-    },
-    {
-      "name": "Postman",
-      "category": "API Testing",
-      "proficiency": 85
-    },
-    {
-      "name": "Thunder Client",
-      "category": "API Testing",
-      "proficiency": 80
-    },
-    {
-      "name": "Chrome DevTools",
-      "category": "Debugging",
-      "proficiency": 90
-    },
-    {
-      "name": "Firebase Console",
-      "category": "Cloud",
-      "proficiency": 85
-    },
-    {
-      "name": "Firebase Hosting",
-      "category": "Deployment",
-      "proficiency": 85
-    },
-    {
-      "name": "Google Cloud Run",
-      "category": "Cloud",
-      "proficiency": 78
-    },
-    {
-      "name": "MongoDB Compass",
-      "category": "Database",
-      "proficiency": 82
-    },
-    {
-      "name": "Flutter SDK",
-      "category": "Mobile Dev",
-      "proficiency": 75
-    },
-    {
-      "name": "Android Studio",
-      "category": "Mobile Dev",
-      "proficiency": 72
-    },
-    {
-      "name": "ADB",
-      "category": "Mobile Debugging",
-      "proficiency": 70
-    },
-    {
-      "name": "Arduino IDE",
-      "category": "Embedded Dev",
-      "proficiency": 82
-    },
-    {
-      "name": "Serial Monitor",
-      "category": "Embedded Debugging",
-      "proficiency": 80
-    },
-    {
-      "name": "PlatformIO",
-      "category": "Embedded Dev",
-      "proficiency": 65
-    },
-    {
-      "name": "ChatGPT",
-      "category": "AI Assistant",
-      "proficiency": 95
-    },
-    {
-      "name": "Cursor AI",
-      "category": "AI Coding",
-      "proficiency": 90
-    },
-    {
-      "name": "GitHub Copilot",
-      "category": "AI Coding",
-      "proficiency": 80
-    },
-    {
-      "name": "Claude AI",
-      "category": "AI Reasoning",
-      "proficiency": 80
-    },
-    {
-      "name": "Perplexity AI",
-      "category": "AI Research",
-      "proficiency": 78
-    },
-    {
-      "name": "Google Gemini",
-      "category": "AI Assistant",
-      "proficiency": 75
-    },
-    {
-      "name": "Microsoft Copilot",
-      "category": "AI Assistant",
-      "proficiency": 72
-    },
-    {
-      "name": "Phind",
-      "category": "AI Developer Search",
-      "proficiency": 75
-    },
-    {
-      "name": "Blackbox AI",
-      "category": "AI Coding",
-      "proficiency": 70
-    },
-    {
-      "name": "Figma AI",
-      "category": "AI Design",
-      "proficiency": 72
-    },
-    {
-      "name": "Uizard AI",
-      "category": "AI UI/UX",
-      "proficiency": 70
-    },
-    {
-      "name": "Replit AI",
-      "category": "AI Coding",
-      "proficiency": 68
-    },
-    {
-      "name": "Codeium",
-      "category": "AI Coding",
-      "proficiency": 70
-    },
-    {
-      "name": "Figma",
-      "category": "Design",
-      "proficiency": 75
-    },
-    {
-      "name": "ESLint",
-      "category": "Code Quality",
-      "proficiency": 80
-    },
-    {
-      "name": "Prettier",
-      "category": "Code Quality",
-      "proficiency": 85
-    },
-    {
-      "name": "JSON Formatter",
-      "category": "Utilities",
-      "proficiency": 90
-    },
-    {
-      "name": "QR Code Tools",
-      "category": "Utilities",
-      "proficiency": 78
-    },
-    {
-      "name": "Notion",
-      "category": "Productivity",
-      "proficiency": 80
-    },
-    {
-      "name": "Google Docs",
-      "category": "Productivity",
-      "proficiency": 85
+      "category": "AI-Assisted Workflow",
+      "items": [
+        {
+          "name": "ChatGPT",
+          "proficiency": 95
+        },
+        {
+          "name": "Cursor",
+          "proficiency": 90
+        },
+        {
+          "name": "GitHub Copilot",
+          "proficiency": 80
+        }
+      ]
     }
   ]
 }

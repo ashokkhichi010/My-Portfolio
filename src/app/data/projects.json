@@ -2,68 +2,93 @@
   "title": "Selected Projects",
   "projects": [
     {
-      "id": "rc-car-wifi",
-      "title": "WiFi-Controlled RC Car Upgrade",
-      "timeframe": "Mar 2026 - Present",
-      "status": "in progress",
-      "description": "Upgrading RC car to WiFi-based IoT control system",
-      "summary": "Extending Bluetooth RC car to WiFi using ESP8266 and PlatformIO. Focused on network communication, structured firmware design, and scalable control logic for real-time IoT-based remote operation.",
+      "id": "s3-library",
+      "priority": "hero",
+      "title": "S3 Library Platform",
+      "timeframe": "Nov 2024 - Jan 2026",
+      "status": "on hold",
+      "description": "End-to-end SaaS platform built from a real-world problem",
+      "summary": "Built a multi-tenant SaaS system after identifying inefficiencies in real library operations. Designed subscriptions, seat allocation, and admin workflows. Validated through direct interaction with libraries, uncovering trust barriers and adoption challenges. Paused after validation, gaining strong insights into product-market fit and real-world system behavior.",
       "tags": [
-        "ESP8266",
-        "PlatformIO",
-        "C/C++",
-        "WiFi",
-        "IoT",
-        "Embedded Systems"
+        "Node.js",
+        "NestJS",
+        "MongoDB",
+        "React",
+        "Firebase",
+        "Cloud Run",
+        "SaaS",
+        "System Design",
+        "Multi-Tenant Architecture"
       ],
-      "github": ""
+      "preview": "website",
+      "previewUrl": "https://s3library.com/",
+      "link": "https://s3library.com/",
+      "github": "https://github.com/akprojects2310/S3-Website"
     },
     {
-      "id": "activity-logger",
-      "title": "Flutter Activity Logger",
+      "id": "type-from-image",
+      "priority": "hero",
+      "title": "TypeFromImage",
       "timeframe": "Mar 2026",
       "status": "completed",
-      "description": "Local-first mobile app for tracking daily work",
-      "summary": "Designed a lightweight mobile app for logging daily activities, issues, and solutions. Focused on local-first architecture for reliability and fast access without dependency on internet connectivity.",
+      "description": "Prototype-first typing system with custom content input",
+      "summary": "Built a typing system allowing users to practice with custom content (images/text). Identified gap in existing tools. Added real-time input handling and piano-like audio feedback for engagement. Focused on validating idea before scaling.",
       "tags": [
-        "Flutter",
-        "Dart",
-        "Local Storage",
-        "Mobile App"
+        "React",
+        "Web Audio API",
+        "Frontend",
+        "Prototype"
       ],
-      "preview": "",
-      "previewUrl": ""
+      "link": "https://image-typing-test.web.app/",
+      "github": "https://github.com/ashokkhichi010/Type-From-Image"
     },
     {
-      "id": "rc-car-controller-app",
-      "title": "Bluetooth RC Car Controller (Flutter App)",
-      "timeframe": "2026",
+      "id": "chat-app",
+      "priority": "hero",
+      "title": "Real-Time Chat + Multiplayer System",
+      "timeframe": "2023 - 2024",
       "status": "completed",
-      "description": "Flutter app for Bluetooth-based RC car control",
-      "summary": "Built a mobile application using Flutter to control the RC car via Bluetooth. Implemented real-time command transmission, UI controls for movement, and seamless communication with Arduino using UART over HC-05 module.",
+      "description": "Real-time communication platform with synchronized multiplayer games",
+      "summary": "Built a real-time system with chat and multiplayer games (Ludo + Chase). Focused on event-driven architecture, state synchronization, and low-latency communication. Solved challenges in multi-user coordination and real-time state consistency across clients.",
       "tags": [
-        "Flutter",
-        "Dart",
-        "Bluetooth",
-        "Mobile App",
-        "IoT"
+        "Node.js",
+        "Socket.IO",
+        "MongoDB",
+        "WebSockets",
+        "Real-Time Systems",
+        "Game State Management",
+        "Event-Driven Architecture"
       ],
-      "github": "https://github.com/ashokkhichi010/Bluetooth-RC-Car-Controller"
+      "github": "https://github.com/ashokkhichi010/real-time-chatting-and-games"
+    },
+    {
+      "id": "rc-car-wifi",
+      "priority": "core",
+      "title": "WiFi-Controlled RC Car",
+      "timeframe": "Mar 2026 - Present",
+      "status": "in progress",
+      "description": "IoT-based real-time control system using ESP8266",
+      "summary": "Upgrading Bluetooth RC car to WiFi-based system. Focused on network communication, firmware structure, and real-time control logic for IoT systems.",
+      "tags": [
+        "ESP8266",
+        "C/C++",
+        "IoT",
+        "Embedded Systems"
+      ]
     },
     {
       "id": "rc-car-bluetooth",
-      "title": "Mode-Switching Bluetooth RC Car",
+      "priority": "core",
+      "title": "Multi-Mode Bluetooth RC Car",
       "timeframe": "Mar 2026",
       "status": "completed",
-      "description": "Multi-mode RC car with Bluetooth and sensors",
-      "summary": "Developed a modular embedded system with manual, obstacle avoidance, and line-following modes. Integrated sensors, motor drivers, and real-time control using Arduino and Flutter-based mobile interface.",
+      "description": "Embedded system with multiple control modes",
+      "summary": "Built RC car with manual, obstacle avoidance, and line-following modes. Integrated sensors, motor drivers, and real-time control logic.",
       "tags": [
         "Arduino",
         "C/C++",
-        "Bluetooth",
-        "Flutter",
-        "Embedded Systems",
-        "IoT"
+        "Sensors",
+        "Embedded Systems"
       ],
       "github": "https://github.com/ashokkhichi010/Bluetooth-RC-Car"
     },
@@ -84,76 +109,22 @@
       "github": "https://github.com/ashokkhichi010/Small-IoT-Projects"
     },
     {
-      "id": "chat-app",
-      "title": "Real-Time Chat Application",
-      "timeframe": "2024",
-      "status": "completed",
-      "description": "Real-time chat system using WebSockets",
-      "summary": "Built a real-time chat system to explore event-driven architecture and multi-user communication. Focused on synchronization, responsiveness, and efficient handling of real-time data.",
-      "tags": [
-        "Node.js",
-        "Socket.IO",
-        "MongoDB",
-        "Real-Time Systems"
-      ],
-      "github": "https://github.com/ashokkhichi010/real-time-chatting-and-games"
-    },
-    {
-      "id": "type-from-image",
-      "title": "TypeFromImage",
-      "timeframe": "Mar 2026",
-      "status": "completed",
-      "description": "Typing app using image-based text with audio",
-      "summary": "Built a typing practice app using image text input and added audio feedback for engagement. Focused on improving UX and interaction through browser-based real-time input handling.",
-      "tags": [
-        "React",
-        "JavaScript",
-        "Web Audio",
-        "Frontend"
-      ],
-      "preview": "website",
-      "previewUrl": "https://image-typing-test.web.app/",
-      "link": "https://image-typing-test.web.app/",
-      "github": "https://github.com/ashokkhichi010/Type-From-Image"
-    },
-    {
       "id": "habiqua-room-rental",
-      "title": "Habiqua Room Rental Ecosystem",
+      "priority": "core",
+      "title": "Habiqua Room Rental System",
       "timeframe": "Feb 2026",
       "status": "completed",
-      "description": "Designed SaaS system for room rental operations",
-      "summary": "Designed a SaaS platform covering property listing, booking, and pricing logic. Focused on user roles, workflows, and scalable architecture for handling multi-property rental operations.",
+      "description": "SaaS system design for rental operations",
+      "summary": "Designed system for property listing, booking, and pricing logic. Focused on workflows, roles, and scalable architecture.",
       "tags": [
         "SaaS",
-        "Product Design",
         "System Design",
-        "Dashboard",
-        "Booking System"
+        "Product"
       ],
       "preview": "website",
       "previewUrl": "https://habiqua-student-hub.web.app/",
       "link": "https://habiqua-student-hub.web.app/",
       "github": "https://github.com/akprojects2310/Habiqua-Student-Hub"
-    },
-    {
-      "id": "s3-library",
-      "title": "S3 Library Platform",
-      "timeframe": "Nov 2024 - Jan 2026",
-      "status": "on hold",
-      "description": "Built SaaS system for library operations management",
-      "summary": "Developed a multi-tenant SaaS platform for subscriptions, seat allocation, and admin workflows. Project was put on hold due to adoption challenges, providing insights into product-market fit.",
-      "tags": [
-        "Node.js",
-        "NestJS",
-        "MongoDB",
-        "React",
-        "Firebase",
-        "SaaS"
-      ],
-      "preview": "website",
-      "previewUrl": "https://s3library.com/",
-      "link": "https://s3library.com/",
-      "github": "https://github.com/akprojects2310/S3-Website"
     },
     {
       "id": "flask-auth",

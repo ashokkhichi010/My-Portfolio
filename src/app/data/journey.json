@@ -1,52 +1,52 @@
 {
-  "title": "My Journey",
+  "title": "Journey",
   "timeline": [
     {
       "year": "2019 - 2022",
-      "title": "Built My Foundation in Computer Applications",
-      "description": "Completed my BCA while building a strong base in programming, web fundamentals, databases, and problem solving through academic and self-driven projects.",
+      "title": "Built Foundations in Computer Applications",
+      "description": "Completed BCA while developing core skills in programming, web development, databases, and problem solving through academic and self-driven projects.",
       "type": "learning"
     },
     {
       "year": "Jan 2023 - Oct 2024",
-      "title": "Started My Career in Backend Engineering",
-      "description": "Worked at Square Bits, progressing from trainee to backend engineer and gaining practical experience in APIs, payments, automation, and production SaaS systems.",
+      "title": "Backend Engineering Experience",
+      "description": "Worked at Square Bits, progressing from trainee to backend engineer. Built APIs, payment integrations, and SaaS workflows in production environments.",
       "type": "growth"
     },
     {
       "year": "Late 2024",
-      "title": "Shifted from Execution to Product Thinking",
-      "description": "Chose to step back from employment and spend focused time exploring product direction, market pain points, and long-term technical growth.",
+      "title": "Shifted to Product Thinking",
+      "description": "Stepped away from routine execution to explore real-world problems, product direction, and long-term engineering focus.",
       "type": "decision"
     },
     {
       "year": "Late 2024 - Early 2026",
-      "title": "Built the S3 Library Platform",
-      "description": "Designed and developed a library management SaaS product around real operational problems such as subscriptions, branch workflows, and seat allocation.",
+      "title": "Built S3 Library Platform",
+      "description": "Designed and developed a SaaS system based on real operational issues like subscriptions, seat allocation, and workflow management.",
       "type": "milestone"
     },
     {
       "year": "2025",
-      "title": "Validated Ideas Through Real Operations",
-      "description": "Stayed close to day-to-day library workflows to understand where software actually helps, what users resist, and how product assumptions change in real usage.",
+      "title": "Real-World Validation",
+      "description": "Engaged with library operations to validate assumptions, understand user behavior, and identify gaps between software and real usage.",
       "type": "experience"
     },
     {
       "year": "Jan 2026",
-      "title": "Paused the Product and Refocused",
-      "description": "Put active development on hold to reassess priorities, strengthen fundamentals, and make more disciplined decisions about future products.",
+      "title": "Paused and Refocused",
+      "description": "Paused development after validation to strengthen fundamentals and improve future product decisions.",
       "type": "pause"
     },
     {
       "year": "Mar 2026 - Present",
-      "title": "Expanded Into IoT and Embedded Systems",
-      "description": "Began structured learning in microcontrollers, sensor interfacing, communication protocols, and hardware-software integration to broaden my engineering capability.",
+      "title": "Learning IoT & Embedded Systems",
+      "description": "Started hands-on work with microcontrollers, sensors, and communication systems to understand hardware-software integration.",
       "type": "transition"
     },
     {
       "year": "Present",
-      "title": "Building Toward Hybrid Software + Hardware Systems",
-      "description": "Current focus is to combine strong full stack foundations with embedded and IoT skills to build practical systems that connect software with the physical world.",
+      "title": "Toward Software + Hardware Systems",
+      "description": "Focused on combining backend systems with IoT to build practical, real-world integrated solutions.",
       "type": "current"
     }
   ]

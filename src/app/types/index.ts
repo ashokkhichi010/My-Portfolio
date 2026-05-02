@@ -31,7 +31,7 @@ export interface JourneyData {
 export interface Skill {
   name: string;
   level: number;
-  category: string;
+  // category: string;
 }
 
 export interface SkillsData {

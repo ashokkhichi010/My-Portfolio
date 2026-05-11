@@ -7,18 +7,19 @@
       "title": "S3 Library Platform",
       "timeframe": "Nov 2024 - Jan 2026",
       "status": "on hold",
-      "description": "End-to-end SaaS platform built from a real-world problem",
-      "summary": "Built a multi-tenant SaaS system after identifying inefficiencies in real library operations. Designed subscriptions, seat allocation, and admin workflows. Validated through direct interaction with libraries, uncovering trust barriers and adoption challenges. Paused after validation, gaining strong insights into product-market fit and real-world system behavior.",
+      "description": "End-to-end SaaS platform built from a real operational problem",
+      "summary": "Built a multi-tenant SaaS platform after identifying inefficiencies in library operations. Developed subscription workflows, seat management, attendance tracking, and admin systems. Validated the product through direct interaction with libraries, gaining practical insights into user behavior, operational workflows, and adoption challenges.",
       "tags": [
         "Node.js",
         "NestJS",
         "MongoDB",
-        "React",
+        "React.js",
         "Firebase",
         "Cloud Run",
         "SaaS",
-        "System Design",
-        "Multi-Tenant Architecture"
+        "REST APIs",
+        "Multi-Tenant Architecture",
+        "Real-Time Systems"
       ],
       "preview": "website",
       "previewUrl": "https://s3library.com/",
@@ -31,13 +32,13 @@
       "title": "TypeFromImage",
       "timeframe": "Mar 2026",
       "status": "completed",
-      "description": "Prototype-first typing system with custom content input",
-      "summary": "Built a typing system allowing users to practice with custom content (images/text). Identified gap in existing tools. Added real-time input handling and piano-like audio feedback for engagement. Focused on validating idea before scaling.",
+      "description": "Typing platform with custom content support",
+      "summary": "Built a typing practice platform allowing users to practice using custom text and images. Focused on fast input handling, responsive UI behavior, and validating the product idea through a prototype-first approach.",
       "tags": [
-        "React",
+        "React.js",
         "Web Audio API",
-        "Frontend",
-        "Prototype"
+        "Frontend Development",
+        "Product Validation"
       ],
       "link": "https://image-typing-test.web.app/",
       "github": "https://github.com/ashokkhichi010/Type-From-Image"
@@ -48,65 +49,18 @@
       "title": "Real-Time Chat + Multiplayer System",
       "timeframe": "2023 - 2024",
       "status": "completed",
-      "description": "Real-time communication platform with synchronized multiplayer games",
-      "summary": "Built a real-time system with chat and multiplayer games (Ludo + Chase). Focused on event-driven architecture, state synchronization, and low-latency communication. Solved challenges in multi-user coordination and real-time state consistency across clients.",
+      "description": "Real-time communication system with synchronized multiplayer features",
+      "summary": "Built a real-time application with chat and multiplayer game functionality. Worked on event-driven architecture, WebSocket communication, state synchronization, and multi-user interaction handling.",
       "tags": [
         "Node.js",
         "Socket.IO",
         "MongoDB",
         "WebSockets",
         "Real-Time Systems",
-        "Game State Management",
-        "Event-Driven Architecture"
+        "Event-Driven Architecture",
+        "State Synchronization"
       ],
       "github": "https://github.com/ashokkhichi010/real-time-chatting-and-games"
-    },
-    {
-      "id": "rc-car-wifi",
-      "priority": "core",
-      "title": "WiFi-Controlled RC Car",
-      "timeframe": "Mar 2026 - Present",
-      "status": "in progress",
-      "description": "IoT-based real-time control system using ESP8266",
-      "summary": "Upgrading Bluetooth RC car to WiFi-based system. Focused on network communication, firmware structure, and real-time control logic for IoT systems.",
-      "tags": [
-        "ESP8266",
-        "C/C++",
-        "IoT",
-        "Embedded Systems"
-      ]
-    },
-    {
-      "id": "rc-car-bluetooth",
-      "priority": "core",
-      "title": "Multi-Mode Bluetooth RC Car",
-      "timeframe": "Mar 2026",
-      "status": "completed",
-      "description": "Embedded system with multiple control modes",
-      "summary": "Built RC car with manual, obstacle avoidance, and line-following modes. Integrated sensors, motor drivers, and real-time control logic.",
-      "tags": [
-        "Arduino",
-        "C/C++",
-        "Sensors",
-        "Embedded Systems"
-      ],
-      "github": "https://github.com/ashokkhichi010/Bluetooth-RC-Car"
-    },
-    {
-      "id": "iot-experiments",
-      "title": "Small IoT and Embedded Experiments",
-      "timeframe": "Apr 2026",
-      "status": "in progress",
-      "description": "Mini projects exploring sensors and embedded systems",
-      "summary": "Built small experiments around sensor interfacing, GPIO control, and LED automation. Focused on debugging, circuit design, and strengthening embedded fundamentals through isolated, practical builds.",
-      "tags": [
-        "Arduino",
-        "Sensors",
-        "GPIO",
-        "Embedded Systems",
-        "IoT"
-      ],
-      "github": "https://github.com/ashokkhichi010/Small-IoT-Projects"
     },
     {
       "id": "habiqua-room-rental",
@@ -114,12 +68,14 @@
       "title": "Habiqua Room Rental System",
       "timeframe": "Feb 2026",
       "status": "completed",
-      "description": "SaaS system design for rental operations",
-      "summary": "Designed system for property listing, booking, and pricing logic. Focused on workflows, roles, and scalable architecture.",
+      "description": "Workflow-focused SaaS platform for rental operations",
+      "summary": "Designed a system for property listing, booking management, pricing workflows, and user operations. Focused on scalable architecture, workflow handling, and maintainable system structure.",
       "tags": [
         "SaaS",
         "System Design",
-        "Product"
+        "Node.js",
+        "Workflow Systems",
+        "Product Development"
       ],
       "preview": "website",
       "previewUrl": "https://habiqua-student-hub.web.app/",
@@ -127,29 +83,16 @@
       "github": "https://github.com/akprojects2310/Habiqua-Student-Hub"
     },
     {
-      "id": "flask-auth",
-      "title": "Flask Authentication System",
-      "timeframe": "2022",
-      "status": "completed",
-      "description": "Basic authentication system using Flask",
-      "summary": "Implemented login and logout functionality using Flask with session handling and database integration. Strengthened understanding of backend request handling and authentication flows.",
-      "tags": [
-        "Python",
-        "Flask",
-        "Authentication"
-      ],
-      "github": "https://github.com/ashokkhichi010/Login-Logout-page-flask"
-    },
-    {
       "id": "expense-tracker",
       "title": "Expense Tracker Web App",
       "timeframe": "2022",
       "status": "completed",
-      "description": "Web app for tracking expenses and reports",
-      "summary": "Built an expense tracking system with CRUD operations and MySQL database. Implemented reporting features to help users manage budgets and analyze spending patterns.",
+      "description": "Web application for expense management and reporting",
+      "summary": "Built an expense tracking application with CRUD operations, reporting features, and MySQL database integration. Focused on backend logic, data management, and practical workflow implementation.",
       "tags": [
         "PHP",
         "MySQL",
+        "CRUD Operations",
         "Web Development"
       ],
       "github": "https://github.com/ashokkhichi010/Daily-Expense-tracker"
@@ -159,12 +102,13 @@
       "title": "Sudoku Solver",
       "timeframe": "2022",
       "status": "completed",
-      "description": "Backtracking algorithm to solve Sudoku puzzles",
-      "summary": "Implemented a recursive backtracking algorithm to solve Sudoku efficiently. Focused on constraint validation and optimizing search paths for better performance.",
+      "description": "Recursive backtracking-based Sudoku solver",
+      "summary": "Implemented a recursive backtracking algorithm for solving Sudoku puzzles efficiently while improving understanding of constraints, recursion, and algorithm optimization.",
       "tags": [
         "PHP",
         "DSA",
-        "Backtracking"
+        "Backtracking",
+        "Algorithms"
       ],
       "github": "https://github.com/ashokkhichi010/Sudoku-Solver"
     },
@@ -173,12 +117,13 @@
       "title": "N-Queens Solver",
       "timeframe": "2022",
       "status": "completed",
-      "description": "Solved N-Queens using recursive backtracking",
-      "summary": "Developed a recursive solution enforcing row, column, and diagonal constraints. Strengthened understanding of recursion, optimization, and algorithm design techniques.",
+      "description": "Recursive solution for the N-Queens problem",
+      "summary": "Developed a recursive backtracking solution enforcing row, column, and diagonal constraints while strengthening understanding of recursion and optimization techniques.",
       "tags": [
         "PHP",
         "DSA",
-        "Backtracking"
+        "Backtracking",
+        "Algorithms"
       ],
       "github": "https://github.com/ashokkhichi010/N-Queens-Puzzle-Solver"
     },
@@ -187,12 +132,13 @@
       "title": "Rat in a Maze Solver",
       "timeframe": "2022",
       "status": "completed",
-      "description": "Pathfinding using recursion and constraints",
-      "summary": "Built a pathfinding algorithm using recursion and constraint checking. Improved logical thinking, boundary validation, and optimization techniques in algorithm design.",
+      "description": "Pathfinding algorithm using recursion and constraints",
+      "summary": "Built a recursive pathfinding algorithm with constraint checking and boundary validation to improve logical problem-solving and algorithmic thinking.",
       "tags": [
         "PHP",
+        "Algorithms",
         "Backtracking",
-        "Algorithms"
+        "Problem Solving"
       ],
       "github": "https://github.com/ashokkhichi010/Rat-in-a-Maze"
     },
@@ -201,11 +147,12 @@
       "title": "Mars Mission Graphics Program",
       "timeframe": "2020",
       "status": "completed",
-      "description": "C-based graphics simulation for trajectory",
-      "summary": "Created a graphical simulation using C to visualize motion and trajectory. Helped understand animation basics, rendering logic, and fundamentals of computer graphics.",
+      "description": "Graphics-based simulation using C",
+      "summary": "Created a graphical simulation in C to visualize motion and trajectory concepts while learning rendering logic and fundamentals of computer graphics.",
       "tags": [
         "C",
-        "Computer Graphics"
+        "Computer Graphics",
+        "Simulation"
       ],
       "github": "https://github.com/ashokkhichi010/Mars-Mission"
     }

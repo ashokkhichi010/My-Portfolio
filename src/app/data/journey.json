@@ -4,49 +4,49 @@
     {
       "year": "2019 - 2022",
       "title": "Built Foundations in Computer Applications",
-      "description": "Completed BCA while developing core skills in programming, web development, databases, and problem solving through academic and self-driven projects.",
+      "description": "Completed BCA while developing skills in programming, web development, databases, and application development through academic and self-driven projects.",
       "type": "learning"
     },
     {
       "year": "Jan 2023 - Oct 2024",
-      "title": "Backend Engineering Experience",
-      "description": "Worked at Square Bits, progressing from trainee to backend engineer. Built APIs, payment integrations, and SaaS workflows in production environments.",
+      "title": "Started Professional Backend Development",
+      "description": "Worked at Square Bits Pvt. Ltd., progressing from backend trainee to backend engineer while building APIs, payment systems, and workflow-driven SaaS features.",
       "type": "growth"
     },
     {
       "year": "Late 2024",
-      "title": "Shifted to Product Thinking",
-      "description": "Stepped away from routine execution to explore real-world problems, product direction, and long-term engineering focus.",
+      "title": "Shifted Toward Product-Oriented Development",
+      "description": "Moved beyond routine development work to focus more on solving practical operational problems through software products.",
       "type": "decision"
     },
     {
       "year": "Late 2024 - Early 2026",
       "title": "Built S3 Library Platform",
-      "description": "Designed and developed a SaaS system based on real operational issues like subscriptions, seat allocation, and workflow management.",
+      "description": "Designed and developed a SaaS platform focused on subscriptions, seat management, attendance tracking, and operational workflows for libraries.",
       "type": "milestone"
     },
     {
       "year": "2025",
-      "title": "Real-World Validation",
-      "description": "Engaged with library operations to validate assumptions, understand user behavior, and identify gaps between software and real usage.",
+      "title": "Learned Through Real-World Validation",
+      "description": "Interacted directly with libraries to validate workflows, understand user behavior, and identify real adoption challenges in operational systems.",
       "type": "experience"
     },
     {
       "year": "Jan 2026",
-      "title": "Paused and Refocused",
-      "description": "Paused development after validation to strengthen fundamentals and improve future product decisions.",
+      "title": "Paused to Improve Product Thinking",
+      "description": "Paused the project after validation to strengthen technical skills, product understanding, and long-term development direction.",
       "type": "pause"
     },
     {
-      "year": "Mar 2026 - Present",
-      "title": "Learning IoT & Embedded Systems",
-      "description": "Started hands-on work with microcontrollers, sensors, and communication systems to understand hardware-software integration.",
+      "year": "2026 - Present",
+      "title": "Focused on Backend Systems & Real-Time Applications",
+      "description": "Continuing to improve backend-focused full-stack development skills with emphasis on SaaS systems, APIs, workflows, and real-time communication.",
       "type": "transition"
     },
     {
       "year": "Present",
-      "title": "Toward Software + Hardware Systems",
-      "description": "Focused on combining backend systems with IoT to build practical, real-world integrated solutions.",
+      "title": "Building Practical Software Systems",
+      "description": "Focused on creating maintainable applications and workflow-driven systems that solve real operational problems.",
       "type": "current"
     }
   ]

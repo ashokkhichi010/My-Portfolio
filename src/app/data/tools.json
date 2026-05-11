@@ -27,7 +27,7 @@
       "items": [
         {
           "name": "Postman",
-          "proficiency": 85
+          "proficiency": 88
         },
         {
           "name": "Thunder Client",
@@ -53,6 +53,10 @@
         {
           "name": "Google Cloud Run",
           "proficiency": 78
+        },
+        {
+          "name": "DNS & Domain Management",
+          "proficiency": 74
         }
       ]
     },
@@ -74,7 +78,7 @@
       ]
     },
     {
-      "category": "Mobile & Embedded",
+      "category": "Mobile Development",
       "items": [
         {
           "name": "Flutter SDK",
@@ -83,14 +87,6 @@
         {
           "name": "Android Studio",
           "proficiency": 72
-        },
-        {
-          "name": "Arduino IDE",
-          "proficiency": 82
-        },
-        {
-          "name": "PlatformIO",
-          "proficiency": 65
         }
       ]
     },

@@ -1,18 +1,18 @@
 {
   "title": "About Me",
   "story": [
-    "I build practical systems that solve real operational problems, with a strong focus on backend development, APIs, and system workflows.",
-    "My experience comes from working on backend-heavy applications where reliability, clean architecture, and maintainability were critical.",
-    "I approach problems based on real-world constraints like performance, cost, usability, and system behavior—not just theory.",
-    "Alongside software, I am developing skills in IoT and embedded systems using Arduino and ESP8266/ESP32 to understand hardware-software integration.",
-    "My goal is to build simple, reliable, and affordable products by combining software systems with connected devices."
+    "I build practical software systems focused on backend development, APIs, real-time features, and workflow-driven applications.",
+    "My experience comes from working on backend-heavy products where maintainability, reliability, and clean system structure were important.",
+    "I enjoy solving real operational and product problems by building simple and scalable solutions that work well in real-world usage.",
+    "I have worked on SaaS platforms, authentication systems, payment workflows, and full-stack applications using Node.js, NestJS, React.js, and MongoDB.",
+    "I prefer practical development, clear architecture, and maintainable systems over unnecessary complexity."
   ],
   "image": "/profile-image.png",
   "highlights": [
     "Backend-focused full stack developer",
-    "Builds clean APIs and structured systems",
-    "Expanding into IoT and embedded systems",
-    "Solves real-world operational problems",
-    "Focused on simple and reliable solutions"
+    "Builds APIs and workflow-based systems",
+    "Experience with SaaS and real-time applications",
+    "Focused on practical problem solving",
+    "Prefers simple and maintainable solutions"
   ]
 }

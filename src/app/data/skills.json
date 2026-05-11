@@ -7,7 +7,7 @@
         "level": 88
       },
       {
-        "name": "REST API Design",
+        "name": "REST API Development",
         "level": 88
       },
       {
@@ -15,7 +15,7 @@
         "level": 85
       },
       {
-        "name": "Scalable API Design",
+        "name": "Backend System Design",
         "level": 80
       },
       {
@@ -28,11 +28,11 @@
       },
       {
         "name": "Real-Time Systems (WebSockets)",
-        "level": 75
+        "level": 78
       },
       {
-        "name": "Event-Driven Architecture",
-        "level": 75
+        "name": "Workflow-Based Applications",
+        "level": 80
       }
     ],
     "Backend Engineering": [
@@ -42,7 +42,7 @@
       },
       {
         "name": "NestJS",
-        "level": 78
+        "level": 80
       },
       {
         "name": "JWT & Session Handling",
@@ -80,7 +80,7 @@
       },
       {
         "name": "MUI",
-        "level": 85
+        "level": 82
       },
       {
         "name": "State Management",
@@ -109,26 +109,22 @@
         "level": 75
       }
     ],
-    "IoT & Embedded (Learning Focus)": [
+    "Cloud & Deployment": [
       {
-        "name": "Arduino",
-        "level": 75
+        "name": "Firebase",
+        "level": 78
       },
       {
-        "name": "ESP8266 / ESP32",
-        "level": 70
+        "name": "Google Cloud Run",
+        "level": 74
       },
       {
-        "name": "Sensor Interfacing",
+        "name": "Deployment Workflows",
+        "level": 76
+      },
+      {
+        "name": "DNS & Hosting",
         "level": 72
-      },
-      {
-        "name": "Hardware-Software Integration",
-        "level": 72
-      },
-      {
-        "name": "Embedded C Basics",
-        "level": 65
       }
     ],
     "Mobile Development": [
@@ -137,12 +133,12 @@
         "level": 72
       },
       {
-        "name": "Bluetooth Communication",
+        "name": "Cross-platform UI",
         "level": 70
       },
       {
-        "name": "Cross-platform UI",
-        "level": 70
+        "name": "API Integration",
+        "level": 74
       }
     ],
     "Engineering Practices": [
@@ -152,7 +148,7 @@
       },
       {
         "name": "Debugging",
-        "level": 82
+        "level": 84
       },
       {
         "name": "System Thinking",

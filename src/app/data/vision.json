@@ -1,32 +1,32 @@
 {
   "title": "Vision & Goals",
-  "vision": "To build simple, reliable systems that solve real operational problems by combining strong software engineering with affordable and accessible hardware.",
+  "vision": "To build practical, reliable software systems that solve real operational problems through simple architecture, maintainable development, and real-world product thinking.",
   "goals": {
     "shortTerm": [
-      "Strengthen backend-focused full stack development with emphasis on system design and reliability.",
-      "Build a solid foundation in IoT and Embedded Systems using ESP8266/ESP32.",
-      "Improve proficiency in C/C++ for low-level and hardware interaction.",
-      "Develop projects that integrate backend systems with physical devices.",
-      "Enhance debugging skills across software and hardware systems.",
-      "Validate ideas through small, fast prototypes before scaling."
+      "Strengthen backend-focused full-stack development with emphasis on APIs, workflows, and scalable system design.",
+      "Improve expertise in Node.js, NestJS, MongoDB, and real-time application architecture.",
+      "Build maintainable SaaS systems with better reliability, performance, and clean backend structure.",
+      "Develop stronger understanding of authentication systems, deployment workflows, and backend optimization.",
+      "Improve debugging and problem-solving skills through practical product development.",
+      "Validate ideas through small, fast prototypes before investing in large-scale implementation."
     ],
 
     "longTerm": [
-      "Build complete end-to-end systems combining software and hardware.",
-      "Design and launch practical products based on real-world validation.",
-      "Create affordable solutions for students and small-scale environments.",
-      "Develop strong product thinking grounded in real usage and feedback.",
-      "Build systems that are scalable, maintainable, and easy to use.",
-      "Balance independent execution with effective team collaboration."
+      "Build complete end-to-end SaaS products focused on solving real operational problems.",
+      "Design scalable and maintainable systems grounded in practical usage and user feedback.",
+      "Create products that are simple, affordable, and easy to use.",
+      "Develop strong product thinking through real-world validation and iteration.",
+      "Build reliable backend systems with clean architecture and long-term maintainability.",
+      "Balance independent execution with effective collaboration in product-focused teams."
     ]
   },
 
   "values": [
-    "Solve real problems, not just features",
-    "Keep systems simple and reliable",
+    "Solve real problems, not unnecessary complexity",
+    "Keep systems simple and maintainable",
     "Validate before scaling",
-    "Learn through building and testing",
-    "Focus on affordability and usability",
-    "Stay consistent over chasing quick results"
+    "Learn through practical building and iteration",
+    "Focus on usability and reliability",
+    "Stay consistent and improve gradually"
   ]
 }

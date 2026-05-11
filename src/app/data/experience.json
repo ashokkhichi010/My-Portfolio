@@ -2,45 +2,28 @@
   "title": "Work Experience",
   "experiences": [
     {
-      "company": "ROBOAI HUB",
-      "role": "IoT and Embedded Systems Trainee",
-      "duration": "Mar 2026 - Present",
-      "location": "Jodhpur, Rajasthan, India",
-      "description": [
-        "Building hands-on experience with microcontrollers, embedded C/C++, and sensor-based systems through practical experimentation.",
-        "Developing device control workflows using Arduino and ESP8266, focusing on real-time input handling and hardware-software integration.",
-        "Working with serial and WiFi communication while debugging low-level system behavior for reliability.",
-        "Strengthening fundamentals required for building real-world IoT systems."
-      ],
-      "technologies": [
-        "Arduino",
-        "ESP8266",
-        "C/C++",
-        "Sensors",
-        "Embedded Systems",
-        "IoT"
-      ]
-    },
-    {
       "company": "Independent Product Work",
-      "role": "Full Stack Developer (S3 Library Platform)",
+      "role": "Backend-Focused Full Stack Developer (S3 Library Platform)",
       "duration": "Nov 2024 - Jan 2026",
       "location": "Remote",
       "description": [
-        "Initiated and built a SaaS platform to solve inefficiencies in library operations such as rigid subscriptions and manual management.",
-        "Designed and developed the complete system (backend, frontend, database, deployment) independently.",
-        "Validated the product through direct interaction with multiple libraries and iterative feature improvements.",
-        "Identified adoption challenges including trust barriers and preference for manual workflows.",
-        "Paused the project after validation, applying learnings to improve product thinking and execution strategy.",
-        "Gained practical insights into product-market fit, requirement clarity, and real-world adoption challenges."
+        "Built a SaaS platform focused on solving operational issues in library management and subscription workflows.",
+        "Handled complete product development including backend APIs, frontend integration, database structure, and deployment workflows independently.",
+        "Developed features for subscriptions, seat management, attendance tracking, authentication, and admin operations.",
+        "Validated the product through direct discussions with libraries and iterative feature improvements based on real feedback.",
+        "Identified real-world adoption challenges including operational habits, trust barriers, and workflow expectations.",
+        "Strengthened practical understanding of product validation, workflow design, and maintainable system development."
       ],
       "technologies": [
         "Node.js",
         "NestJS",
         "MongoDB",
-        "React",
+        "React.js",
         "Firebase",
-        "Cloud Run"
+        "Cloud Run",
+        "REST APIs",
+        "Authentication",
+        "WebSockets"
       ]
     },
     {
@@ -49,12 +32,12 @@
       "duration": "Apr 2023 - Oct 2024",
       "location": "India",
       "description": [
-        "Developed backend services for SaaS applications using Node.js and Express.js.",
-        "Designed REST APIs for inventory, subscriptions, billing, and operational workflows.",
-        "Integrated payment gateways (Stripe, Razorpay) with secure webhook handling.",
-        "Worked on database design and query optimization using MongoDB and MySQL.",
-        "Collaborated with frontend and product teams for seamless feature integration.",
-        "Improved system performance, reliability, and maintainability through structured development practices."
+        "Worked on backend systems for SaaS applications using Node.js and Express.js.",
+        "Built REST APIs for subscriptions, billing, inventory, and workflow-driven business modules.",
+        "Integrated payment gateways including Stripe and Razorpay with secure webhook handling.",
+        "Worked with MongoDB and MySQL for database design, query handling, and backend workflows.",
+        "Collaborated with frontend developers and product teams for feature integration and API implementation.",
+        "Focused on maintainable backend structure, performance improvements, and reliable system behavior."
       ],
       "technologies": [
         "Node.js",
@@ -63,7 +46,8 @@
         "MySQL",
         "Stripe",
         "Razorpay",
-        "AWS S3"
+        "AWS S3",
+        "REST APIs"
       ]
     },
     {
@@ -72,16 +56,17 @@
       "duration": "Jan 2023 - Mar 2023",
       "location": "India",
       "description": [
-        "Assisted in API development, testing, and debugging within backend workflows.",
-        "Worked with Node.js, Express.js, MongoDB, and Postman in a production-oriented environment.",
-        "Learned to translate requirements into structured backend logic under guidance.",
-        "Built foundational skills in backend architecture, debugging, and team collaboration."
+        "Supported backend API development, debugging, and testing in a production-oriented environment.",
+        "Worked with Node.js, Express.js, MongoDB, and Postman while learning backend development workflows.",
+        "Assisted in implementing backend logic and API integrations based on project requirements.",
+        "Built foundational skills in backend architecture, debugging, and collaborative development practices."
       ],
       "technologies": [
         "Node.js",
         "Express.js",
         "MongoDB",
-        "Postman"
+        "Postman",
+        "REST APIs"
       ]
     }
   ]

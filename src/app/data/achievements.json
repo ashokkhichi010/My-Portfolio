@@ -2,39 +2,15 @@
   "title": "Achievements & Highlights",
   "achievements": [
     {
-      "title": "Built S3 Library Platform from Problem to Validation",
+      "title": "Built S3 Library Platform from Problem to Product",
       "timeframe": "2024 - 2026",
       "category": "Product Development",
       "context": "Independent Product Build",
-      "description": "Designed and built a SaaS platform after identifying real operational inefficiencies in local libraries.",
+      "description": "Designed and developed a SaaS platform focused on solving operational challenges faced by local libraries.",
       "highlights": [
-        "Handled end-to-end development: backend, frontend, database, and deployment.",
-        "Focused on real workflows like subscriptions, seat allocation, and branch operations.",
-        "Gained insights into product-market fit, user behavior, and adoption challenges."
-      ]
-    },
-    {
-      "title": "Expanded into IoT and Embedded Systems",
-      "timeframe": "2026 - Present",
-      "category": "Career Growth",
-      "context": "Technical Expansion",
-      "description": "Extended from software engineering into hardware systems through hands-on embedded development.",
-      "highlights": [
-        "Working with Arduino, ESP8266/ESP32, sensors, and device communication.",
-        "Building understanding of hardware-software integration.",
-        "Applying learning through small experiments and practical projects."
-      ]
-    },
-    {
-      "title": "Developed Multi-Mode RC Car System",
-      "timeframe": "2026",
-      "category": "Embedded Systems",
-      "context": "Hands-on Project",
-      "description": "Built an RC car system with manual, obstacle avoidance, and line-following modes.",
-      "highlights": [
-        "Implemented motor control, sensors, and Bluetooth communication.",
-        "Structured modular control logic for different operation modes.",
-        "Extended system toward WiFi-based control using ESP8266."
+        "Handled complete development including backend, frontend, database, and deployment workflows.",
+        "Built features for subscriptions, seat management, attendance tracking, and admin operations.",
+        "Learned practical product validation, user feedback handling, and real-world adoption challenges."
       ]
     },
     {
@@ -42,23 +18,47 @@
       "timeframe": "2023 - 2024",
       "category": "Backend Engineering",
       "context": "Square Bits Pvt. Ltd.",
-      "description": "Contributed to backend systems for SaaS applications including APIs, payments, and workflows.",
+      "description": "Worked on backend systems for SaaS applications involving APIs, payments, authentication, and business workflows.",
       "highlights": [
-        "Built REST APIs for core business modules.",
-        "Integrated Stripe and Razorpay with secure webhook handling.",
-        "Improved system reliability, structure, and maintainability."
+        "Built and maintained REST APIs for core application modules.",
+        "Integrated Stripe and Razorpay with webhook-based payment handling.",
+        "Focused on backend structure, maintainability, and reliable workflow implementation."
       ]
     },
     {
-      "title": "Built Real-Time Systems Beyond CRUD",
+      "title": "Built Real-Time Systems Beyond Standard CRUD",
       "timeframe": "2024",
       "category": "Real-Time Systems",
       "context": "Self-driven Learning",
-      "description": "Developed real-time applications to explore event-driven architecture and multi-user interaction.",
+      "description": "Developed real-time applications to improve understanding of event-driven systems and multi-user interactions.",
       "highlights": [
-        "Implemented WebSocket-based communication and state synchronization.",
-        "Handled multi-user interaction and responsiveness challenges.",
-        "Strengthened architectural thinking beyond standard request-response systems."
+        "Implemented WebSocket-based real-time communication systems.",
+        "Worked on synchronization, responsiveness, and live state handling.",
+        "Strengthened backend architecture and real-time workflow understanding."
+      ]
+    },
+    {
+      "title": "Developed Workflow-Focused SaaS Features",
+      "timeframe": "2024 - 2025",
+      "category": "Full-Stack Development",
+      "context": "Independent Development",
+      "description": "Built workflow-driven systems focused on practical operations and maintainable architecture.",
+      "highlights": [
+        "Worked on authentication systems, role management, and admin workflows.",
+        "Built API-driven frontend and backend integrations.",
+        "Focused on simple architecture and usability for real-world scenarios."
+      ]
+    },
+    {
+      "title": "Independent Product-Oriented Development",
+      "timeframe": "2024 - Present",
+      "category": "Professional Growth",
+      "context": "Self-driven Development",
+      "description": "Continuously building practical products and improving backend-focused full-stack development skills.",
+      "highlights": [
+        "Comfortable handling projects independently from idea to implementation.",
+        "Focused on practical problem solving and maintainable systems.",
+        "Interested in SaaS products, APIs, workflows, and real-time applications."
       ]
     }
   ]
